@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_list>
+    <category_list>
+        <category>
+            <ID>00</ID>
+            <name>cateroot</name>
+            <parent>null</parent>
+        </category>
+        <category>
+            <ID>01</ID>
+            <name>basic</name>
+            <parent>00</parent>
+        </category>
+    </category_list>
+
+    <class_list>
+        <class>
+            <ID>01</ID>
+            <name>Basic Training</name>
+            <category>01</category>
+        </class>
+    </class_list>
+
+    <admin_list>
+        <admin>
+            <ID>A001</ID>
+            <username>roi</username>
+            <name>Charlie XVI</name>
+            <type>admin</type>
+            <expire>F</expire>
+        </admin>
+    </admin_list>
+
+    <service_list>
+        <service>
+            <ID>S001</ID>
+            <username>service</username>
+            <name>server</name>
+            <type>service</type>
+            <expire>F</expire>
+
+            <privilage_list>
+            </privilage_list>
+        </service>
+    </service_list>
+
+    <coach_list>
+        <coach>
+            <ID>C001</ID>
+            <username>jim</username>
+            <name>Jim</name>
+            <type>coach</type>
+            <expire>F</expire>
+
+            <c_profile_URI>C001_profile.xml</c_profile_URI>
+            <ability_class_list>
+                <ability_class>
+                    <ID>01</ID>
+                    <time>all</time>
+                </ability_class>
+            </ability_class_list>
+        </coach>
+    </coach_list>
+
+    <trainer_list>
+        <trainer>
+            <ID>T001</ID>
+            <username>tom</username>
+            <name>Tom</name>
+            <type>trainer</type>
+            <expire>F</expire>
+
+            <t_profile_URI>T001_profile.xml</t_profile_URI>
+        </trainer>
+    </trainer_list>
+
+    <booking_list>
+        <booking>
+            <caoch>C001</caoch>
+            <trainer>T001</trainer>
+            <class>01</class>
+            <time>2104041847</time>
+        </booking>
+    </booking_list>
+
+    <exchange_list>
+
+    </exchange_list>
+</record_list>
