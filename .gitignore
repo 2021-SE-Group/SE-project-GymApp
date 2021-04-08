@@ -4,7 +4,6 @@ target/
 # Default ignored files
 /shelf/
 /workspace.xml
-
 # Datasource local storage ignored files
 /../../../../../../:\dataroot\active\project\GymApp\.idea/dataSources/
 /dataSources.local.xml

@@ -26,33 +26,30 @@
             <ID>A001</ID>
             <username>roi</username>
             <name>Charlie XVI</name>
-            <type>admin</type>
-            <expire>F</expire>
+            <expired>F</expired>
         </admin>
     </admin_list>
 
-    <service_list>
-        <service>
+    <staff_list>
+        <staff>
             <ID>S001</ID>
-            <username>service</username>
-            <name>server</name>
-            <type>service</type>
-            <expire>F</expire>
+            <username>staff</username>
+            <name>butler</name>
+            <expired>F</expired>
 
             <privilage_list>
             </privilage_list>
-        </service>
-    </service_list>
+        </staff>
+    </staff_list>
 
     <coach_list>
         <coach>
             <ID>C001</ID>
             <username>jim</username>
             <name>Jim</name>
-            <type>coach</type>
-            <expire>F</expire>
+            <expired>F</expired>
 
-            <c_profile_URI>C001_profile.xml</c_profile_URI>
+            <c_profile_URL>C001_profile.xml</c_profile_URL>
             <ability_class_list>
                 <ability_class>
                     <ID>01</ID>
@@ -67,10 +64,9 @@
             <ID>T001</ID>
             <username>tom</username>
             <name>Tom</name>
-            <type>trainer</type>
-            <expire>F</expire>
+            <expired>F</expired>
 
-            <t_profile_URI>T001_profile.xml</t_profile_URI>
+            <t_profile_URL>T001_profile.xml</t_profile_URL>
         </trainer>
     </trainer_list>
 

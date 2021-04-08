@@ -22,6 +22,7 @@ import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Set;
 
 
 /**
@@ -46,8 +47,10 @@ public class App
         ArrayList<Staff> staffs;
         ArrayList<Coach> coaches;
         ArrayList<Trainer> trainers;
+        Set<CoachTrainerPair> ctPairs;
         ArrayList<Booking> bookings;
         ArrayList<Exchange> exchanges;
+
         // from xml, load tables into our container
         {
             // load data
@@ -111,27 +114,53 @@ public class App
             Node category_list = elemRoot.getElementsByTagName("category_list").item(0);
             Node class_list = elemRoot.getElementsByTagName("class_list").item(0);
             Node admin_list = elemRoot.getElementsByTagName("admin_list").item(0);
-            Node service_list = elemRoot.getElementsByTagName("service_list").item(0);
-            Node coach_list = elemRoot.getElementsByTagName("voach_list").item(0);
+            Node staff_list = elemRoot.getElementsByTagName("staff_list").item(0);
+            Node coach_list = elemRoot.getElementsByTagName("coach_list").item(0);
+            Node trainer_list = elemRoot.getElementsByTagName("trainer_list").item(0);
             Node booking_list = elemRoot.getElementsByTagName("booking_list").item(0);
-
+            Node exchange_list = elemRoot.getElementsByTagName("exchange_list").item(0);
             // load every list into our container and TODO(establish index, B tree)(may implement inside the container)
 
             CategoryLoader cateL = new CategoryLoader(category_list.getChildNodes());
             cateL.load();
             categories = cateL.result;
+            for(Category c : categories) {
+                System.out.println(c);
+            }
 
             LFClassLoader clsL = new LFClassLoader(class_list.getChildNodes(), cateL.result);
             clsL.load();
             lfClasses = clsL.result;
-
-
-
-            for(Category c : categories) {
-                System.out.println(c);
-            }
             for(LFClass lfc : lfClasses) {
                 System.out.println(lfc);
+            }
+
+            AdminLoader admL = new AdminLoader(admin_list.getChildNodes());
+            admL.load();
+            admins = admL.result;
+            for(Admin adm : admins) {
+                System.out.println(adm);
+            }
+
+            StaffLoader stfL = new StaffLoader(staff_list.getChildNodes());
+            stfL.load();
+            staffs = stfL.result;
+            for(Staff stf : staffs) {
+                System.out.println(stf);
+            }
+
+            CoachLoader cchL = new CoachLoader(coach_list.getChildNodes());
+            cchL.load();
+            coaches = cchL.result;
+            for(Coach cch : coaches) {
+                System.out.println(cch);
+            }
+
+            TrainerLoader traL = new TrainerLoader(trainer_list.getChildNodes());
+            traL.load();
+            trainers = traL.result;
+            for(Trainer tra: trainers) {
+                System.out.println(tra);
             }
         }
 
@@ -155,7 +184,9 @@ public class App
         // storage tables to new xml file, if all done, change name
         {
             // display a wait-for-a-while window
-
+            // gen DOM
+            // write
+            // change name
         }
 
 

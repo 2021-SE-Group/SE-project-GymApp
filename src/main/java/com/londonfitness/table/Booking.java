@@ -7,8 +7,7 @@ import java.util.Date;
 
 public class Booking {
     public Booking() {}
-    Coach coach;
-    Trainer trainer;
+    CoachTrainerPair ctPair;
     LFClass lfClasss;
     Date startDate;
     long repeat;
@@ -16,8 +15,8 @@ public class Booking {
     @Override
     public String toString() {
         return "Booking{" +
-                "coach=" + coach +
-                ", trainer=" + trainer +
+                "coach=" + ctPair.coach +
+                ", trainer=" + ctPair.trainer +
                 ", lfClasss=" + lfClasss +
                 ", startDate=" + startDate +
                 ", repeat=" + repeat +
