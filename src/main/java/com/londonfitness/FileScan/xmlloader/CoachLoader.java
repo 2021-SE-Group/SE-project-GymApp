@@ -1,21 +1,21 @@
-package com.londonfitness.xmlloader;
+package com.londonfitness.FileScan.xmlloader;
 
-import com.londonfitness.ExternKey;
-import com.londonfitness.XMLListLoad;
-import com.londonfitness.table.LFClass;
+import com.londonfitness.FileScan.XMLTableLoad;
 import com.londonfitness.table.persons.Coach;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 import java.util.ArrayList;
 
-public class CoachLoader extends XMLListLoad<Coach> implements ExternKey<LFClass> {
-    public CoachLoader(NodeList list) {
-        super(list);
+public class CoachLoader extends XMLTableLoad<Coach> {
+
+
+    public CoachLoader(NodeList list, ArrayList<Coach> res) {
+        super(list, res);
     }
 
     @Override
-    protected void scanColumn(Node n, Coach coach) {
+    protected void scanCell(Node n, Coach coach) {
         switch (n.getNodeName()) {
             case "ID":
                 coach.ID = n.getFirstChild().getNodeValue();
@@ -43,10 +43,5 @@ public class CoachLoader extends XMLListLoad<Coach> implements ExternKey<LFClass
     @Override
     protected Coach getNewElem() {
         return new Coach();
-    }
-
-    @Override
-    public LFClass finishKey(String getByID) {
-        return null;
     }
 }

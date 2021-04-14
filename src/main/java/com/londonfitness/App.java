@@ -1,8 +1,11 @@
 package com.londonfitness;
 
+import com.londonfitness.FileScan.ScanXML;
+import com.londonfitness.FileScan.XMLErrorHandler;
+import com.londonfitness.memStorage.Storage;
 import com.londonfitness.table.*;
 import com.londonfitness.table.persons.*;
-import com.londonfitness.xmlloader.*;
+import com.londonfitness.FileScan.xmlloader.*;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -21,8 +24,8 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
-import java.util.Set;
 
 
 /**
@@ -41,144 +44,24 @@ public class App
     {
         //Charset charset = Charset.forName("UTF-8");
         // new MemDB and init it
-        ArrayList<Category> categories;
-        ArrayList<LFClass> lfClasses;
-        ArrayList<Admin> admins;
-        ArrayList<Staff> staffs;
-        ArrayList<Coach> coaches;
-        ArrayList<Trainer> trainers;
-        Set<CoachTrainerPair> ctPairs;
-        ArrayList<Booking> bookings;
-        ArrayList<Exchange> exchanges;
+        Storage storage = new Storage();
 
         // from xml, load tables into our container
         {
-            // load data
-            Path resourceRoot = Paths.get(resourcePathName);
-            Path dataPath = Paths.get(defaultFileName);
-
-            // check existance of resource path and all needed file.
-            if (Files.exists(resourceRoot)) {
-                // if resorce exists, check if is dir
-                if (!Files.isDirectory(resourceRoot)) {
-                    System.err.println("Wrong, there is a file named resouce, we need a directory.");
-                }
-            } else {
-                // if resource not exists, create.
-                try {
-                    Files.createDirectories(resourceRoot);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-            File dataFile = dataPath.toFile();
-            if (!dataFile.exists()) {
-                try {
-                    Files.createFile(dataPath);
-                    // initiate
-                } catch (IOException e) {
-                    // fail to create the file.
-                    e.printStackTrace();
-                }
-            }
-
-            //System.out.println(dataFile.exists());
-
-            DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-            //dbf.setNamespaceAware(true);
-            //dbf.setValidating(true);
-            OutputStreamWriter errorWriter = new OutputStreamWriter(System.err, StandardCharsets.UTF_8);
-
-            DocumentBuilder db = null;
-            try {
-                db = dbf.newDocumentBuilder();
-                db.setErrorHandler(new XMLErrorHandler(new PrintWriter(errorWriter, true)));
-            } catch (ParserConfigurationException e) {
-                e.printStackTrace();
-            }
-
-            Document doc = null;
-            try {
-                assert db != null;
-                doc = db.parse(dataFile);
-            } catch (SAXException | IOException e) {
-                e.printStackTrace();
-            }
-
-
-            assert doc != null;
-            Element elemRoot = doc.getDocumentElement();
-            elemRoot.normalize();
-
-            // get all the lists
-            Node category_list = elemRoot.getElementsByTagName("category_list").item(0);
-            Node class_list = elemRoot.getElementsByTagName("class_list").item(0);
-            Node admin_list = elemRoot.getElementsByTagName("admin_list").item(0);
-            Node staff_list = elemRoot.getElementsByTagName("staff_list").item(0);
-            Node coach_list = elemRoot.getElementsByTagName("coach_list").item(0);
-            Node trainer_list = elemRoot.getElementsByTagName("trainer_list").item(0);
-            Node booking_list = elemRoot.getElementsByTagName("booking_list").item(0);
-            Node exchange_list = elemRoot.getElementsByTagName("exchange_list").item(0);
-            // load every list into our container and TODO(establish index, B tree)(may implement inside the container)
-
-            CategoryLoader cateL = new CategoryLoader(category_list.getChildNodes());
-            cateL.load();
-            categories = cateL.result;
-            for(Category c : categories) {
-                System.out.println(c);
-            }
-
-            LFClassLoader clsL = new LFClassLoader(class_list.getChildNodes(), cateL.result);
-            clsL.load();
-            lfClasses = clsL.result;
-            for(LFClass lfc : lfClasses) {
-                System.out.println(lfc);
-            }
-
-            AdminLoader admL = new AdminLoader(admin_list.getChildNodes());
-            admL.load();
-            admins = admL.result;
-            for(Admin adm : admins) {
-                System.out.println(adm);
-            }
-
-            StaffLoader stfL = new StaffLoader(staff_list.getChildNodes());
-            stfL.load();
-            staffs = stfL.result;
-            for(Staff stf : staffs) {
-                System.out.println(stf);
-            }
-
-            CoachLoader cchL = new CoachLoader(coach_list.getChildNodes());
-            cchL.load();
-            coaches = cchL.result;
-            for(Coach cch : coaches) {
-                System.out.println(cch);
-            }
-
-            TrainerLoader traL = new TrainerLoader(trainer_list.getChildNodes());
-            traL.load();
-            trainers = traL.result;
-            for(Trainer tra: trainers) {
-                System.out.println(tra);
-            }
+            ScanXML sx = new ScanXML(storage, resourcePathName, defaultFileName);
         }
 
-        /*
-        try (BufferedReader reader =
-                     Files.newBufferedReader(
-                             dataPath,
-                             Charset.forName("UTF-8")))
+        // from storage, build up indexes
         {
 
-        } catch (IOException x) {
-            System.err.format("IOException: %s%n", x);
         }
-        */
 
         // do service
         {
+            // prepare
+
             // main frame kick in
+
         }
 
         // storage tables to new xml file, if all done, change name

@@ -1,19 +1,20 @@
-package com.londonfitness.xmlloader;
+package com.londonfitness.FileScan.xmlloader;
 
-import com.londonfitness.XMLListLoad;
-import com.londonfitness.table.Person;
+import com.londonfitness.FileScan.XMLTableLoad;
 import com.londonfitness.table.persons.Admin;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-public class AdminLoader extends XMLListLoad<Admin> {
+import java.util.ArrayList;
 
-    public AdminLoader(NodeList list) {
-        super(list);
+public class AdminLoader extends XMLTableLoad<Admin> {
+
+    public AdminLoader(NodeList list, ArrayList<Admin> res) {
+        super(list, res);
     }
 
     @Override
-    protected void scanColumn(Node n, Admin admin) {
+    protected void scanCell(Node n, Admin admin) {
         switch (n.getNodeName()) {
             case "ID":
                 admin.ID = n.getFirstChild().getNodeValue();

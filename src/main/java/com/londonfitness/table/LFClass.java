@@ -1,23 +1,30 @@
 package com.londonfitness.table;
 
-public class LFClass {
-    public LFClass() {}
-    public LFClass(String ID, String name, Category category) {
+import com.londonfitness.Table;
+
+public class LFClass extends Table {
+    public LFClass() {
+        LFClass.ColumnMeta = new String[][]{{"ID", "name", "category_ID"}, {}, {"duration"}, {}, {}};
+    }
+    public LFClass(String ID, String name, String category_ID) {
+        this();
         this.ID = ID;
         this.name = name;
-        this.category = category;
+        this.category_ID = category_ID;
     }
 
     public String ID;
     public String name;
-    public Category category;
+    public String category_ID;
+    public Long duration;
+    // public Category category;
 
     @Override
     public String toString() {
         return "LFClass{" +
                 "ID='" + ID + '\'' +
                 ", name='" + name + '\'' +
-                ", category=" + category +
+                ", category_ID=\'" + category_ID + '\'' +
                 '}';
     }
 }

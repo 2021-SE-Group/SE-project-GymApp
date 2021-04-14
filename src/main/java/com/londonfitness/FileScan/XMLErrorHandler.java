@@ -1,4 +1,4 @@
-package com.londonfitness;
+package com.londonfitness.FileScan;
 
 import org.xml.sax.ErrorHandler;
 import org.xml.sax.SAXException;

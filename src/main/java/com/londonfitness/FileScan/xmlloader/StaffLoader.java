@@ -1,21 +1,20 @@
-package com.londonfitness.xmlloader;
+package com.londonfitness.FileScan.xmlloader;
 
-import com.londonfitness.XMLListLoad;
-import com.londonfitness.table.Person;
+import com.londonfitness.FileScan.XMLTableLoad;
 import com.londonfitness.table.persons.Staff;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 import java.util.ArrayList;
 
-public class StaffLoader extends XMLListLoad<Staff> {
+public class StaffLoader extends XMLTableLoad<Staff> {
 
-    public StaffLoader(NodeList list) {
-        super(list);
+    public StaffLoader(NodeList list, ArrayList<Staff> res) {
+        super(list, res);
     }
 
     @Override
-    protected void scanColumn(Node n, Staff staff) {
+    protected void scanCell(Node n, Staff staff) {
         switch (n.getNodeName()) {
             case "ID":
                 staff.ID = n.getFirstChild().getNodeValue();
@@ -30,10 +29,6 @@ public class StaffLoader extends XMLListLoad<Staff> {
                 staff.expired = false;
                 if(n.getFirstChild().getNodeValue() == "t" || n.getFirstChild().getNodeValue() == "T")
                     staff.expired = true;
-                break;
-            case "privilage_list":
-                System.out.println("TODO: parse Staffs' privilage_list");
-                staff.privileges = new ArrayList<>();
                 break;
         }
     }

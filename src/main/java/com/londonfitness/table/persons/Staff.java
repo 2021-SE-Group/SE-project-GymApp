@@ -9,22 +9,15 @@ public class Staff extends Person {
         super();
         this.type = Person.STAFF_TYPE;
     }
-    public ArrayList<String> privileges;
 
     @Override
     public String toString() {
-        String priv = "[";
-        for(String p : privileges) {
-            priv += p + ", ";
-        }
-        priv += "]";
         return "Staff{" +
                 "ID='" + ID + '\'' +
                 ", username='" + username + '\'' +
                 ", name='" + name + '\'' +
                 ", type=" + Person.typeMask[type] +
                 ", expired=" + expired +
-                ", privileges=" + priv +
                 '}';
     }
 }

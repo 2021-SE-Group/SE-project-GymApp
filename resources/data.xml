@@ -4,22 +4,24 @@
         <category>
             <ID>00</ID>
             <name>cateroot</name>
-            <parent>null</parent>
+            <parent_ID>null</parent_ID>
         </category>
         <category>
             <ID>01</ID>
             <name>basic</name>
-            <parent>00</parent>
+            <parent_ID>00</parent_ID>
         </category>
     </category_list>
 
-    <class_list>
-        <class>
+    <lfClass_list>
+        <lfClass>
             <ID>01</ID>
             <name>Basic Training</name>
-            <category>01</category>
-        </class>
-    </class_list>
+            <duration>7200000</duration>
+            <resource_URL>lfClass_01/</resource_URL>
+            <category_ID>01</category_ID>
+        </lfClass>
+    </lfClass_list>
 
     <admin_list>
         <admin>
@@ -36,9 +38,6 @@
             <username>staff</username>
             <name>butler</name>
             <expired>F</expired>
-
-            <privilage_list>
-            </privilage_list>
         </staff>
     </staff_list>
 
@@ -50,14 +49,16 @@
             <expired>F</expired>
 
             <c_profile_URL>C001_profile.xml</c_profile_URL>
-            <ability_class_list>
-                <ability_class>
-                    <ID>01</ID>
-                    <time>all</time>
-                </ability_class>
-            </ability_class_list>
         </coach>
     </coach_list>
+
+    <coach_ability_class_list>
+        <ability_class>
+            <coach_ID>C001</coach_ID>
+            <lfClass_ID>01</lfClass_ID>
+            <time>all</time>
+        </ability_class>
+    </coach_ability_class_list>
 
     <trainer_list>
         <trainer>
@@ -65,21 +66,23 @@
             <username>tom</username>
             <name>Tom</name>
             <expired>F</expired>
-
             <t_profile_URL>T001_profile.xml</t_profile_URL>
         </trainer>
     </trainer_list>
 
     <booking_list>
         <booking>
-            <caoch>C001</caoch>
-            <trainer>T001</trainer>
-            <class>01</class>
-            <time>2104041847</time>
+            <caoch_ID>C001</caoch_ID>
+            <trainer_ID>T001</trainer_ID>
+            <lfClass_ID>01</lfClass_ID>
+            <startDate>210404184736</startDate>
+            <repeat>604800000</repeat>
         </booking>
     </booking_list>
 
     <exchange_list>
-
+        <exchange>
+            <ID>001</ID>
+        </exchange>
     </exchange_list>
 </record_list>
