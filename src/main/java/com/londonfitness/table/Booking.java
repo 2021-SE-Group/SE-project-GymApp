@@ -3,7 +3,6 @@ package com.londonfitness.table;
 import com.londonfitness.OurDateFormat;
 import com.londonfitness.Table;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Booking extends Table {

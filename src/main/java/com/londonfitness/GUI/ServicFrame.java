@@ -1,14 +1,22 @@
 package com.londonfitness.GUI;
 
+import com.londonfitness.memStorage.Storage;
+
+import javax.swing.*;
+import javax.swing.event.TreeModelListener;
+import javax.swing.tree.TreeModel;
+import javax.swing.tree.TreePath;
+
 /**
  *
  */
 public class ServicFrame extends javax.swing.JFrame {
-
+    private Storage storage;
     /**
      * Creates new form ServicFrame
      */
-    public ServicFrame() {
+    public ServicFrame(Storage storage) {
+        this.storage = storage;
         initComponents();
     }
 
@@ -51,6 +59,47 @@ public class ServicFrame extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Gym Service");
 
+        lfClass.setModel(new TreeModel() {
+            @Override
+            public Object getRoot() {
+                return null;
+            }
+
+            @Override
+            public Object getChild(Object parent, int index) {
+                return null;
+            }
+
+            @Override
+            public int getChildCount(Object parent) {
+                return 0;
+            }
+
+            @Override
+            public boolean isLeaf(Object node) {
+                return false;
+            }
+
+            @Override
+            public void valueForPathChanged(TreePath path, Object newValue) {
+
+            }
+
+            @Override
+            public int getIndexOfChild(Object parent, Object child) {
+                return 0;
+            }
+
+            @Override
+            public void addTreeModelListener(TreeModelListener l) {
+
+            }
+
+            @Override
+            public void removeTreeModelListener(TreeModelListener l) {
+
+            }
+        });
         jScrollPane2.setViewportView(lfClass);
 
         jTabbedPane1_service.addTab("classes", jScrollPane2);
@@ -72,7 +121,7 @@ public class ServicFrame extends javax.swing.JFrame {
 
         jTable3.setModel(new javax.swing.table.DefaultTableModel(
                 new Object [][] {
-                        {null, null, null, null},
+                        {"shit", "fuck", null, null},
                         {null, null, null, null},
                         {null, null, null, null},
                         {null, null, null, null}
@@ -85,13 +134,15 @@ public class ServicFrame extends javax.swing.JFrame {
 
         jTabbedPane1_service.addTab("student", jScrollPane4);
 
+
+        Object [][] ss = new Object[storage.bookings.size()][4];
+        for(int i = 0; i < storage.bookings.size(); i++) {
+            ss[i][0] = storage.bookings.get(i).lfClass_ID;
+            ss[i][1] = storage.bookings.get(i).trainer_ID;
+        }
+
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
-                new Object [][] {
-                        {null, null, null, null},
-                        {null, null, null, null},
-                        {null, null, null, null},
-                        {null, null, null, null}
-                },
+                ss,
                 new String [] {
                         "Title 1", "Title 2", "Title 3", "Title 4"
                 }
@@ -269,7 +320,7 @@ public class ServicFrame extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                new ServicFrame().setVisible(true);
+                new ServicFrame(new Storage()).setVisible(true);
             }
         });
     }

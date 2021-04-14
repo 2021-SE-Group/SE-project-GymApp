@@ -72,12 +72,14 @@
 
     <booking_list>
         <booking>
-            <caoch_ID>C001</caoch_ID>
+            <coach_ID>C001</coach_ID>
             <trainer_ID>T001</trainer_ID>
             <lfClass_ID>01</lfClass_ID>
             <startDate>210404184736</startDate>
+            <number>16</number>
             <repeat>604800000</repeat>
         </booking>
+
     </booking_list>
 
     <exchange_list>

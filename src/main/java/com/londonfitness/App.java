@@ -45,7 +45,7 @@ public class App
     {
         //Charset charset = Charset.forName("UTF-8");
         // new MemDB and init it
-        Storage storage = new Storage();
+        final Storage storage = new Storage();
 
         // from xml, load tables into our container
         {
@@ -60,7 +60,7 @@ public class App
         // do service
         {
             // prepare
-
+            System.out.println(storage.bookings.get(0));
             // main frame kick in
             /* Set the Nimbus look and feel */
             //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -89,7 +89,7 @@ public class App
             java.awt.EventQueue.invokeLater(new Runnable() {
                 @Override
                 public void run() {
-                    new ServicFrame().setVisible(true);
+                    new ServicFrame(storage).setVisible(true);
                 }
             });
         }
