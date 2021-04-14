@@ -2,6 +2,7 @@ package com.londonfitness;
 
 import com.londonfitness.FileScan.ScanXML;
 import com.londonfitness.FileScan.XMLErrorHandler;
+import com.londonfitness.GUI.ServicFrame;
 import com.londonfitness.memStorage.Storage;
 import com.londonfitness.table.*;
 import com.londonfitness.table.persons.*;
@@ -61,7 +62,36 @@ public class App
             // prepare
 
             // main frame kick in
+            /* Set the Nimbus look and feel */
+            //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+            /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+             * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
+             */
+            try {
+                for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                    if ("Nimbus".equals(info.getName())) {
+                        javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                        break;
+                    }
+                }
+            } catch (ClassNotFoundException ex) {
+                java.util.logging.Logger.getLogger(ServicFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            } catch (InstantiationException ex) {
+                java.util.logging.Logger.getLogger(ServicFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            } catch (IllegalAccessException ex) {
+                java.util.logging.Logger.getLogger(ServicFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+                java.util.logging.Logger.getLogger(ServicFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            }
+            //</editor-fold>
 
+            /* Create and display the form */
+            java.awt.EventQueue.invokeLater(new Runnable() {
+                @Override
+                public void run() {
+                    new ServicFrame().setVisible(true);
+                }
+            });
         }
 
         // storage tables to new xml file, if all done, change name
