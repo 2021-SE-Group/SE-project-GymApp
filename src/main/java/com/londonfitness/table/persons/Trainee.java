@@ -1,9 +1,11 @@
 package com.londonfitness.table.persons;
 
+import com.londonfitness.Index;
+import com.londonfitness.table.Booking;
 import com.londonfitness.table.Person;
 
-public class Trainer extends Person {
-    public Trainer() {
+public class Trainee extends Person {
+    public Trainee() {
         super();
         this.type = Person.TRAINER_TYPE;
     }
@@ -11,7 +13,7 @@ public class Trainer extends Person {
 
     @Override
     public String toString() {
-        return "Trainer{" +
+        return "Trainee{" +
                 "ID='" + ID + '\'' +
                 ", username='" + username + '\'' +
                 ", name='" + name + '\'' +
@@ -20,4 +22,5 @@ public class Trainer extends Person {
                 ", t_profile_URL='" + t_profile_URL + '\'' +
                 '}';
     }
+    public Index<Trainee, Booking> index_booking;
 }

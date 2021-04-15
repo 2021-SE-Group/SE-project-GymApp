@@ -60,20 +60,21 @@
         </ability_class>
     </coach_ability_class_list>
 
-    <trainer_list>
-        <trainer>
+    <trainee_list>
+        <trainee>
             <ID>T001</ID>
             <username>tom</username>
             <name>Tom</name>
             <expired>F</expired>
             <t_profile_URL>T001_profile.xml</t_profile_URL>
-        </trainer>
-    </trainer_list>
+        </trainee>
+    </trainee_list>
 
     <booking_list>
         <booking>
+            <ID>b001</ID>
             <coach_ID>C001</coach_ID>
-            <trainer_ID>T001</trainer_ID>
+            <trainee_ID>T001</trainee_ID>
             <lfClass_ID>01</lfClass_ID>
             <startDate>210404184736</startDate>
             <number>16</number>
@@ -84,7 +85,7 @@
 
     <exchange_list>
         <exchange>
-            <ID>001</ID>
+            <booking_ID>b001</booking_ID>
         </exchange>
     </exchange_list>
 </record_list>

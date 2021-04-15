@@ -1,5 +1,7 @@
 package com.londonfitness.table.persons;
 
+import com.londonfitness.Index;
+import com.londonfitness.table.Booking;
 import com.londonfitness.table.Person;
 
 import java.util.ArrayList;
@@ -20,4 +22,5 @@ public class Staff extends Person {
                 ", expired=" + expired +
                 '}';
     }
+    public Index<Staff, Booking> index_booking;
 }

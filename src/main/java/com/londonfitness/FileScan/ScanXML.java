@@ -4,11 +4,12 @@ import com.londonfitness.FileScan.xmlloader.*;
 import com.londonfitness.memStorage.Storage;
 import com.londonfitness.table.Booking;
 import com.londonfitness.table.Category;
+import com.londonfitness.table.CoachAbility;
 import com.londonfitness.table.LFClass;
 import com.londonfitness.table.persons.Admin;
 import com.londonfitness.table.persons.Coach;
 import com.londonfitness.table.persons.Staff;
-import com.londonfitness.table.persons.Trainer;
+import com.londonfitness.table.persons.Trainee;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -26,7 +27,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-public class ScanXML {
+public class  ScanXML {
     private Path resourceRoot;
     private Path dataPath;
     private Storage storage;
@@ -112,8 +113,12 @@ public class ScanXML {
         CoachLoader cchL = new CoachLoader(coach_list.getChildNodes(), storage.coaches);
         cchL.load();
 
-        Node trainer_list = elemRoot.getElementsByTagName("trainer_list").item(0);
-        TrainerLoader traL = new TrainerLoader(trainer_list.getChildNodes(), storage.trainers);
+        Node coachAbility_list = elemRoot.getElementsByTagName("coach_ability_class_list").item(0);
+        CoachAbilityLoader ccahL = new CoachAbilityLoader(coachAbility_list.getChildNodes(), storage.coachAbility);
+        ccahL.load();
+
+        Node trainee_list = elemRoot.getElementsByTagName("trainee_list").item(0);
+        TraineeLoader traL = new TraineeLoader(trainee_list.getChildNodes(), storage.trainees);
         traL.load();
 
         Node booking_list = elemRoot.getElementsByTagName("booking_list").item(0);
@@ -137,7 +142,10 @@ public class ScanXML {
         for (Coach cch : storage.coaches) {
             System.out.println(cch);
         }
-        for (Trainer tra : storage.trainers) {
+        for (CoachAbility ccah : storage.coachAbility) {
+            System.out.println(ccah);
+        }
+        for (Trainee tra : storage.trainees) {
             System.out.println(tra);
         }
         for(Booking bok: storage.bookings) {

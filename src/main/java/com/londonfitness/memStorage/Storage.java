@@ -1,13 +1,10 @@
 package com.londonfitness.memStorage;
 
-import com.londonfitness.table.Booking;
-import com.londonfitness.table.Category;
-import com.londonfitness.table.Exchange;
-import com.londonfitness.table.LFClass;
+import com.londonfitness.table.*;
 import com.londonfitness.table.persons.Admin;
 import com.londonfitness.table.persons.Coach;
 import com.londonfitness.table.persons.Staff;
-import com.londonfitness.table.persons.Trainer;
+import com.londonfitness.table.persons.Trainee;
 
 import java.util.ArrayList;
 
@@ -17,9 +14,10 @@ public class Storage {
     public ArrayList<Admin> admins;
     public ArrayList<Staff> staffs;
     public ArrayList<Coach> coaches;
-    public ArrayList<Trainer> trainers;
+    public ArrayList<Trainee> trainees;
     public ArrayList<Booking> bookings;
     public ArrayList<Exchange> exchanges;
+    public ArrayList<CoachAbility> coachAbility;
 
     public Storage() {
         categories = new ArrayList<>();
@@ -27,8 +25,9 @@ public class Storage {
         admins = new ArrayList<>();
         staffs = new ArrayList<>();
         coaches = new ArrayList<>();
-        trainers = new ArrayList<>();
+        trainees = new ArrayList<>();
         bookings = new ArrayList<>();
         exchanges = new ArrayList<>();
+        coachAbility = new ArrayList<>();
     }
 }

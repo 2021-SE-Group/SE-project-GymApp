@@ -1,8 +1,9 @@
 package com.londonfitness.table;
 
 public class CoachAbility {
-    String lfc_ID;
-    String time;
+    public String lfc_ID;
+    public String time;
+    public String coach_ID;
 
     public CoachAbility() {
     }
@@ -11,6 +12,7 @@ public class CoachAbility {
     public String toString() {
         return "coachAbility{" +
                 "lfclass_ID=" + lfc_ID +
+                ", coach_ID='" + coach_ID + '\'' +
                 ", time='" + time + '\'' +
                 '}';
     }

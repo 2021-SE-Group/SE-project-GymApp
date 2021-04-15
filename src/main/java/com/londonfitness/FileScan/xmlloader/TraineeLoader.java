@@ -1,43 +1,43 @@
 package com.londonfitness.FileScan.xmlloader;
 
 import com.londonfitness.FileScan.XMLTableLoad;
-import com.londonfitness.table.persons.Trainer;
+import com.londonfitness.table.persons.Trainee;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 import java.util.ArrayList;
 
-public class TrainerLoader extends XMLTableLoad<Trainer> {
+public class TraineeLoader extends XMLTableLoad<Trainee> {
 
-    public TrainerLoader(NodeList list, ArrayList<Trainer> res) {
+    public TraineeLoader(NodeList list, ArrayList<Trainee> res) {
         super(list, res);
     }
 
     @Override
-    protected void scanCell(Node n, Trainer trainer) {
+    protected void scanCell(Node n, Trainee trainee) {
         switch (n.getNodeName()) {
             case "ID":
-                trainer.ID = n.getFirstChild().getNodeValue();
+                trainee.ID = n.getFirstChild().getNodeValue();
                 break;
             case "username":
-                trainer.username = n.getFirstChild().getNodeValue();
+                trainee.username = n.getFirstChild().getNodeValue();
                 break;
             case "name":
-                trainer.name = n.getFirstChild().getNodeValue();
+                trainee.name = n.getFirstChild().getNodeValue();
                 break;
             case "expire":
-                trainer.expired = false;
+                trainee.expired = false;
                 if(n.getFirstChild().getNodeValue() == "t" || n.getFirstChild().getNodeValue() == "T")
-                    trainer.expired = true;
+                    trainee.expired = true;
                 break;
             case "t_profile_URL":
-                trainer.t_profile_URL = n.getFirstChild().getNodeValue();
+                trainee.t_profile_URL = n.getFirstChild().getNodeValue();
                 break;
         }
     }
 
     @Override
-    protected Trainer getNewElem() {
-        return new Trainer();
+    protected Trainee getNewElem() {
+        return new Trainee();
     }
 }

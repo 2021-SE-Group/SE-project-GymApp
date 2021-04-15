@@ -1,5 +1,7 @@
 package com.londonfitness.table.persons;
 
+import com.londonfitness.Index;
+import com.londonfitness.table.Booking;
 import com.londonfitness.table.CoachAbility;
 import com.londonfitness.table.Person;
 
@@ -24,4 +26,6 @@ public class Coach extends Person {
                 ", c_profile_URL='" + c_profile_URL + '\'' +
                 '}';
     }
+
+    public Index<Coach, Booking> index_booking;
 }
