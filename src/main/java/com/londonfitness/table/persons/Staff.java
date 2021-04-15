@@ -12,6 +12,13 @@ public class Staff extends Person {
         this.type = Person.STAFF_TYPE;
     }
 
+    // meta
+    @Override
+    protected String getTableMeta(short type, String name) {
+        return new String();
+    }
+
+    //<editor-fold defaultstate="collapsed" desc="raw text field">
     @Override
     public String toString() {
         return "Staff{" +
@@ -21,6 +28,8 @@ public class Staff extends Person {
                 ", type=" + Person.typeMask[type] +
                 ", expired=" + expired +
                 '}';
-    }
+    }//</editor-fold>
+
+    // index field
     public Index<Staff, Booking> index_booking;
 }

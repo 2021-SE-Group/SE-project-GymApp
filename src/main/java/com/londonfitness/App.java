@@ -3,6 +3,7 @@ package com.londonfitness;
 import com.londonfitness.FileScan.ScanXML;
 import com.londonfitness.FileScan.XMLErrorHandler;
 import com.londonfitness.GUI.ServicFrame;
+import com.londonfitness.indexBuilder.RebuildIndexes;
 import com.londonfitness.memStorage.Storage;
 import com.londonfitness.table.*;
 import com.londonfitness.table.persons.*;
@@ -12,6 +13,7 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.xml.sax.SAXException;
 
+import javax.swing.*;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -49,18 +51,21 @@ public class App
 
         // from xml, load tables into our container
         {
-            ScanXML sx = new ScanXML(storage, resourcePathName, defaultFileName);
+            System.out.println("Start to scan data file.");
+            new ScanXML(storage, resourcePathName, defaultFileName);
+            System.out.println("Finish scanning data file.");
         }
 
         // from storage, build up indexes
         {
-
+            System.out.println("Start to build up indexes.");
+            new RebuildIndexes(storage);
+            System.out.println("Finish building indexes.");
         }
 
         // do service
         {
             // prepare
-            System.out.println(storage.bookings.get(0));
             // main frame kick in
             /* Set the Nimbus look and feel */
             //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -69,18 +74,15 @@ public class App
              */
             try {
                 for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                    if ("Nimbus".equals(info.getName())) {
+                    if ("Default".equals(info.getName())) {
                         javax.swing.UIManager.setLookAndFeel(info.getClassName());
                         break;
                     }
                 }
-            } catch (ClassNotFoundException ex) {
-                java.util.logging.Logger.getLogger(ServicFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-            } catch (InstantiationException ex) {
-                java.util.logging.Logger.getLogger(ServicFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-            } catch (IllegalAccessException ex) {
-                java.util.logging.Logger.getLogger(ServicFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-            } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            } catch (ClassNotFoundException
+                    | UnsupportedLookAndFeelException
+                    | IllegalAccessException
+                    | InstantiationException ex) {
                 java.util.logging.Logger.getLogger(ServicFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
             }
             //</editor-fold>

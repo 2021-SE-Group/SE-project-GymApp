@@ -9,8 +9,15 @@ public class Trainee extends Person {
         super();
         this.type = Person.TRAINER_TYPE;
     }
-    public String t_profile_URL;
 
+    // meta
+    @Override
+    protected String getTableMeta(short type, String name) {
+        return "";
+    }
+
+    //<editor-fold defaultstate="collapsed" desc="raw text field">
+    public String t_profile_URL;
     @Override
     public String toString() {
         return "Trainee{" +
@@ -21,6 +28,8 @@ public class Trainee extends Person {
                 ", expired=" + expired +
                 ", t_profile_URL='" + t_profile_URL + '\'' +
                 '}';
-    }
+    }//</editor-fold>
+
+    // index field
     public Index<Trainee, Booking> index_booking;
 }

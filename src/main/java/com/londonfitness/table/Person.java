@@ -1,6 +1,8 @@
 package com.londonfitness.table;
 
-public abstract class Person {
+import com.londonfitness.Table;
+
+public abstract class Person extends Table {
     public static final short ADMIN_TYPE = 0;
     public static final short STAFF_TYPE = 1;
     public static final short COACH_TYPE = 2;
@@ -9,20 +11,13 @@ public abstract class Person {
     public static final String[] typeMask = {"admin", "staff", "coach", "trainer"};
 
     public Person() {}
-    public Person(String ID, String username, String name, short type) {
-        this.ID = ID;
-        this.username = username;
-        this.name = name;
-        this.type = type;
-        this.expired = false;
-    }
 
+    //<editor-fold defaultstate="collapsed" desc="raw text field">
     public String ID;
     public String username;
     public String name;
     public short type;
     public boolean expired;
-
     @Override
     public String toString() {
         return "Person{" +
@@ -32,5 +27,5 @@ public abstract class Person {
                 ", type=" + typeMask[type] +
                 ", expired=" + expired +
                 '}';
-    }
+    }//</editor-fold>
 }

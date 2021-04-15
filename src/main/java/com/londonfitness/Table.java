@@ -11,7 +11,7 @@ public abstract class Table {
     public static final short columnType_Boolean = 3;
     public static final short columnType_Long = 4;
 
-    protected static String[][] ColumnMeta;
+    protected abstract String getTableMeta(short type, String name);
     /*
     public abstract void setCell_String(String colName, String content);
     public abstract String getCell_String(String colName);

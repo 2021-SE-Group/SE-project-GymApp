@@ -1,13 +1,23 @@
 package com.londonfitness.table;
 
-public class CoachAbility {
+import com.londonfitness.Table;
+import com.londonfitness.table.persons.Coach;
+
+public class CoachAbility extends Table {
+    public CoachAbility() {
+
+    }
+
+    // meta
+    @Override
+    protected String getTableMeta(short type, String name) {
+        return "";
+    }
+
+    //<editor-fold defaultstate="collapsed" desc="raw text field">
     public String lfc_ID;
     public String time;
     public String coach_ID;
-
-    public CoachAbility() {
-    }
-
     @Override
     public String toString() {
         return "coachAbility{" +
@@ -15,5 +25,9 @@ public class CoachAbility {
                 ", coach_ID='" + coach_ID + '\'' +
                 ", time='" + time + '\'' +
                 '}';
-    }
+    }//</editor-fold>
+
+    // external key filed
+    LFClass lfClass;
+    Coach coach;
 }

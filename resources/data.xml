@@ -3,12 +3,42 @@
     <category_list>
         <category>
             <ID>00</ID>
-            <name>cateroot</name>
+            <name>London Fitness Classes</name>
             <parent_ID>null</parent_ID>
         </category>
         <category>
             <ID>01</ID>
-            <name>basic</name>
+            <name>basic training</name>
+            <parent_ID>00</parent_ID>
+        </category>
+        <category>
+            <ID>02</ID>
+            <name>aerobics</name>
+            <parent_ID>01</parent_ID>
+        </category>
+        <category>
+            <ID>03</ID>
+            <name>strength</name>
+            <parent_ID>01</parent_ID>
+        </category>
+        <category>
+            <ID>04</ID>
+            <name>combined strength</name>
+            <parent_ID>03</parent_ID>
+        </category>
+        <category>
+            <ID>05</ID>
+            <name>free strength</name>
+            <parent_ID>03</parent_ID>
+        </category>
+        <category>
+            <ID>06</ID>
+            <name>weight training</name>
+            <parent_ID>03</parent_ID>
+        </category>
+        <category>
+            <ID>07</ID>
+            <name>advanced training</name>
             <parent_ID>00</parent_ID>
         </category>
     </category_list>

@@ -7,8 +7,13 @@ import java.util.ArrayList;
 
 public abstract class IndexBuilder<T1 extends Table, Tn extends Table> {
     //public ArrayList<Index<T1, Tn>> indexes;
-    private ArrayList<T1> t1s;
-    private ArrayList<Tn> tns_all;
+    private final ArrayList<T1> t1s;
+    private final ArrayList<Tn> tns_all;
+
+    public IndexBuilder(ArrayList<T1> t1s, ArrayList<Tn> tns_all) {
+        this.t1s = t1s;
+        this.tns_all = tns_all;
+    }
 
     public void buildIndex() {
         for(T1 t1: t1s) {
@@ -19,12 +24,11 @@ public abstract class IndexBuilder<T1 extends Table, Tn extends Table> {
                     ind.addTn(tn);
                 }
             }
-            setT1Index(ind);
+            setT1Index(t1, ind);
         }
 
     }
 
     protected abstract boolean checkIndexing(T1 t1, Tn tn);
-    protected abstract void setT1Index(Index<T1, Tn> ind);
-    protected abstract Index<T1, Tn> getT1Index();
+    protected abstract void setT1Index(T1 t1, Index<T1, Tn> ind);
 }

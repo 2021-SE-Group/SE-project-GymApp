@@ -18,4 +18,9 @@ public class Admin extends Person {
                 ", expired=" + expired +
                 '}';
     }
+
+    @Override
+    protected String getTableMeta(short type, String name) {
+        return new String();
+    }
 }

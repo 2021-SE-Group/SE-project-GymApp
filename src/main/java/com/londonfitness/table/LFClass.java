@@ -6,28 +6,34 @@ import com.londonfitness.table.persons.Trainee;
 
 public class LFClass extends Table {
     public LFClass() {
-        LFClass.ColumnMeta = new String[][]{{"ID", "name", "category_ID"}, {}, {"duration"}, {}, {}};
-    }
-    public LFClass(String ID, String name, String category_ID) {
-        this();
-        this.ID = ID;
-        this.name = name;
-        this.category_ID = category_ID;
+
     }
 
+    // meta
+    @Override
+    protected String getTableMeta(short type, String name) {
+        return "";
+    }
+
+    //<editor-fold defaultstate="collapsed" desc="raw text field">
     public String ID;
     public String name;
     public String category_ID;
     public Long duration;
-    // public Category category;
-
     @Override
     public String toString() {
         return "LFClass{" +
                 "ID='" + ID + '\'' +
                 ", name='" + name + '\'' +
-                ", category_ID=\'" + category_ID + '\'' +
+                ", category_ID='" + category_ID + '\'' +
+                ", duration='" + duration + '\'' +
                 '}';
-    }
+    }//</editor-fold>
+
+    // external key field
+    Category category;
+
+    // index field
     public Index<LFClass, Booking> index_booking;
+    public Index<LFClass, CoachAbility> index_CoachAbility;
 }

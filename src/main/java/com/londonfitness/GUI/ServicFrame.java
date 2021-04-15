@@ -30,9 +30,6 @@ public class ServicFrame extends javax.swing.JFrame {
 
         jTabbedPane2 = new javax.swing.JTabbedPane();
         jTabbedPane1_service = new javax.swing.JTabbedPane();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        lfClass = new javax.swing.JTree();
-
 
         jScrollPane4 = new javax.swing.JScrollPane();
         jTable3 = new javax.swing.JTable();
@@ -58,58 +55,15 @@ public class ServicFrame extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Gym Service");
 
-        lfClass.setModel(new TreeModel() {
-            @Override
-            public Object getRoot() {
-                return null;
-            }
+        jTabbedPane1_service.addTab("classes", new JScrollPane_LFClassTree(storage.categories, storage.lfClasses));
 
-            @Override
-            public Object getChild(Object parent, int index) {
-                return null;
-            }
-
-            @Override
-            public int getChildCount(Object parent) {
-                return 0;
-            }
-
-            @Override
-            public boolean isLeaf(Object node) {
-                return false;
-            }
-
-            @Override
-            public void valueForPathChanged(TreePath path, Object newValue) {
-
-            }
-
-            @Override
-            public int getIndexOfChild(Object parent, Object child) {
-                return 0;
-            }
-
-            @Override
-            public void addTreeModelListener(TreeModelListener l) {
-
-            }
-
-            @Override
-            public void removeTreeModelListener(TreeModelListener l) {
-
-            }
-        });
-        jScrollPane2.setViewportView(lfClass);
-
-        jTabbedPane1_service.addTab("classes", jScrollPane2);
-
-        JScrollPane_CoachTable jsp_coach = new JScrollPane_CoachTable(storage);
+        JScrollPane_CoachTable jsp_coach = new JScrollPane_CoachTable(storage.coaches);
 
         jTabbedPane1_service.addTab("trainer", jsp_coach);
 
         jTable3.setModel(new javax.swing.table.DefaultTableModel(
                 new Object [][] {
-                        {"shit", "fuck", null, null},
+                        {"test", "test", null, null},
                         {null, null, null, null},
                         {null, null, null, null},
                         {null, null, null, null}
@@ -313,7 +267,6 @@ public class ServicFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify
-    private javax.swing.JTree lfClass;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -330,7 +283,6 @@ public class ServicFrame extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu_File;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
 
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
