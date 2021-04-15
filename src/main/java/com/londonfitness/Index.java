@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 // T1 : 1 - n : T2
-public class Index<T1, Tn> extends Table {
+public class Index<T1, Tn> {
     protected T1 t1;
     protected ArrayList<Tn> tns;
 
@@ -28,7 +28,8 @@ public class Index<T1, Tn> extends Table {
         this.t1 = t1;
     }
 
-    public void addTn(Tn tn) {
+    public void addTn(Tn tn)
+    {
         this.tns.add(tn);
     }
 }
