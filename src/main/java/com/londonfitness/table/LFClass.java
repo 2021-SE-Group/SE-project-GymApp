@@ -1,6 +1,8 @@
 package com.londonfitness.table;
 
+import com.londonfitness.Index;
 import com.londonfitness.Table;
+import com.londonfitness.table.persons.Trainee;
 
 public class LFClass extends Table {
     public LFClass() {
@@ -27,4 +29,5 @@ public class LFClass extends Table {
                 ", category_ID=\'" + category_ID + '\'' +
                 '}';
     }
+    public Index<LFClass, Booking> index_booking;
 }
