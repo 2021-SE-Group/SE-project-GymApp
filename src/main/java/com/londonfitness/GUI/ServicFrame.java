@@ -9,6 +9,10 @@ import javax.swing.*;
  */
 public class ServicFrame extends javax.swing.JFrame {
     private Storage storage;
+    private JTabbedPane jTabbedPane_serviceeg;
+    private StudentPanel sp;
+    private HistoryPanel hp;
+
     /**
      * Creates new form ServicFrame
      */
@@ -26,7 +30,7 @@ public class ServicFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         jTabbedPane2 = new javax.swing.JTabbedPane();
-        jTabbedPane1_service = new javax.swing.JTabbedPane();
+        jTabbedPane_view = new javax.swing.JTabbedPane();
 
         jScrollPane4 = new javax.swing.JScrollPane();
         jTable3 = new javax.swing.JTable();
@@ -48,15 +52,19 @@ public class ServicFrame extends javax.swing.JFrame {
         jMenu3 = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
+        jTabbedPane_serviceeg = new JTabbedPane();
+        sp = new StudentPanel(storage);
+        hp = new HistoryPanel(storage);
+
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Gym Service");
 
-        jTabbedPane1_service.addTab("classes", new JScrollPane_LFClassTree(storage.categories, storage.lfClasses));
+        jTabbedPane_view.addTab("classes", new JScrollPane_LFClassTree(storage.categories, storage.lfClasses));
 
         JScrollPane_CoachTable jsp_coach = new JScrollPane_CoachTable(storage.coaches);
 
-        jTabbedPane1_service.addTab("trainer", jsp_coach);
+        jTabbedPane_view.addTab("trainer", jsp_coach);
 
         jTable3.setModel(new javax.swing.table.DefaultTableModel(
                 new Object [][] {
@@ -71,7 +79,7 @@ public class ServicFrame extends javax.swing.JFrame {
         ));
         jScrollPane4.setViewportView(jTable3);
 
-        jTabbedPane1_service.addTab("student", jScrollPane4);
+        jTabbedPane_view.addTab("student", jScrollPane4);
 
 
         Object [][] ss = new Object[storage.bookings.size()][4];
@@ -88,9 +96,9 @@ public class ServicFrame extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        jTabbedPane1_service.addTab("shedule", jScrollPane1);
+        jTabbedPane_view.addTab("schedule", jScrollPane1);
 
-        jTabbedPane2.addTab("view", jTabbedPane1_service);
+        jTabbedPane2.addTab("view", jTabbedPane_view);
 
         jLabel1.setText("jLabel1");
 
@@ -145,7 +153,17 @@ public class ServicFrame extends javax.swing.JFrame {
 
         jScrollPane5.setViewportView(jPanel1);
 
-        jTabbedPane2.addTab("service", jScrollPane5);
+        jTabbedPane2.addTab("service", jTabbedPane_serviceeg);
+
+        jTabbedPane_serviceeg.addTab("example", jScrollPane5);
+        jTabbedPane_serviceeg.addTab("student operation", sp);
+        jTabbedPane_serviceeg.addTab("history", hp);
+
+
+
+
+
+
 
         jMenu_File.setText("File");
 
@@ -243,12 +261,14 @@ public class ServicFrame extends javax.swing.JFrame {
                     break;
                 }
             }
-        } catch (ClassNotFoundException
-                | InstantiationException
-                | IllegalAccessException
-                | UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ServicFrame.class.getName())
-                    .log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(ServicFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(ServicFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(ServicFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(ServicFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -281,7 +301,7 @@ public class ServicFrame extends javax.swing.JFrame {
 
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
-    private javax.swing.JTabbedPane jTabbedPane1_service;
+    private javax.swing.JTabbedPane jTabbedPane_view;
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JTable jTable1;
 
