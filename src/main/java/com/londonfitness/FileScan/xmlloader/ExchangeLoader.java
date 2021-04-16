@@ -1,10 +1,12 @@
 package com.londonfitness.FileScan.xmlloader;
 
 import com.londonfitness.FileScan.XMLTableLoad;
+import com.londonfitness.OurDateFormat;
 import com.londonfitness.table.Exchange;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 
 public class ExchangeLoader extends XMLTableLoad<Exchange> {
@@ -14,11 +16,35 @@ public class ExchangeLoader extends XMLTableLoad<Exchange> {
 
     @Override
     protected void scanCell(Node n, Exchange exchange) {
-
+        switch (n.getNodeName()){
+            case "booking_ID":
+                exchange.booking_ID = n.getFirstChild().getNodeValue();
+                break;
+            case "coach_ID":
+                exchange.coach_ID = n.getFirstChild().getNodeValue();
+                break;
+            case "pre_startDate":
+                try {
+                    exchange.pre_startDate = OurDateFormat.fileDate.parse(n.getFirstChild().getNodeValue()) ;
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+                break;
+            case "aft_startDate":
+                try {
+                    exchange.aft_startDate = OurDateFormat.fileDate.parse(n.getFirstChild().getNodeValue()) ;
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+                break;
+            case "repeat":
+                exchange.repeat = Long.parseLong(n.getFirstChild().getNodeValue());
+                break;
+        }
     }
 
     @Override
     protected Exchange getNewElem() {
-        return null;
+        return new Exchange();
     }
 }
