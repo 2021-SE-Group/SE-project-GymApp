@@ -1,6 +1,6 @@
 package com.londonfitness.GUI;
 
-import com.londonfitness.memStorage.Storage;
+import com.londonfitness.simDAO.memStorage.Storage;
 import com.londonfitness.simDAO.table.Record;
 
 import javax.swing.*;
@@ -16,10 +16,11 @@ public class HistoryPanel extends JPanel {
 
     public HistoryPanel(Storage storage) {
         this.storage = storage;
-        this.initComponent();
+        //this.initComponent();
         this.setVisible(true);
 
     }
+
 
     private void initComponent(ArrayList<Record> records) {
         JLabel lblNewLabel = new JLabel("HISTORY");

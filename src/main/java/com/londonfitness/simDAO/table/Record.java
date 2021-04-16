@@ -1,6 +1,5 @@
 package com.londonfitness.simDAO.table;
 
-import com.londonfitness.Table;
 
 public class Record extends Table {
 
