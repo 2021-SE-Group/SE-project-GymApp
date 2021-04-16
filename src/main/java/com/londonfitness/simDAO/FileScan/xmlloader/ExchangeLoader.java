@@ -1,10 +1,12 @@
 package com.londonfitness.simDAO.FileScan.xmlloader;
 
 import com.londonfitness.simDAO.FileScan.XMLTableLoad;
+import com.londonfitness.OurDateFormat;
 import com.londonfitness.simDAO.table.Exchange;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 
 public class ExchangeLoader extends XMLTableLoad<Exchange> {
