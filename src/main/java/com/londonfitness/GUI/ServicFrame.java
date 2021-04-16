@@ -21,6 +21,8 @@ public class ServicFrame extends javax.swing.JFrame {
     private HistoryPanel hp;
     private JTabbedPane jTabbedPane_view;
 
+    private Lessons ls;
+    private videos vi;
     /**
      * Creates new form ServicFrame
      */
@@ -36,6 +38,7 @@ public class ServicFrame extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     private void initComponents() {
+
         jTabbedPane2 = new javax.swing.JTabbedPane();
         jTabbedPane_view = new javax.swing.JTabbedPane();
 
@@ -67,6 +70,8 @@ public class ServicFrame extends javax.swing.JFrame {
         //add stall
         STALL trainer_gui = new STALL();
 
+        ls = new Lessons(storage);
+        vi = new videos(storage);
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Gym Service");
 
@@ -74,10 +79,9 @@ public class ServicFrame extends javax.swing.JFrame {
 
         JScrollPane_CoachTable jsp_coach = new JScrollPane_CoachTable(storage.coaches);
 
-        jTabbedPane_serviceeg.addTab("trainer", jsp_coach);
-        jTable3.setModel(new BookingTableModel(storage));
+        jTabbedPane_view.addTab("trainer", jsp_coach);
 
-        /*jTable3.setModel(new javax.swing.table.DefaultTableModel(
+        jTable3.setModel(new javax.swing.table.DefaultTableModel(
                 new Object [][] {
                         {"test", "test", null, null},
                         {null, null, null, null},
@@ -87,7 +91,7 @@ public class ServicFrame extends javax.swing.JFrame {
                 new String [] {
                         "Title 1", "Title 2", "Title 3", "Title 4"
                 }
-        ));*/
+        ));
         jScrollPane4.setViewportView(jTable3);
 
         jTabbedPane_view.addTab("student", jScrollPane4);
@@ -166,13 +170,15 @@ public class ServicFrame extends javax.swing.JFrame {
 
         jTabbedPane2.addTab("service", jTabbedPane_serviceeg);
 
-        jTabbedPane_serviceeg.addTab("trainer service", trainer_gui.getPanel00());
+        jTabbedPane_serviceeg.addTab("user interface", jScrollPane5);
         jTabbedPane_serviceeg.addTab("student operation", sp);
         jTabbedPane_serviceeg.addTab("history", hp);
 
 
 
 
+        jTabbedPane_serviceeg.addTab("student comment", ls);
+        jTabbedPane_serviceeg.addTab("videos", vi);
 
 
 
@@ -314,7 +320,7 @@ public class ServicFrame extends javax.swing.JFrame {
 
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
-    private javax.swing.JTabbedPane jTabbedPane1_service;
+    private javax.swing.JTabbedPane jTabbedPane_view;
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JTable jTable1;
 
