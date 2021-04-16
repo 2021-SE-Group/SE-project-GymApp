@@ -1,12 +1,14 @@
 package com.londonfitness.GUI;
 
-import com.londonfitness.table.Category;
-import com.londonfitness.table.LFClass;
+import com.londonfitness.simDAO.table.Category;
+import com.londonfitness.simDAO.table.LFClass;
 
 import javax.swing.*;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
+import javax.swing.tree.TreeNode;
 import java.util.ArrayList;
+import java.util.Enumeration;
 import java.util.Iterator;
 
 public class JScrollPane_LFClassTree extends JScrollPane {
@@ -38,6 +40,46 @@ public class JScrollPane_LFClassTree extends JScrollPane {
             DefaultMutableTreeNode prev = new DefaultMutableTreeNode(cate.name);
             tm.insertNodeInto(prev, dmt, dmt.getChildCount());
             DFTReplicateTree(tm, cate, prev);
+        }
+    }
+
+    public class OurTreeNode implements TreeNode {
+        OurTreeNode parent;
+        ArrayList<OurTreeNode> children;
+
+        @Override
+        public TreeNode getChildAt(int childIndex) {
+            return children.get(childIndex);
+        }
+
+        @Override
+        public int getChildCount() {
+            return children.size();
+        }
+
+        @Override
+        public TreeNode getParent() {
+            return parent;
+        }
+
+        @Override
+        public int getIndex(TreeNode node) {
+            return parent.children.indexOf(node);
+        }
+
+        @Override
+        public boolean getAllowsChildren() {
+            return false;
+        }
+
+        @Override
+        public boolean isLeaf() {
+            return false;
+        }
+
+        @Override
+        public Enumeration<? extends TreeNode> children() {
+            return null;
         }
     }
 }

@@ -1,17 +1,9 @@
 package com.londonfitness;
 
-import com.londonfitness.FileScan.ScanXML;
-import com.londonfitness.FileScan.XMLErrorHandler;
+import com.londonfitness.simDAO.FileScan.ScanXML;
 import com.londonfitness.GUI.ServicFrame;
-import com.londonfitness.indexBuilder.RebuildIndexes;
-import com.londonfitness.memStorage.Storage;
-import com.londonfitness.table.*;
-import com.londonfitness.table.persons.*;
-import com.londonfitness.FileScan.xmlloader.*;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.Node;
-import org.xml.sax.SAXException;
+import com.londonfitness.simDAO.indexBuilder.RebuildIndexes;
+import com.londonfitness.simDAO.memStorage.Storage;
 
 import javax.swing.*;
 import javax.xml.parsers.DocumentBuilder;
@@ -64,16 +56,11 @@ public class App
         }
 
         // do service
-
         {
             // prepare
             // main frame kick in
-            /* Set the Nimbus look and feel */
+            /* Set the Default look and feel */
             //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-            /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-             * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
-             */
-
             try {
                 for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                     if ("Default".equals(info.getName())) {
@@ -90,25 +77,24 @@ public class App
             //</editor-fold>
 
             /* Create and display the form */
-
             java.awt.EventQueue.invokeLater(new Runnable() {
                 @Override
                 public void run() {
                     new ServicFrame(storage).setVisible(true);
                 }
             });
-
-
-            //System.out.println(storage.bookings.get(0).externKey_coach);
         }
 
-
         // storage tables to new xml file, if all done, change name
+        /*
+          display a wait-for-a-while window
+          gen DOM
+          write
+          change name
+         */
         {
-            // display a wait-for-a-while window
-            // gen DOM
-            // write
-            // change name
+
+
         }
 
 
