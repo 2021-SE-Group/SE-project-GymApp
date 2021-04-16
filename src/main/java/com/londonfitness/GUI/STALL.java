@@ -49,7 +49,7 @@ public class STALL {
         Font f_0 = new Font("Times New Roman",Font.BOLD,20);
 
         JLabel l_1 = new JLabel("Welcome to Trainer Service");
-        l_1.setBounds(102, 35, 300, 21);
+        l_1.setBounds(72, 35, 300, 21);
         l_1.setFont(f_0);
         panel00.add(l_1);
         //frame.getContentPane().add(l_1);
@@ -73,7 +73,7 @@ public class STALL {
                 frame.setVisible(true);
             }
         });
-        b_1.setBounds(152, 85, 123, 29);
+        b_1.setBounds(122, 85, 123, 29);
         panel00.add(b_1);
         //frame.getContentPane().add(b_1);
 
@@ -88,7 +88,7 @@ public class STALL {
                 frame.setVisible(true);
             }
         });
-        b_2.setBounds(152, 125, 123, 29);
+        b_2.setBounds(122, 125, 123, 29);
         panel00.add(b_2);
         //frame.getContentPane().add(b_2);
 
@@ -103,7 +103,7 @@ public class STALL {
                 frame.setVisible(true);
             }
         });
-        b_3.setBounds(152, 165, 123, 29);
+        b_3.setBounds(122, 165, 123, 29);
         panel00.add(b_3);
         //frame.getContentPane().add(b_3);
 
@@ -118,7 +118,7 @@ public class STALL {
                 frame.setVisible(true);
             }
         });
-        b_4.setBounds(152, 205, 123, 29);
+        b_4.setBounds(122, 205, 123, 29);
         panel00.add(b_4);
         //frame.getContentPane().add(b_4);
 
@@ -132,7 +132,7 @@ public class STALL {
                 //mainFrame a = new mainFrame();
             }
         });
-        b_5.setBounds(152, 245, 123, 29);
+        b_5.setBounds(122, 245, 123, 29);
         panel00.add(b_5);
         //frame.getContentPane().add(b_5);
 
