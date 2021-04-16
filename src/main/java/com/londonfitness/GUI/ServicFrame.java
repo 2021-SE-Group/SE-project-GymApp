@@ -1,10 +1,13 @@
 package com.londonfitness.GUI;
 
+import com.londonfitness.GUI.ourComponent.BookingTableModel;
 import com.londonfitness.simDAO.memStorage.Storage;
 
 
 import javax.swing.*;
 import javax.swing.event.TreeModelListener;
+import javax.swing.table.DefaultTableColumnModel;
+import javax.swing.table.TableColumnModel;
 import javax.swing.tree.TreeModel;
 import javax.swing.tree.TreePath;
 
@@ -16,6 +19,7 @@ public class ServicFrame extends javax.swing.JFrame {
     private JTabbedPane jTabbedPane_serviceeg;
     private StudentPanel sp;
     private HistoryPanel hp;
+    private JTabbedPane jTabbedPane_view;
 
     /**
      * Creates new form ServicFrame
@@ -70,8 +74,9 @@ public class ServicFrame extends javax.swing.JFrame {
 
         JScrollPane_CoachTable jsp_coach = new JScrollPane_CoachTable(storage.coaches);
 
-        jTabbedPane1_service.addTab("trainer", jsp_coach);
+        jTabbedPane_serviceeg.addTab("trainer", jsp_coach);
         jTable3.setModel(new BookingTableModel(storage));
+
         /*jTable3.setModel(new javax.swing.table.DefaultTableModel(
                 new Object [][] {
                         {"test", "test", null, null},
@@ -161,7 +166,7 @@ public class ServicFrame extends javax.swing.JFrame {
 
         jTabbedPane2.addTab("service", jTabbedPane_serviceeg);
 
-        jTabbedPane_serviceeg.addTab("example", jScrollPane5);
+        jTabbedPane_serviceeg.addTab("trainer service", trainer_gui.getPanel00());
         jTabbedPane_serviceeg.addTab("student operation", sp);
         jTabbedPane_serviceeg.addTab("history", hp);
 
@@ -234,7 +239,7 @@ public class ServicFrame extends javax.swing.JFrame {
         );
 
         //add
-        jTabbedPane2.addTab("trainer service", trainer_gui.getPanel00());
+
         pack();
     }
 
