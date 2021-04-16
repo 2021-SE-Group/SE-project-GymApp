@@ -27,7 +27,6 @@ public class ServicFrame extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     private void initComponents() {
-
         jTabbedPane2 = new javax.swing.JTabbedPane();
         jTabbedPane1_service = new javax.swing.JTabbedPane();
 
@@ -51,6 +50,9 @@ public class ServicFrame extends javax.swing.JFrame {
         jMenu3 = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
+
+        //add stall
+        STALL trainer_gui = new STALL();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Gym Service");
@@ -212,6 +214,8 @@ public class ServicFrame extends javax.swing.JFrame {
                                 .addContainerGap())
         );
 
+        //add
+        jTabbedPane2.addTab("trainer service", trainer_gui.getPanel00());
         pack();
     }
 
