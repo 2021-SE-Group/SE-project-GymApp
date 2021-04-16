@@ -29,5 +29,5 @@ public class Staff extends Person {
     }//</editor-fold>
 
     // index field
-    public Index<Staff, Booking> index_booking;
+    //public Index<Staff, Booking> index_booking;
 }

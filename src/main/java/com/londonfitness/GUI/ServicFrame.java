@@ -2,7 +2,11 @@ package com.londonfitness.GUI;
 
 import com.londonfitness.simDAO.memStorage.Storage;
 
+
 import javax.swing.*;
+import javax.swing.event.TreeModelListener;
+import javax.swing.tree.TreeModel;
+import javax.swing.tree.TreePath;
 
 /**
  *
@@ -28,7 +32,6 @@ public class ServicFrame extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     private void initComponents() {
-
         jTabbedPane2 = new javax.swing.JTabbedPane();
         jTabbedPane_view = new javax.swing.JTabbedPane();
 
@@ -57,6 +60,9 @@ public class ServicFrame extends javax.swing.JFrame {
         hp = new HistoryPanel(storage);
 
 
+        //add stall
+        STALL trainer_gui = new STALL();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Gym Service");
 
@@ -64,9 +70,9 @@ public class ServicFrame extends javax.swing.JFrame {
 
         JScrollPane_CoachTable jsp_coach = new JScrollPane_CoachTable(storage.coaches);
 
-        jTabbedPane_view.addTab("trainer", jsp_coach);
-
-        jTable3.setModel(new javax.swing.table.DefaultTableModel(
+        jTabbedPane1_service.addTab("trainer", jsp_coach);
+        jTable3.setModel(new BookingTableModel(storage));
+        /*jTable3.setModel(new javax.swing.table.DefaultTableModel(
                 new Object [][] {
                         {"test", "test", null, null},
                         {null, null, null, null},
@@ -76,7 +82,7 @@ public class ServicFrame extends javax.swing.JFrame {
                 new String [] {
                         "Title 1", "Title 2", "Title 3", "Title 4"
                 }
-        ));
+        ));*/
         jScrollPane4.setViewportView(jTable3);
 
         jTabbedPane_view.addTab("student", jScrollPane4);
@@ -227,6 +233,8 @@ public class ServicFrame extends javax.swing.JFrame {
                                 .addContainerGap())
         );
 
+        //add
+        jTabbedPane2.addTab("trainer service", trainer_gui.getPanel00());
         pack();
     }
 
@@ -301,7 +309,7 @@ public class ServicFrame extends javax.swing.JFrame {
 
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
-    private javax.swing.JTabbedPane jTabbedPane_view;
+    private javax.swing.JTabbedPane jTabbedPane1_service;
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JTable jTable1;
 

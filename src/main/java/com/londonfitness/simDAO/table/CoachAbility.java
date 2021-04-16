@@ -27,6 +27,6 @@ public class CoachAbility extends Table {
     }//</editor-fold>
 
     // external key filed
-    LFClass lfClass;
-    Coach coach;
+    public LFClass lfClass;
+    public Coach coach;
 }

@@ -20,4 +20,9 @@ public class CategorySelfIndexBuilder extends IndexBuilder<Category, Category> {
     protected void setT1Index(Category category, Index<Category, Category> ind) {
         category.selfIndex = ind;
     }
+
+    @Override
+    protected void setTnDep(Category category, Index<Category, Category> ind) {
+        category.parent = ind.getT1();
+    }
 }
