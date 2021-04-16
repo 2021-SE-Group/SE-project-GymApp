@@ -45,11 +45,53 @@
 
     <lfClass_list>
         <lfClass>
+            <ID>00</ID>
+            <name>Basics</name>
+            <duration>7200000</duration>
+            <resource_URL>lfClass_00/</resource_URL>
+            <category_ID>01</category_ID>
+        </lfClass>
+        <lfClass>
             <ID>01</ID>
-            <name>Basic Training</name>
+            <name>some training</name>
             <duration>7200000</duration>
             <resource_URL>lfClass_01/</resource_URL>
-            <category_ID>01</category_ID>
+            <category_ID>02</category_ID>
+        </lfClass>
+        <lfClass>
+            <ID>02</ID>
+            <name>some training</name>
+            <duration>7200000</duration>
+            <resource_URL>lfClass_02/</resource_URL>
+            <category_ID>03</category_ID>
+        </lfClass>
+        <lfClass>
+            <ID>03</ID>
+            <name>some training</name>
+            <duration>7200000</duration>
+            <resource_URL>lfClass_03</resource_URL>
+            <category_ID>04</category_ID>
+        </lfClass>
+        <lfClass>
+            <ID>04</ID>
+            <name>some training</name>
+            <duration>7200000</duration>
+            <resource_URL>lfClass_04</resource_URL>
+            <category_ID>05</category_ID>
+        </lfClass>
+        <lfClass>
+            <ID>05</ID>
+            <name>some training</name>
+            <duration>7200000</duration>
+            <resource_URL>lfClass_05</resource_URL>
+            <category_ID>06</category_ID>
+        </lfClass>
+        <lfClass>
+            <ID>06</ID>
+            <name>some training</name>
+            <duration>7200000</duration>
+            <resource_URL>lfClass_06</resource_URL>
+            <category_ID>07</category_ID>
         </lfClass>
     </lfClass_list>
 

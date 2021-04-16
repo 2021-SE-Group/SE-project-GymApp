@@ -41,6 +41,10 @@ public class JScrollPane_LFClassTree extends JScrollPane {
             tm.insertNodeInto(prev, dmt, dmt.getChildCount());
             DFTReplicateTree(tm, cate, prev);
         }
+        for(Iterator<LFClass> it = c.index_lfClass.getTnIter(); it.hasNext(); ) {
+            LFClass lfc = it.next();
+            tm.insertNodeInto(new DefaultMutableTreeNode(lfc.name), dmt, dmt.getChildCount());
+        }
     }
 
     public class OurTreeNode implements TreeNode {
