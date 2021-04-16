@@ -1,9 +1,10 @@
-package com.londonfitness.indexBuilder.indexBuilders;
+package com.londonfitness.simDAO.indexBuilder.indexBuilders;
 
-import com.londonfitness.Index;
-import com.londonfitness.indexBuilder.IndexBuilder;
-import com.londonfitness.table.Booking;
-import com.londonfitness.table.persons.Coach;
+
+import com.londonfitness.simDAO.indexBuilder.Index;
+import com.londonfitness.simDAO.indexBuilder.IndexBuilder;
+import com.londonfitness.simDAO.table.Booking;
+import com.londonfitness.simDAO.table.persons.Coach;
 
 import java.util.ArrayList;
 

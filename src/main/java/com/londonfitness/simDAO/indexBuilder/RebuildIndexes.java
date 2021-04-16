@@ -1,7 +1,6 @@
-package com.londonfitness.indexBuilder;
+package com.londonfitness.simDAO.indexBuilder;
 
-import com.londonfitness.simDAO.indexBuilder.indexBuilders.CategorySelfIndexBuilder;
-import com.londonfitness.simDAO.indexBuilder.indexBuilders.Category_LFClassIndexBuilder;
+import com.londonfitness.simDAO.indexBuilder.indexBuilders.*;
 import com.londonfitness.simDAO.memStorage.Storage;
 import com.londonfitness.simDAO.table.Category;
 

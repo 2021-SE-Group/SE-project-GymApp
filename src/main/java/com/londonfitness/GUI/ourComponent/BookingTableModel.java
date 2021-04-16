@@ -1,8 +1,9 @@
 package com.londonfitness.GUI.ourComponent;
 
 import com.londonfitness.OurDateFormat;
-import com.londonfitness.memStorage.Storage;
-import com.londonfitness.table.Booking;
+import com.londonfitness.simDAO.memStorage.Storage;
+import com.londonfitness.simDAO.table.Booking;
+
 
 import javax.swing.table.AbstractTableModel;
 

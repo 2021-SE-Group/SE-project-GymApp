@@ -1,6 +1,7 @@
 package com.londonfitness.table;
 
-import com.londonfitness.Table;
+
+import com.londonfitness.simDAO.table.Table;
 
 public class Exchange extends Table {
     @Override
