@@ -1,4 +1,4 @@
-package com.londonfitness.table;
+package com.londonfitness.simDAO.table;
 
 import com.londonfitness.Table;
 

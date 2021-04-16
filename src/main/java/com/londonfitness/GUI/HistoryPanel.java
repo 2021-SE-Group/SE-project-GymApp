@@ -1,7 +1,7 @@
 package com.londonfitness.GUI;
 
 import com.londonfitness.memStorage.Storage;
-import com.londonfitness.table.Record;
+import com.londonfitness.simDAO.table.Record;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
