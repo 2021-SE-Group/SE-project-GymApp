@@ -1,12 +1,10 @@
 package com.londonfitness.GUI;
 
 import com.londonfitness.simDAO.memStorage.Storage;
-import com.londonfitness.simDAO.table.Record;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
-import java.util.ArrayList;
 
 public class HistoryPanel extends JPanel {
     Storage storage;
@@ -16,13 +14,12 @@ public class HistoryPanel extends JPanel {
 
     public HistoryPanel(Storage storage) {
         this.storage = storage;
-        //this.initComponent();
+        this.initComponent();
         this.setVisible(true);
 
     }
 
-
-    private void initComponent(ArrayList<Record> records) {
+    private void initComponent() {
         JLabel lblNewLabel = new JLabel("HISTORY");
         lblNewLabel.setFont(new Font("宋体", Font.PLAIN, 24));
 
@@ -46,16 +43,22 @@ public class HistoryPanel extends JPanel {
                                 .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 205, GroupLayout.PREFERRED_SIZE))
         );
-        Object[][] HP = new Object[records.size()][3];
-        for (int i = 0; i < records.size(); i++) {
-            Record r = records.get(i);
-            HP[i][0] = r.Date;
-            HP[i][1] = r.Coach;
-            HP[i][2] = r.Status;
-        }
+
         JTable table = new JTable();
         table.setModel(new DefaultTableModel(
-                HP,
+                new Object[][]{
+                        {null, null, null},
+                        {null, null, null},
+                        {null, null, null},
+                        {null, null, null},
+                        {null, null, null},
+                        {null, null, null},
+                        {null, null, null},
+                        {null, null, null},
+                        {null, null, null},
+                        {null, null, null},
+                        {null, null, null},
+                },
                 new String[]{
                         "DATE", "TRAINER", "STATUS"
                 }
