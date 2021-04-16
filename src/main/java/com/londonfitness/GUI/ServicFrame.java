@@ -3,7 +3,6 @@ package com.londonfitness.GUI;
 import com.londonfitness.memStorage.Storage;
 
 import javax.swing.*;
-import java.awt.*;
 
 /**
  *
@@ -12,7 +11,8 @@ public class ServicFrame extends javax.swing.JFrame {
     private Storage storage;
     private JTabbedPane jTabbedPane_serviceeg;
     private StudentPanel sp;
-
+    private Lessons ls;
+    private videos vi;
     /**
      * Creates new form ServicFrame
      */
@@ -54,7 +54,8 @@ public class ServicFrame extends javax.swing.JFrame {
         jMenuItem4 = new javax.swing.JMenuItem();
         jTabbedPane_serviceeg = new JTabbedPane();
         sp = new StudentPanel(storage);
-
+        ls = new Lessons(storage);
+        vi = new videos(storage);
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Gym Service");
 
@@ -155,8 +156,8 @@ public class ServicFrame extends javax.swing.JFrame {
 
         jTabbedPane_serviceeg.addTab("user interface", jScrollPane5);
         jTabbedPane_serviceeg.addTab("student operation", sp);
-
-
+        jTabbedPane_serviceeg.addTab("student comment", ls);
+        jTabbedPane_serviceeg.addTab("videos", vi);
 
 
 
