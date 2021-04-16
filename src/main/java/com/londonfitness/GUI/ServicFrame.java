@@ -11,6 +11,7 @@ import java.awt.*;
 public class ServicFrame extends javax.swing.JFrame {
     private Storage storage;
     private JTabbedPane jTabbedPane_serviceeg;
+    private StudentPanel sp;
 
     /**
      * Creates new form ServicFrame
@@ -52,6 +53,7 @@ public class ServicFrame extends javax.swing.JFrame {
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
         jTabbedPane_serviceeg = new JTabbedPane();
+        sp = new StudentPanel(storage);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Gym Service");
@@ -150,7 +152,9 @@ public class ServicFrame extends javax.swing.JFrame {
         jScrollPane5.setViewportView(jPanel1);
 
         jTabbedPane2.addTab("service", jTabbedPane_serviceeg);
+
         jTabbedPane_serviceeg.addTab("user interface", jScrollPane5);
+        jTabbedPane_serviceeg.addTab("student operation", sp);
 
 
 
