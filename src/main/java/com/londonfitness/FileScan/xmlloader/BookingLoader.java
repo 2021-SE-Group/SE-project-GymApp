@@ -38,6 +38,9 @@ public class BookingLoader extends XMLTableLoad<Booking> {
                     e.printStackTrace();
                 }
                 break;
+            case "times":
+                booking.times = Integer.parseInt(n.getFirstChild().getNodeValue());
+                break;
             case "repeat":
                 booking.repeat = Long.parseLong(n.getFirstChild().getNodeValue());
                 break;

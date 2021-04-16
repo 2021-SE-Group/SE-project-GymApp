@@ -24,6 +24,7 @@ public class Booking extends Table {
     public String trainee_ID;
     public String lfClass_ID;
     public Date startDate;
+    public int times;//class chances' time
     public long repeat;
     @Override
     public String toString() {
@@ -33,6 +34,7 @@ public class Booking extends Table {
                 ", trainee_ID='" + trainee_ID + '\'' +
                 ", lfClasss_ID='" + lfClass_ID + '\'' +
                 ", startDate='" + OurDateFormat.fancyDate.format(startDate) + '\'' +
+                ", times=" + times +
                 ", repeat=" + repeat +
                 '}';
     }//</editor-fold>
