@@ -21,4 +21,9 @@ public class Category_LFClassIndexBuilder extends IndexBuilder<Category, LFClass
     protected void setT1Index(Category category, Index<Category, LFClass> ind) {
         category.index_lfClass = ind;
     }
+
+    @Override
+    protected void setTnDep(LFClass lfClass, Index<Category, LFClass> ind) {
+        lfClass.externKey_category = ind.getT1();
+    }
 }

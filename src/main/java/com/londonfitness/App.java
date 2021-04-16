@@ -64,6 +64,7 @@ public class App
         }
 
         // do service
+
         {
             // prepare
             // main frame kick in
@@ -72,6 +73,7 @@ public class App
             /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
              * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
              */
+
             try {
                 for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                     if ("Default".equals(info.getName())) {
@@ -88,13 +90,18 @@ public class App
             //</editor-fold>
 
             /* Create and display the form */
+
             java.awt.EventQueue.invokeLater(new Runnable() {
                 @Override
                 public void run() {
                     new ServicFrame(storage).setVisible(true);
                 }
             });
+
+
+            //System.out.println(storage.bookings.get(0).externKey_coach);
         }
+
 
         // storage tables to new xml file, if all done, change name
         {

@@ -31,7 +31,7 @@ public class LFClass extends Table {
     }//</editor-fold>
 
     // external key field
-    Category category;
+    public Category externKey_category;
 
     // index field
     public Index<LFClass, Booking> index_booking;

@@ -1,6 +1,8 @@
 package com.londonfitness.GUI;
 
+import com.londonfitness.GUI.ourComponent.BookingTableModel;
 import com.londonfitness.memStorage.Storage;
+
 
 import javax.swing.*;
 import javax.swing.event.TreeModelListener;
@@ -60,8 +62,8 @@ public class ServicFrame extends javax.swing.JFrame {
         JScrollPane_CoachTable jsp_coach = new JScrollPane_CoachTable(storage.coaches);
 
         jTabbedPane1_service.addTab("trainer", jsp_coach);
-
-        jTable3.setModel(new javax.swing.table.DefaultTableModel(
+        jTable3.setModel(new BookingTableModel(storage));
+        /*jTable3.setModel(new javax.swing.table.DefaultTableModel(
                 new Object [][] {
                         {"test", "test", null, null},
                         {null, null, null, null},
@@ -71,7 +73,7 @@ public class ServicFrame extends javax.swing.JFrame {
                 new String [] {
                         "Title 1", "Title 2", "Title 3", "Title 4"
                 }
-        ));
+        ));*/
         jScrollPane4.setViewportView(jTable3);
 
         jTabbedPane1_service.addTab("student", jScrollPane4);

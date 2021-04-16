@@ -22,6 +22,7 @@ public abstract class IndexBuilder<T1 extends Table, Tn extends Table> {
             for(Tn tn: tns_all) {
                 if(checkIndexing(ind.getT1(), tn)) {
                     ind.addTn(tn);
+                    setTnDep(tn, ind);
                 }
             }
             setT1Index(t1, ind);
@@ -31,4 +32,5 @@ public abstract class IndexBuilder<T1 extends Table, Tn extends Table> {
 
     protected abstract boolean checkIndexing(T1 t1, Tn tn);
     protected abstract void setT1Index(T1 t1, Index<T1, Tn> ind);
+    protected abstract void setTnDep(Tn tn, Index<T1, Tn> ind);
 }
