@@ -18,8 +18,10 @@ public class Storage {
     public ArrayList<Booking> bookings;
     public ArrayList<Exchange> exchanges;
     public ArrayList<CoachAbility> coachAbility;
+    public ArrayList<Record> records;
 
     public Storage() {
+        records = new ArrayList<>();
         categories = new ArrayList<>();
         lfClasses = new ArrayList<>();
         admins = new ArrayList<>();
