@@ -1,7 +1,12 @@
 package com.londonfitness.simDAO.fileIO.xmlwriter;
 
+import com.londonfitness.simDAO.fileIO.FileScan.ScanXML;
 import com.londonfitness.simDAO.fileIO.XMLErrorHandler;
-import org.junit.jupiter.api.Test;
+import com.londonfitness.simDAO.fileIO.xmlwriter.xmlTranslators.CategoryTranslator;
+import com.londonfitness.simDAO.fileIO.xmlwriter.xmlTranslators.LFClassTranslator;
+import com.londonfitness.simDAO.memStorage.Storage;
+import com.londonfitness.simDAO.table.persons.Admin;
+import com.londonfitness.simDAO.table.persons.Coach;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
@@ -17,11 +22,14 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
+
+
 public class TranslateXML {
     private Path dataPath;
-
-    public TranslateXML(Path dataPath) {
+    private Storage storage;
+    public TranslateXML(Path dataPath, Storage storage) {
         this.dataPath = dataPath;
+        this.storage = storage;
     }
 
     public void translate() {
@@ -36,7 +44,7 @@ public class TranslateXML {
 
             db.setErrorHandler(new XMLErrorHandler(new PrintWriter(errorWriter, true)));
         } catch (ParserConfigurationException e) {
-            e.printStackTrace();
+
         }
 
         Document doc = null;
@@ -67,10 +75,27 @@ public class TranslateXML {
     }
 
     private void translateList(Document doc, Element root) {
-        Element bookstore=doc.createElement("bookStore");
+        new CategoryTranslator(doc, storage.categories, root, "category_list", "category").write();
+
+
+        new LFClassTranslator(doc, storage.lfClasses, root, "lfClass_list", "lfClass").write();
+
+       new TestTT<Admin>(doc, storage.admins, root, "admin_list", "admin") {
+            @Override
+            public void setRow(Admin admin) {
+                setCell("ID", admin.ID);
+                setCell("name", admin.name);
+                setCell("username", admin.username);
+                if (admin.expired)
+                    setCell("expired", "T");
+                else
+                    setCell("expired", "F");
+            }
+        }.write();
+        /*Element bookstore=doc.createElement("bookStore");
         //向bookstore根节点中添加字节点book
         Element book=doc.createElement("book");
-        Element name=doc.createElement("name");
+        Element =doc.createElement("name");
         book.appendChild(name);
         name.setTextContent("小王子");
         book.setAttribute("id", "1");
@@ -78,11 +103,13 @@ public class TranslateXML {
         bookstore.appendChild(book);
         //将bookstore节点（已经包含了book）,添加到dom树中
         root.appendChild(bookstore);
-        //doc.appendChild(bookstore);
+        //doc.appendChild(bookstore);*/
     }
 
     public static void main(String[] args) {
-        TranslateXML tx = new TranslateXML(Paths.get("testResources\\data.xml"));
+        Storage storage = new Storage();
+        new ScanXML(storage, "resources\\", "resources\\data.xml");
+        TranslateXML tx = new TranslateXML(Paths.get("testResources\\testData.xml"), storage);
         tx.translate();
     }
 }

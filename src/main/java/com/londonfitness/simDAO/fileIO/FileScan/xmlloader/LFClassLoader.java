@@ -24,6 +24,9 @@ public class LFClassLoader extends XMLTableLoad<LFClass> {
             case "category_ID":
                 lfClass.category_ID = n.getFirstChild().getNodeValue();
                 break;
+            case "duration":
+                lfClass.duration = Long.parseLong(n.getFirstChild().getNodeValue());
+                break;
         }
     }
 
