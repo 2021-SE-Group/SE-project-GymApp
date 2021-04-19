@@ -1,4 +1,4 @@
-package com.londonfitness.simDAO.FileScan;
+package com.londonfitness.simDAO.fileIO;
 
 import org.xml.sax.ErrorHandler;
 import org.xml.sax.SAXException;
@@ -9,7 +9,7 @@ import java.io.PrintWriter;
 public class XMLErrorHandler implements ErrorHandler{
     private PrintWriter out;
 
-    XMLErrorHandler(PrintWriter out) {
+    public XMLErrorHandler(PrintWriter out) {
         this.out = out;
     }
 

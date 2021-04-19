@@ -1,4 +1,4 @@
-package com.londonfitness.simDAO.FileScan;
+package com.londonfitness.simDAO.fileIO.FileScan;
 
 import com.londonfitness.simDAO.table.Table;
 import org.w3c.dom.Node;
