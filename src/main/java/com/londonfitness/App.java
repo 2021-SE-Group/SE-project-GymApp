@@ -1,25 +1,14 @@
 package com.londonfitness;
 
-import com.londonfitness.simDAO.FileScan.ScanXML;
+import com.londonfitness.simDAO.fileIO.FileScan.ScanXML;
 import com.londonfitness.GUI.ServicFrame;
 import com.londonfitness.simDAO.indexBuilder.RebuildIndexes;
 import com.londonfitness.simDAO.memStorage.Storage;
 
 import javax.swing.*;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
-import java.io.File;
-import java.io.IOException;
-import java.io.OutputStreamWriter;
-import java.io.PrintWriter;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
+
 import java.util.Date;
 
 

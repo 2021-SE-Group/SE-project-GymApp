@@ -1,6 +1,6 @@
-package com.londonfitness.simDAO.FileScan.xmlloader;
+package com.londonfitness.simDAO.fileIO.FileScan.xmlloader;
 
-import com.londonfitness.simDAO.FileScan.XMLTableLoad;
+import com.londonfitness.simDAO.fileIO.FileScan.XMLTableLoad;
 import com.londonfitness.simDAO.table.persons.Staff;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;

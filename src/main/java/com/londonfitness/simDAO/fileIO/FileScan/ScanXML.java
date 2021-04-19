@@ -1,6 +1,7 @@
-package com.londonfitness.simDAO.FileScan;
+package com.londonfitness.simDAO.fileIO.FileScan;
 
-import com.londonfitness.simDAO.FileScan.xmlloader.*;
+import com.londonfitness.simDAO.fileIO.FileScan.xmlloader.*;
+import com.londonfitness.simDAO.fileIO.XMLErrorHandler;
 import com.londonfitness.simDAO.memStorage.Storage;
 import com.londonfitness.simDAO.table.Booking;
 import com.londonfitness.simDAO.table.Category;
@@ -41,50 +42,50 @@ public class  ScanXML {
     private void scan() {
         // check existance of resource path and all needed file.
         if (Files.exists(resourceRoot)) {
-            // if resorce exists, check if is dir
-            if (!Files.isDirectory(resourceRoot)) {
-                System.err.println("Wrong, there is a file named resouce, we need a directory.");
+                // if resorce exists, check if is dir
+                if (!Files.isDirectory(resourceRoot)) {
+                    System.err.println("Wrong, there is a file named resouce, we need a directory.");
+                }
+            } else {
+                // if resource not exists, create.
+                try {
+                    Files.createDirectories(resourceRoot);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
-        } else {
-            // if resource not exists, create.
+            File dataFile = dataPath.toFile();
+            if (!dataFile.exists()) {
+                try {
+                    Files.createFile(dataPath);
+                    // initiate
+                } catch (IOException e) {
+                    // fail to create the file.
+                    e.printStackTrace();
+                }
+            }
+
+            //System.out.println(dataFile.exists());
+
+            DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+            //dbf.setNamespaceAware(true);
+            //dbf.setValidating(true);
+            OutputStreamWriter errorWriter = new OutputStreamWriter(System.err, StandardCharsets.UTF_8);
+
+            DocumentBuilder db = null;
             try {
-                Files.createDirectories(resourceRoot);
-            } catch (IOException e) {
+                db = dbf.newDocumentBuilder();
+                db.setErrorHandler(new XMLErrorHandler(new PrintWriter(errorWriter, true)));
+            } catch (ParserConfigurationException e) {
                 e.printStackTrace();
             }
-        }
-        File dataFile = dataPath.toFile();
-        if (!dataFile.exists()) {
+
+            Document doc = null;
             try {
-                Files.createFile(dataPath);
-                // initiate
-            } catch (IOException e) {
-                // fail to create the file.
+                assert db != null;
+                doc = db.parse(dataFile);
+            } catch (SAXException | IOException e) {
                 e.printStackTrace();
-            }
-        }
-
-        //System.out.println(dataFile.exists());
-
-        DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-        //dbf.setNamespaceAware(true);
-        //dbf.setValidating(true);
-        OutputStreamWriter errorWriter = new OutputStreamWriter(System.err, StandardCharsets.UTF_8);
-
-        DocumentBuilder db = null;
-        try {
-            db = dbf.newDocumentBuilder();
-            db.setErrorHandler(new XMLErrorHandler(new PrintWriter(errorWriter, true)));
-        } catch (ParserConfigurationException e) {
-            e.printStackTrace();
-        }
-
-        Document doc = null;
-        try {
-            assert db != null;
-            doc = db.parse(dataFile);
-        } catch (SAXException | IOException e) {
-            e.printStackTrace();
         }
 
 
@@ -93,6 +94,14 @@ public class  ScanXML {
         elemRoot.normalize();
 
         // get all the lists
+        loadList(elemRoot);
+
+        /* only for developing, when done, delete //
+        checkLoad();
+        //*/
+    }
+
+    private void loadList(Element elemRoot) {
         Node category_list = elemRoot.getElementsByTagName("category_list").item(0);
         CategoryLoader cateL = new CategoryLoader(category_list.getChildNodes(), storage.categories);
         cateL.load();
@@ -126,7 +135,10 @@ public class  ScanXML {
         bokL.load();
         // Node exchange_list = elemRoot.getElementsByTagName("exchange_list").item(0);
 
-        ///* only for developing, when done, delete
+    }
+
+    @Deprecated
+    private void checkLoad() {
         for (Category c : storage.categories) {
             System.out.println(c);
         }
@@ -151,6 +163,5 @@ public class  ScanXML {
         for(Booking bok: storage.bookings) {
             System.out.println(bok);
         }
-        //*/
     }
 }
