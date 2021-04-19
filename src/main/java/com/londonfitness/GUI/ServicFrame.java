@@ -1,12 +1,10 @@
 package com.londonfitness.GUI;
 
+import com.londonfitness.GUI.ourComponent.BookingTableModel;
 import com.londonfitness.simDAO.memStorage.Storage;
 
 
 import javax.swing.*;
-import javax.swing.event.TreeModelListener;
-import javax.swing.tree.TreeModel;
-import javax.swing.tree.TreePath;
 
 /**
  *
@@ -16,6 +14,8 @@ public class ServicFrame extends javax.swing.JFrame {
     private JTabbedPane jTabbedPane_serviceeg;
     private StudentPanel sp;
     private HistoryPanel hp;
+    private JTabbedPane jTabbedPane_service;
+
 
     /**
      * Creates new form ServicFrame
@@ -33,7 +33,7 @@ public class ServicFrame extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     private void initComponents() {
         jTabbedPane2 = new javax.swing.JTabbedPane();
-        jTabbedPane_view = new javax.swing.JTabbedPane();
+        jTabbedPane_service = new javax.swing.JTabbedPane();
 
         jScrollPane4 = new javax.swing.JScrollPane();
         jTable3 = new javax.swing.JTable();
@@ -66,7 +66,7 @@ public class ServicFrame extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Gym Service");
 
-        jTabbedPane_view.addTab("classes", new JScrollPane_LFClassTree(storage.categories, storage.lfClasses));
+        jTabbedPane_service.addTab("classes", new JScrollPane_LFClassTree(storage.categories, storage.lfClasses));
 
         JScrollPane_CoachTable jsp_coach = new JScrollPane_CoachTable(storage.coaches);
 
@@ -85,7 +85,7 @@ public class ServicFrame extends javax.swing.JFrame {
         ));*/
         jScrollPane4.setViewportView(jTable3);
 
-        jTabbedPane_view.addTab("student", jScrollPane4);
+        jTabbedPane_service.addTab("student", jScrollPane4);
 
 
         Object [][] ss = new Object[storage.bookings.size()][4];
@@ -102,9 +102,9 @@ public class ServicFrame extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        jTabbedPane_view.addTab("schedule", jScrollPane1);
+        jTabbedPane_service.addTab("schedule", jScrollPane1);
 
-        jTabbedPane2.addTab("view", jTabbedPane_view);
+        jTabbedPane2.addTab("view", jTabbedPane_service);
 
         jLabel1.setText("jLabel1");
 
