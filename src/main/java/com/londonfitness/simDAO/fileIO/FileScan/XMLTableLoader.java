@@ -5,13 +5,11 @@ import org.w3c.dom.NodeList;
 
 import java.util.ArrayList;
 
-public abstract class XMLTableLoad<T> {
+public abstract class XMLTableLoader<T> {
     private NodeList list;
     protected ArrayList<T> result;
 
-    //boolean done = true;
-
-    public XMLTableLoad(NodeList list, ArrayList<T> res) {
+    public XMLTableLoader(NodeList list, ArrayList<T> res) {
         this.list = list;
         this.result = res;
     }
@@ -26,15 +24,13 @@ public abstract class XMLTableLoad<T> {
         }
     }
 
-    protected T loadRow(Node node) {
-        T t = getNewElem();
-        //System.out.println(node);
+    private T loadRow(Node node) {
+        T t = getNewInstanceOfType();
+
         NodeList nl = node.getChildNodes();
         for(int i = 0; i < nl.getLength(); i++) {
             Node n = nl.item(i);
             if(n.getNodeType() != 3) {
-                //System.out.println(n.getNodeName());
-                //System.out.println(n.getFirstChild().getNodeValue());
                 scanCell(n, t);
             }
         }
@@ -43,5 +39,5 @@ public abstract class XMLTableLoad<T> {
 
     protected abstract void scanCell(Node n, T t);
 
-    protected abstract T getNewElem();
+    protected abstract T getNewInstanceOfType();
 }

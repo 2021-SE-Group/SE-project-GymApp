@@ -18,13 +18,15 @@ public class LFClass extends Table {
     public String name;
     public String category_ID;
     public Long duration;
+    public String resource_URL;
     @Override
     public String toString() {
         return "LFClass{" +
                 "ID='" + ID + '\'' +
                 ", name='" + name + '\'' +
-                ", category_ID='" + category_ID + '\'' +
                 ", duration='" + duration + '\'' +
+                ", resource_URL='" + resource_URL + '\'' +
+                ", category_ID='" + category_ID + '\'' +
                 '}';
     }//</editor-fold>
 

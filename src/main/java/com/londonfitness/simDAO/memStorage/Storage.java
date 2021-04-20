@@ -17,7 +17,7 @@ public class Storage {
     public ArrayList<Trainee> trainees;
     public ArrayList<Booking> bookings;
     public ArrayList<Exchange> exchanges;
-    public ArrayList<CoachAbility> coachAbility;
+    public ArrayList<CoachAbility> coachAbilities;
     public ArrayList<Record> records;
 
     public Storage() {
@@ -30,6 +30,6 @@ public class Storage {
         trainees = new ArrayList<>();
         bookings = new ArrayList<>();
         exchanges = new ArrayList<>();
-        coachAbility = new ArrayList<>();
+        coachAbilities = new ArrayList<>();
     }
 }

@@ -1,6 +1,8 @@
 package com.londonfitness.GUI;
 
 import com.londonfitness.GUI.ourComponent.BookingTableModel;
+import com.londonfitness.simDAO.fileIO.XMLDocumentBuilder;
+import com.londonfitness.simDAO.fileIO.xmlwriter.WriteXML;
 import com.londonfitness.simDAO.memStorage.Storage;
 
 
@@ -10,6 +12,8 @@ import javax.swing.table.DefaultTableColumnModel;
 import javax.swing.table.TableColumnModel;
 import javax.swing.tree.TreeModel;
 import javax.swing.tree.TreePath;
+import javax.xml.parsers.ParserConfigurationException;
+import java.nio.file.Paths;
 
 /**
  *
@@ -206,7 +210,11 @@ public class ServicFrame extends javax.swing.JFrame {
         jMenuItem_File_save.setText("save");
         jMenuItem_File_save.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem_File_saveActionPerformed(evt);
+                try {
+                    jMenuItem_File_saveActionPerformed(evt);
+                } catch (ParserConfigurationException e) {
+                    e.printStackTrace();
+                }
             }
         });
         jMenu_File.add(jMenuItem_File_save);
@@ -264,8 +272,9 @@ public class ServicFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }
 
-    private void jMenuItem_File_saveActionPerformed(java.awt.event.ActionEvent evt) {
+    private void jMenuItem_File_saveActionPerformed(java.awt.event.ActionEvent evt) throws ParserConfigurationException {
         // TODO add your handling code here:
+        new WriteXML(new XMLDocumentBuilder().documentBuilder, Paths.get("testResources\\GUITest.xml"), storage).translate();
     }
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {
