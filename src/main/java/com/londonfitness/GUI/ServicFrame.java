@@ -1,17 +1,12 @@
 package com.londonfitness.GUI;
 
-import com.londonfitness.GUI.ourComponent.BookingTableModel;
+import com.londonfitness.GUI.ourComponent.example.BookingGUI2;
 import com.londonfitness.simDAO.fileIO.XMLDocumentBuilder;
 import com.londonfitness.simDAO.fileIO.xmlwriter.WriteXML;
 import com.londonfitness.simDAO.memStorage.Storage;
 
 
 import javax.swing.*;
-import javax.swing.event.TreeModelListener;
-import javax.swing.table.DefaultTableColumnModel;
-import javax.swing.table.TableColumnModel;
-import javax.swing.tree.TreeModel;
-import javax.swing.tree.TreePath;
 import javax.xml.parsers.ParserConfigurationException;
 import java.nio.file.Paths;
 
@@ -68,7 +63,8 @@ public class ServicFrame extends javax.swing.JFrame {
         jTabbedPane_view = new javax.swing.JTabbedPane();
 
         jScrollPane4 = new javax.swing.JScrollPane();
-        jTable3 = new javax.swing.JTable();
+        //jTable3 = new javax.swing.JTable();
+        jTable3 = new BookingGUI2(storage).jtb;
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jScrollPane5 = new javax.swing.JScrollPane();
@@ -106,15 +102,15 @@ public class ServicFrame extends javax.swing.JFrame {
 
         jTabbedPane_serviceeg.addTab("trainer", jsp_coach);
 
-        jTable3.setModel(new BookingTableModel(storage));
+        //jTable3.setModel(new BookingTableModel(storage));
         jScrollPane4.setViewportView(jTable3);
         jTabbedPane_view.addTab("Booking", jScrollPane4);
 
 
         Object [][] ss = new Object[storage.bookings.size()][4];
         for(int i = 0; i < storage.bookings.size(); i++) {
-            ss[i][0] = storage.bookings.get(i).lfClass_ID;
-            ss[i][1] = storage.bookings.get(i).trainee_ID;
+            ss[i][0] = storage.bookings.get(i).raw.lfClass_ID;
+            ss[i][1] = storage.bookings.get(i).raw.trainee_ID;
         }
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(

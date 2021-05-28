@@ -16,7 +16,7 @@ public class Trainee_BookingIndexBuilder extends IndexBuilder<Trainee, Booking> 
 
     @Override
     protected boolean checkIndexing(Trainee trainee, Booking booking) {
-        return booking.trainee_ID.equals(trainee.ID);
+        return booking.raw.trainee_ID.equals(trainee.raw.ID);
     }
 
     @Override

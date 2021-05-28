@@ -14,7 +14,7 @@ public class Category_LFClassIndexBuilder extends IndexBuilder<Category, LFClass
 
     @Override
     protected boolean checkIndexing(Category category, LFClass lfClass) {
-        return lfClass.category_ID.equals(category.ID);
+        return lfClass.raw.category_ID.equals(category.raw.ID);
     }
 
     @Override

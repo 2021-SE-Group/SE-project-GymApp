@@ -1,7 +1,9 @@
 package com.londonfitness.simDAO.table;
 
 
-public class Record extends Table {
+import com.londonfitness.simDAO.rawTable.RawTable;
+// TODO
+public class Record extends RawTable{
 
     @Override
     protected String getTableMeta(short type, String name) {

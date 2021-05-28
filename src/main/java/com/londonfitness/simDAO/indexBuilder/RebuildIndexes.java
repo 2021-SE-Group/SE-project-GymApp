@@ -22,15 +22,15 @@ public class RebuildIndexes {
 
         Coach_BookingIndexBuilder cbb = new Coach_BookingIndexBuilder(storage.coaches, storage.bookings);
         cbb.buildIndex();
-        ///* only for developing, when done, delete
+        /* only for developing, when done, delete
         DFT(storage.categories.get(0));
 
         //*/
     }
 
-    ///* only for developing, when done, delete
+    /* only for developing, when done, delete
     private void DFT(Category category) {
-        System.out.println(category);
+        System.out.println(category.raw);
         for (Iterator<Category> it = category.selfIndex.getTnIter(); it.hasNext(); ) {
             Category  cate = it.next();
             DFT(cate);

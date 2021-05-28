@@ -1,32 +1,14 @@
 package com.londonfitness.simDAO.table;
 
+import com.londonfitness.simDAO.rawTable.RawCoachAbility;
 import com.londonfitness.simDAO.table.persons.Coach;
 
-public class CoachAbility extends Table {
-    public CoachAbility() {
-
-    }
-
-    // meta
-    @Override
-    protected String getTableMeta(short type, String name) {
-        return "";
-    }
-
-    //<editor-fold defaultstate="collapsed" desc="raw text field">
-    public String lfc_ID;
-    public String time;
-    public String coach_ID;
-    @Override
-    public String toString() {
-        return "coachAbility{" +
-                "lfclass_ID=" + lfc_ID +
-                ", coach_ID='" + coach_ID + '\'' +
-                ", time='" + time + '\'' +
-                '}';
-    }//</editor-fold>
-
+public class CoachAbility extends Table<RawCoachAbility> {
     // external key filed
     public LFClass lfClass;
     public Coach coach;
+
+    public CoachAbility(RawCoachAbility rawCoachAbility) {
+        super(rawCoachAbility);
+    }
 }

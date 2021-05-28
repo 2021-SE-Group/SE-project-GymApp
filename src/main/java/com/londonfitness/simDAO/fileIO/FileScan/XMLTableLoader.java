@@ -1,12 +1,14 @@
 package com.londonfitness.simDAO.fileIO.FileScan;
 
+import com.londonfitness.simDAO.rawTable.RawTable;
+import com.londonfitness.simDAO.table.Table;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 import java.util.ArrayList;
 
-public abstract class XMLTableLoader<T> {
-    private NodeList list;
+public abstract class XMLTableLoader<T extends Table> {
+    private final NodeList list;
     protected ArrayList<T> result;
 
     public XMLTableLoader(NodeList list, ArrayList<T> res) {

@@ -1,4 +1,4 @@
-package com.londonfitness.GUI.ourComponent;
+package com.londonfitness.GUI.ourComponent.example;
 
 import com.londonfitness.OurDateFormat;
 import com.londonfitness.simDAO.memStorage.Storage;
@@ -7,7 +7,7 @@ import com.londonfitness.simDAO.table.Booking;
 
 import javax.swing.table.AbstractTableModel;
 
-public class BookingTableModel extends AbstractTableModel {
+public class BookingTableModel extends AbstractTableModel{
     private Storage storage;
     public BookingTableModel(Storage storage){this.storage = storage;}
     @Override
@@ -26,21 +26,21 @@ public class BookingTableModel extends AbstractTableModel {
         booking = storage.bookings.get(rowIndex);
         switch (columnIndex){
             case 0:
-                return booking.coach_ID;
+                return booking.raw.coach_ID;
             case 1:
-                return booking.externKey_coach.name;
+                return booking.externKey_coach.raw.name;
             case 2:
-                return  booking.trainee_ID;
+                return  booking.raw.trainee_ID;
             case 3:
-                return booking.externKey_trainee.name;
+                return booking.externKey_trainee.raw.name;
             case 4:
-                return booking.lfClass_ID;
+                return booking.raw.lfClass_ID;
             case 5:
-                return booking.externKey_lfClass.name;
+                return booking.externKey_lfClass.raw.name;
             case 6:
-                return OurDateFormat.fancyDate.format(booking.startDate);
+                return OurDateFormat.fancyDate.format(booking.raw.startDate);
             case 7:
-                return booking.repeat;
+                return booking.raw.repeat;
             case 8:
                 return null;
         }

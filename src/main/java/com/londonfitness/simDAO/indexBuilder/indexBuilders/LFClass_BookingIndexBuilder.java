@@ -16,7 +16,7 @@ public class LFClass_BookingIndexBuilder extends IndexBuilder<LFClass, Booking> 
 
     @Override
     protected boolean checkIndexing(LFClass lfClass, Booking booking) {
-        return booking.lfClass_ID.equals(lfClass.ID);
+        return booking.raw.lfClass_ID.equals(lfClass.raw.ID);
     }
 
     @Override

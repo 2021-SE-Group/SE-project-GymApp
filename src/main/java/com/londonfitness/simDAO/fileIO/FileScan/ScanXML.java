@@ -3,6 +3,11 @@ package com.londonfitness.simDAO.fileIO.FileScan;
 import com.londonfitness.OurDateFormat;
 import com.londonfitness.simDAO.fileIO.XMLErrorHandler;
 import com.londonfitness.simDAO.memStorage.Storage;
+import com.londonfitness.simDAO.rawTable.*;
+import com.londonfitness.simDAO.rawTable.rawPersons.RawAdmin;
+import com.londonfitness.simDAO.rawTable.rawPersons.RawCoach;
+import com.londonfitness.simDAO.rawTable.rawPersons.RawStaff;
+import com.londonfitness.simDAO.rawTable.rawPersons.RawTrainee;
 import com.londonfitness.simDAO.table.*;
 import com.londonfitness.simDAO.table.persons.Admin;
 import com.londonfitness.simDAO.table.persons.Coach;
@@ -97,20 +102,20 @@ public class ScanXML {
             protected void scanCell(Node n, Category category) {
                 switch (n.getNodeName()) {
                     case "ID":
-                        category.ID = n.getTextContent();
+                        category.raw.ID = n.getTextContent();
                         break;
                     case "name":
-                        category.name = n.getTextContent();
+                        category.raw.name = n.getTextContent();
                         break;
                     case "parent_ID":
-                        category.parent_ID = n.getTextContent();
+                        category.raw.parent_ID = n.getTextContent();
                         break;
                 }
             }
 
             @Override
             protected Category getNewInstanceOfType() {
-                return new Category();
+                return new Category(new RawCategory());
             }
         }.load();
 
@@ -121,26 +126,26 @@ public class ScanXML {
             protected void scanCell(Node n, LFClass lfClass) {
                 switch (n.getNodeName()) {
                     case "ID":
-                        lfClass.ID = n.getTextContent();
+                        lfClass.raw.ID = n.getTextContent();
                         break;
                     case "name":
-                        lfClass.name = n.getTextContent();
+                        lfClass.raw.name = n.getTextContent();
                         break;
                     case "category_ID":
-                        lfClass.category_ID = n.getTextContent();
+                        lfClass.raw.category_ID = n.getTextContent();
                         break;
                     case "duration":
-                        lfClass.duration = Long.parseLong(n.getTextContent());
+                        lfClass.raw.duration = Long.parseLong(n.getTextContent());
                         break;
                     case "resource_URL":
-                        lfClass.resource_URL = n.getTextContent();
+                        lfClass.raw.resource_URL = n.getTextContent();
                         break;
                 }
             }
 
             @Override
             protected LFClass getNewInstanceOfType() {
-                return new LFClass();
+                return new LFClass(new RawLFClass());
             }
         }.load();
 
@@ -151,23 +156,23 @@ public class ScanXML {
             protected void scanCell(Node n, Admin admin) {
                 switch (n.getNodeName()) {
                     case "ID":
-                        admin.ID = n.getTextContent();
+                        admin.raw.ID = n.getTextContent();
                         break;
                     case "username":
-                        admin.username = n.getTextContent();
+                        admin.raw.username = n.getTextContent();
                         break;
                     case "name":
-                        admin.name = n.getTextContent();
+                        admin.raw.name = n.getTextContent();
                         break;
                     case "expire":
-                        admin.expired = n.getTextContent().equals("t") || n.getTextContent().equals("T");
+                        admin.raw.expired = n.getTextContent().equals("t") || n.getTextContent().equals("T");
                         break;
                 }
             }
 
             @Override
             protected Admin getNewInstanceOfType() {
-                return new Admin();
+                return new Admin(new RawAdmin());
             }
         }.load();
 
@@ -178,23 +183,23 @@ public class ScanXML {
             protected void scanCell(Node n, Staff staff) {
                 switch (n.getNodeName()) {
                     case "ID":
-                        staff.ID = n.getTextContent();
+                        staff.raw.ID = n.getTextContent();
                         break;
                     case "username":
-                        staff.username = n.getTextContent();
+                        staff.raw.username = n.getTextContent();
                         break;
                     case "name":
-                        staff.name = n.getTextContent();
+                        staff.raw.name = n.getTextContent();
                         break;
                     case "expire":
-                        staff.expired = n.getTextContent().equals("t") || n.getTextContent().equals("T");
+                        staff.raw.expired = n.getTextContent().equals("t") || n.getTextContent().equals("T");
                         break;
                 }
             }
 
             @Override
             protected Staff getNewInstanceOfType() {
-                return new Staff();
+                return new Staff(new RawStaff());
             }
         }.load();
 
@@ -205,26 +210,26 @@ public class ScanXML {
             protected void scanCell(Node n, Coach coach) {
                 switch (n.getNodeName()) {
                     case "ID":
-                        coach.ID = n.getTextContent();
+                        coach.raw.ID = n.getTextContent();
                         break;
                     case "username":
-                        coach.username = n.getTextContent();
+                        coach.raw.username = n.getTextContent();
                         break;
                     case "name":
-                        coach.name = n.getTextContent();
+                        coach.raw.name = n.getTextContent();
                         break;
                     case "expire":
-                        coach.expired = n.getTextContent().equals("t") || n.getTextContent().equals("T");
+                        coach.raw.expired = n.getTextContent().equals("t") || n.getTextContent().equals("T");
                         break;
                     case "c_profile_URL":
-                        coach.c_profile_URL = n.getTextContent();
+                        coach.raw.c_profile_URL = n.getTextContent();
                         break;
                 }
             }
 
             @Override
             protected Coach getNewInstanceOfType() {
-                return new Coach();
+                return new Coach(new RawCoach());
             }
         }.load();
 
@@ -235,20 +240,20 @@ public class ScanXML {
             protected void scanCell(Node n, CoachAbility coachAbility) {
                 switch (n.getNodeName()) {
                     case "coach_ID":
-                        coachAbility.coach_ID = n.getTextContent();
+                        coachAbility.raw.coach_ID = n.getTextContent();
                         break;
                     case "lfClass_ID":
-                        coachAbility.lfc_ID = n.getTextContent();
+                        coachAbility.raw.lfc_ID = n.getTextContent();
                         break;
                     case "time":
-                        coachAbility.time = n.getTextContent();
+                        coachAbility.raw.time = n.getTextContent();
                         break;
                 }
             }
 
             @Override
             protected CoachAbility getNewInstanceOfType() {
-                return new CoachAbility();
+                return new CoachAbility(new RawCoachAbility());
             }
         }.load();
 
@@ -259,26 +264,26 @@ public class ScanXML {
             protected void scanCell(Node n, Trainee trainee) {
                 switch (n.getNodeName()) {
                     case "ID":
-                        trainee.ID = n.getTextContent();
+                        trainee.raw.ID = n.getTextContent();
                         break;
                     case "username":
-                        trainee.username = n.getTextContent();
+                        trainee.raw.username = n.getTextContent();
                         break;
                     case "name":
-                        trainee.name = n.getTextContent();
+                        trainee.raw.name = n.getTextContent();
                         break;
                     case "expire":
-                        trainee.expired = n.getTextContent().equals("t") || n.getTextContent().equals("T");
+                        trainee.raw.expired = n.getTextContent().equals("t") || n.getTextContent().equals("T");
                         break;
                     case "t_profile_URL":
-                        trainee.t_profile_URL = n.getTextContent();
+                        trainee.raw.t_profile_URL = n.getTextContent();
                         break;
                 }
             }
 
             @Override
             protected Trainee getNewInstanceOfType() {
-                return new Trainee();
+                return new Trainee(new RawTrainee());
             }
         }.load();
 
@@ -289,36 +294,36 @@ public class ScanXML {
             protected void scanCell(Node n, Booking booking) {
                 switch (n.getNodeName()) {
                     case "ID":
-                        booking.ID = n.getTextContent();
+                        booking.raw.ID = n.getTextContent();
                         break;
                     case "coach_ID":
-                        booking.coach_ID = n.getTextContent();
+                        booking.raw.coach_ID = n.getTextContent();
                         break;
                     case "trainee_ID":
-                        booking.trainee_ID = n.getTextContent();
+                        booking.raw.trainee_ID = n.getTextContent();
                         break;
                     case "lfClass_ID":
-                        booking.lfClass_ID = n.getTextContent();
+                        booking.raw.lfClass_ID = n.getTextContent();
                         break;
                     case "startDate":
                         try {
-                            booking.startDate = OurDateFormat.fileDate.parse(n.getTextContent());
+                            booking.raw.startDate = OurDateFormat.fileDate.parse(n.getTextContent());
                         } catch (ParseException e) {
                             e.printStackTrace();
                         }
                         break;
                     case "times":
-                        booking.times = Integer.parseInt(n.getTextContent());
+                        booking.raw.times = Integer.parseInt(n.getTextContent());
                         break;
                     case "repeat":
-                        booking.repeat = Long.parseLong(n.getTextContent());
+                        booking.raw.repeat = Long.parseLong(n.getTextContent());
                         break;
                 }
             }
 
             @Override
             protected Booking getNewInstanceOfType() {
-                return new Booking();
+                return new Booking(new RawBooking());
             }
         }.load();
 
@@ -329,37 +334,38 @@ public class ScanXML {
             protected void scanCell(Node n, Exchange exchange) {
                 switch (n.getNodeName()) {
                     case "booking_ID":
-                        exchange.booking_ID = n.getTextContent();
+                        exchange.raw.booking_ID = n.getTextContent();
                         break;
                     case "coach_ID":
-                        exchange.coach_ID = n.getTextContent();
+                        exchange.raw.coach_ID = n.getTextContent();
                         break;
                     case "pre_startDate":
                         try {
-                            exchange.pre_startDate = OurDateFormat.fileDate.parse(n.getTextContent());
+                            exchange.raw.pre_startDate = OurDateFormat.fileDate.parse(n.getTextContent());
                         } catch (ParseException e) {
                             e.printStackTrace();
                         }
                         break;
                     case "aft_startDate":
                         try {
-                            exchange.aft_startDate = OurDateFormat.fileDate.parse(n.getTextContent());
+                            exchange.raw.aft_startDate = OurDateFormat.fileDate.parse(n.getTextContent());
                         } catch (ParseException e) {
                             e.printStackTrace();
                         }
                         break;
                     case "repeat":
-                        exchange.repeat = Long.parseLong(n.getTextContent());
+                        exchange.raw.duration = Long.parseLong(n.getTextContent());
                         break;
                 }
             }
 
             @Override
             protected Exchange getNewInstanceOfType() {
-                return new Exchange();
+                return new Exchange(new RawExchange());
             }
         }.load();
 
+        /*
         new XMLTableLoader<>(
                 getList(elemRoot, "history_list"),
                 storage.records
@@ -374,36 +380,37 @@ public class ScanXML {
                 return new Record();
             }
         }.load();
+         */
     }
 
     @Deprecated
     public void checkLoad() {
         for (Category c : storage.categories) {
-            System.out.println(c);
+            System.out.println(c.raw);
         }
         for (LFClass lfc : storage.lfClasses) {
-            System.out.println(lfc);
+            System.out.println(lfc.raw);
         }
         for (Admin adm : storage.admins) {
-            System.out.println(adm);
+            System.out.println(adm.raw);
         }
         for (Staff stf : storage.staffs) {
-            System.out.println(stf);
+            System.out.println(stf.raw);
         }
         for (Coach cch : storage.coaches) {
-            System.out.println(cch);
+            System.out.println(cch.raw);
         }
         for (CoachAbility ccah : storage.coachAbilities) {
-            System.out.println(ccah);
+            System.out.println(ccah.raw);
         }
         for (Trainee tra : storage.trainees) {
-            System.out.println(tra);
+            System.out.println(tra.raw);
         }
         for (Booking bok : storage.bookings) {
-            System.out.println(bok);
+            System.out.println(bok.raw);
         }
         for(Exchange exc : storage.exchanges) {
-            System.out.println(exc);
+            System.out.println(exc.raw);
         }
     }
 }

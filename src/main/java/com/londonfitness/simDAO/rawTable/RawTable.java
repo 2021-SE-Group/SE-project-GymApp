@@ -1,12 +1,6 @@
-package com.londonfitness.simDAO.table;
+package com.londonfitness.simDAO.rawTable;
 
-public abstract class Table <T> {
-    public T raw;
-    public Table (T t) {
-        this.raw = t;
-    }
-
-    /*
+public abstract class RawTable {
     public static final short columnType_String = 0;
     public static final short columnType_Integer = 1;
     public static final short columnType_Date = 2;

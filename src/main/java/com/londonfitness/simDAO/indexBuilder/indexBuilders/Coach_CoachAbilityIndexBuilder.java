@@ -14,7 +14,7 @@ public class Coach_CoachAbilityIndexBuilder extends IndexBuilder<Coach, CoachAbi
 
     @Override
     protected boolean checkIndexing(Coach coach, CoachAbility coachAbility) {
-        return coachAbility.coach_ID.equals(coach.ID);
+        return coachAbility.raw.coach_ID.equals(coach.raw.ID);
     }
 
     @Override

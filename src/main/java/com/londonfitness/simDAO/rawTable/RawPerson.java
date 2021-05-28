@@ -1,6 +1,8 @@
-package com.londonfitness.simDAO.table;
+package com.londonfitness.simDAO.rawTable;
 
-public abstract class Person extends Table {
+import com.londonfitness.simDAO.table.Table;
+
+public abstract class RawPerson extends RawTable {
     public static final short ADMIN_TYPE = 0;
     public static final short STAFF_TYPE = 1;
     public static final short COACH_TYPE = 2;
@@ -8,9 +10,8 @@ public abstract class Person extends Table {
 
     public static final String[] typeMask = {"admin", "staff", "coach", "trainer"};
 
-    public Person() {}
+    public RawPerson() {}
 
-    //<editor-fold defaultstate="collapsed" desc="raw text field">
     public String ID;
     public String username;
     public String name;
@@ -25,5 +26,5 @@ public abstract class Person extends Table {
                 ", type=" + typeMask[type] +
                 ", expired=" + expired +
                 '}';
-    }//</editor-fold>
+    }
 }

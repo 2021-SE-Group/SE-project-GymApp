@@ -37,13 +37,13 @@ public class JScrollPane_LFClassTree extends JScrollPane {
     private void DFTReplicateTree(DefaultTreeModel tm, Category c, DefaultMutableTreeNode dmt) {
         for (Iterator<Category> it = c.selfIndex.getTnIter(); it.hasNext(); ) {
             Category cate = it.next();
-            DefaultMutableTreeNode prev = new DefaultMutableTreeNode(cate.name);
+            DefaultMutableTreeNode prev = new DefaultMutableTreeNode(cate.raw.name);
             tm.insertNodeInto(prev, dmt, dmt.getChildCount());
             DFTReplicateTree(tm, cate, prev);
         }
         for(Iterator<LFClass> it = c.index_lfClass.getTnIter(); it.hasNext(); ) {
             LFClass lfc = it.next();
-            tm.insertNodeInto(new DefaultMutableTreeNode(lfc.name), dmt, dmt.getChildCount());
+            tm.insertNodeInto(new DefaultMutableTreeNode(lfc.raw.name), dmt, dmt.getChildCount());
         }
     }
 

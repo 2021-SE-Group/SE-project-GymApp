@@ -14,10 +14,10 @@ public class JScrollPane_CoachTable extends JScrollPane {
         Object[][] CP = new Object[coaches.size()][4];
         for (int i = 0; i < coaches.size(); i++) {
             Coach c = coaches.get(i);
-            CP[i][0] = c.ID;
-            CP[i][1] = c.username;
-            CP[i][2] = c.name;
-            CP[i][3] = c.c_profile_URL;
+            CP[i][0] = c.raw.ID;
+            CP[i][1] = c.raw.username;
+            CP[i][2] = c.raw.name;
+            CP[i][3] = c.raw.c_profile_URL;
         }
         CoachTable = new JTable();
         CoachTable.setModel(new javax.swing.table.DefaultTableModel(
