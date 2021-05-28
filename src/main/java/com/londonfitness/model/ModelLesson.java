@@ -10,10 +10,10 @@ public class ModelLesson {
         this.store2 = store2;
     }
     public long getStart(){
-        return store1.startDate.getTime() + store2 * store1.repeat;
+        return store1.raw.startDate.getTime() + store2 * store1.raw.repeat;
     }
     public long getEnd(){
-        return store1.startDate.getTime() + store2 * store1.repeat + store1.externKey_lfClass.duration;
+        return store1.raw.startDate.getTime() + store2 * store1.raw.repeat + store1.externKey_lfClass.raw.duration;
     }
 
     @Override

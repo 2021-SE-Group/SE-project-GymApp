@@ -39,7 +39,7 @@ public class ModelTimetable {
             it.hasNext();)
         {
             Booking sch = it.next();
-            for(int i = 0; i<sch.times;i++){
+            for(int i = 0; i<sch.raw.times;i++){
                 les.add(new ModelLesson(sch, i+1));
             }
         }
