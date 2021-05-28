@@ -1,18 +1,33 @@
 package com.londonfitness.GUI;
 
+import com.londonfitness.simDAO.memStorage.Storage;
+import com.londonfitness.simDAO.rawTable.RawLFClass;
+import com.londonfitness.simDAO.table.Booking;
+import com.londonfitness.simDAO.table.LFClass;
+import com.londonfitness.simDAO.table.Record;
+import com.londonfitness.simDAO.table.persons.Coach;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.Date;
 
 public class STALL {
+    private Storage storage;
+    private JTable Coach_Class;
+
 
     private JTextField tf_1;
     private JTextField tf_2;
+    private JTextField tf_3;
+    private JTextField tf_4;
     private JFrame frame;
     private JFrame frame_suc;
 
-    public JPanel getPanel00(){
+    //menu
+    public JPanel getPanel00(Storage storage, String coach_ID){
         //Mellow
         try {
             for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
@@ -69,7 +84,7 @@ public class STALL {
                 //frame.dispose();
                 //ST001 a = new ST001(name);
                 //panel00.remove(panel00);
-                frame.setContentPane(getPanel01());
+                frame.setContentPane(getPanel01(storage.lfClasses, coach_ID));
                 frame.setVisible(true);
             }
         });
@@ -84,7 +99,9 @@ public class STALL {
                 //frame.dispose();
                 //frame.setVisible(false);
                 //ST002 a = new ST002(name);
-                frame.setContentPane(getPanel02());
+                frame.setBounds(100, 100, 850, 400);
+                frame.setLocationRelativeTo(null);//middle
+                frame.setContentPane(getPanel02(storage.bookings, coach_ID));
                 frame.setVisible(true);
             }
         });
@@ -99,7 +116,7 @@ public class STALL {
                 //frame.dispose();
                 //frame.setVisible(false);
                 //ST004 a = new ST004(name);
-                frame.setContentPane(getPanel04());
+                frame.setContentPane(getPanel04(storage.coaches, coach_ID));
                 frame.setVisible(true);
             }
         });
@@ -114,7 +131,7 @@ public class STALL {
                 //frame.dispose();
                 //frame.setVisible(false);
                 //ST005 a = new ST005(name);
-                frame.setContentPane(getPanel05());
+                frame.setContentPane(getPanel05(storage.coaches, coach_ID));
                 frame.setVisible(true);
             }
         });
@@ -122,7 +139,7 @@ public class STALL {
         panel00.add(b_4);
         //frame.getContentPane().add(b_4);
 
-        JButton b_5 = new JButton("Log out");
+        JButton b_5 = new JButton("Check Videos");
         b_5.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e)
             {
@@ -130,6 +147,10 @@ public class STALL {
                 //frame.setVisible(false);
                 //System.exit(0);
                 //mainFrame a = new mainFrame();
+                frame.setBounds(100, 100, 850, 400);
+                frame.setLocationRelativeTo(null);//middle
+                frame.setContentPane(getPanel06(storage.lfClasses, coach_ID));
+                frame.setVisible(true);
             }
         });
         b_5.setBounds(122, 245, 123, 29);
@@ -148,7 +169,8 @@ public class STALL {
 
         return panel00;
     }
-    public JPanel getPanel01(){
+    //upload videos
+    public JPanel getPanel01(ArrayList<LFClass> LFClass, String coach_ID){
         //Mellow
         try {
             for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
@@ -173,18 +195,49 @@ public class STALL {
         JPanel panel01 = new JPanel();
         panel01.setLayout(null);
 
-        JLabel l_1 = new JLabel("Please input URL of video.");
-        l_1.setBounds(112, 95, 300, 21);
+        JLabel l_1 = new JLabel("Please Input Information of Your Video.");
+        l_1.setBounds(52, 45, 380, 21);
         l_1.setFont(f_0);
         panel01.add(l_1);
         // frame.getContentPane().add(l_1);
 
+        JLabel l_2 = new JLabel("URL:");
+        l_2.setBounds(102, 75, 100, 21);
+        panel01.add(l_2);
 
         tf_1 = new JTextField();
-        tf_1.setBounds(102, 135, 240, 30);
+        tf_1.setBounds(102, 95, 240, 30);
         panel01.add(tf_1);
         //frame.getContentPane().add(tf_1);
         tf_1.setColumns(10);
+
+        JLabel l_3 = new JLabel("Name:");
+        l_3.setBounds(102, 125, 100, 21);
+        panel01.add(l_3);
+
+        tf_2 = new JTextField();
+        tf_2.setBounds(102, 145, 240, 30);
+        panel01.add(tf_2);
+        tf_2.setColumns(10);
+
+        JLabel l_4 = new JLabel("Category:");
+        l_4.setBounds(102, 175, 100, 21);
+        panel01.add(l_4);
+
+        tf_3 = new JTextField();
+        tf_3.setBounds(102, 195, 240, 30);
+        panel01.add(tf_3);
+        tf_3.setColumns(10);
+
+        JLabel l_5 = new JLabel("Duration:");
+        l_5.setBounds(102, 225, 100, 21);
+        panel01.add(l_5);
+
+        tf_4 = new JTextField();
+        tf_4.setBounds(102, 245, 240, 30);
+        panel01.add(tf_4);
+        tf_4.setColumns(10);
+
 
         JButton b_1 = new JButton("ADD");
         b_1.addActionListener(new ActionListener() {
@@ -233,13 +286,28 @@ public class STALL {
                 //frame.dispose();
                 //frame.setVisible(false);
                 //ST001_sub01 a = new ST001_sub01(name);
+                LFClass ad = new LFClass(new RawLFClass());
+                //ad.c_video_URL = tf_1.getText();
+                //ad.Date = new Date(System.currentTimeMillis());
+                //need change, vision 1.0
+                ad.raw.ID = String.valueOf(Integer.valueOf(LFClass.get(LFClass.size()-1).raw.ID) + 1);
+                ad.raw.coach_ID = coach_ID;
+                ad.raw.name = tf_2.getText();
+                ad.raw.category_ID = tf_3.getText();
+                ad.raw.duration = Long.valueOf(tf_4.getText());
+                ad.raw.resource_URL = tf_1.getText();
+
+
+
+
+                LFClass.add(ad);
 
                 frame_suc.setContentPane(getPanel01_sub());
                 frame_suc.setVisible(true);
                 frame.setVisible(false);
             }
         });
-        b_1.setBounds(122, 185, 75, 29);
+        b_1.setBounds(122, 285, 75, 29);
         panel01.add(b_1);
         //frame.getContentPane().add(b_1);
 
@@ -253,7 +321,7 @@ public class STALL {
                 frame.setVisible(false);
             }
         });
-        b_2.setBounds(232, 185, 75, 29);
+        b_2.setBounds(232, 285, 75, 29);
         panel01.add(b_2);
         //frame.getContentPane().add(b_2);
 /*
@@ -265,7 +333,8 @@ public class STALL {
  */
         return panel01;
     }
-    public JPanel getPanel02(){
+    //Class check
+    public JPanel getPanel02(ArrayList<Booking> BookClass, String coach_ID){
         //Mellow
         try {
             for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
@@ -291,19 +360,46 @@ public class STALL {
         panel02.setLayout(null);
 
         JLabel l_1 = new JLabel("My Class");
-        l_1.setBounds(177, 35, 300, 21);
+        l_1.setBounds(377, 35, 300, 21);
         l_1.setFont(f_0);
         panel02.add(l_1);
         //frame.getContentPane().add(l_1);
 
         JScrollPane scrollPane = new JScrollPane();
-        scrollPane.setBounds(62, 71, 330, 204);
+        scrollPane.setBounds(62, 71, 730, 204);
         panel02.add(scrollPane);
         //frame.getContentPane().add(scrollPane);
 
-
-        JTextArea textArea = new JTextArea();
-        textArea.setBackground(Color.LIGHT_GRAY);
+        int num = 0;
+        int check_num = 0;
+        for(int i = 0; i < BookClass.size(); i++){
+            Booking v = BookClass.get(i);
+            if(v.raw.coach_ID == coach_ID){
+                check_num++;
+            }
+        }
+        Object[][] BC = new Object[check_num][6];
+        for(int i = 0; i < BookClass.size(); i++){
+            Booking b = BookClass.get(i);
+            if(b.raw.coach_ID == coach_ID){
+                BC[num][0] = b.raw.ID;
+                BC[num][1] = b.raw.coach_ID;
+                BC[num][2] = b.raw.trainee_ID;
+                BC[num][3] = b.raw.lfClass_ID;
+                BC[num][4] = b.raw.startDate;
+                BC[num][5] = b.raw.times;
+                num++;
+            }
+        }
+        JTable tb_c = new JTable(
+                BC,
+                new String [] {
+                "ID", "coach_ID", "trainee_ID", "lfClass_ID", "startDate", "times"
+                }
+        );
+        scrollPane.setViewportView(tb_c);
+        //JTextArea textArea = new JTextArea();
+        //textArea.setBackground(Color.LIGHT_GRAY);
 
         /****************************************/
         /*
@@ -335,9 +431,9 @@ public class STALL {
          */
 /******************************************/
         //textArea.setText("14:00-16:00    Yoga    Mr.Wang"); //test line
-        textArea.setEnabled(false);
-        textArea.setDisabledTextColor(Color.BLACK);
-        scrollPane.setViewportView(textArea);
+        //textArea.setEnabled(false);
+        //textArea.setDisabledTextColor(Color.BLACK);
+        //scrollPane.setViewportView(textArea);
 
         JButton b_1 = new JButton("BACK");
         b_1.addActionListener(new ActionListener() {
@@ -346,10 +442,12 @@ public class STALL {
                 //frame.dispose();
                 //frame.setVisible(false);
                 //ST000 a = new ST000(name);
+                frame.setBounds(100, 100, 450, 400);
+                frame.setLocationRelativeTo(null);//middle
                 frame.setVisible(false);
             }
         });
-        b_1.setBounds(152, 290, 123, 29);
+        b_1.setBounds(352, 290, 123, 29);
         panel02.add(b_1);
         //frame.getContentPane().add(b_1);
 
@@ -363,7 +461,8 @@ public class STALL {
      */
         return panel02;
     }
-    public JPanel getPanel04(){
+    //Free time add
+    public JPanel getPanel04(ArrayList<Coach> coaches, String coach_ID){
         //Mellow
         try {
             for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
@@ -430,6 +529,9 @@ public class STALL {
                 //frame.setVisible(false);
                 //System.out.println("ADD: " + tf_1.getText());
                 //ST004_sub01 a = new ST004_sub01(name);
+
+
+
                 frame_suc.setContentPane(getPanel04_sub());
                 frame_suc.setVisible(true);
                 frame.setVisible(false);
@@ -464,7 +566,8 @@ public class STALL {
 */
         return panel04;
     }
-    public JPanel getPanel05(){
+    //Drop Class rate
+    public JPanel getPanel05(ArrayList<Coach> coaches, String coach_ID){
         //Mellow
         try {
             for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
@@ -538,10 +641,18 @@ public class STALL {
 
 
  */
+        double drc_n = 100;
+        for(int i = 0; i < coaches.size(); i++){
+            Coach mid = coaches.get(i);
+            if(mid.raw.ID == coach_ID){
+                //drc_n = mid.raw.DCR;
+            }
+
+        }
 
         /************************/
-        JLabel l_2 = new JLabel("%");
-        l_2.setBounds(212, 131, 30, 35);
+        JLabel l_2 = new JLabel(drc_n + "%");
+        l_2.setBounds(198, 131, 40, 35);
         panel05.add(l_2);
         //frame.getContentPane().add(l_2);
 
@@ -567,6 +678,7 @@ public class STALL {
         */
         return panel05;
     }
+    //upload success
     public JPanel getPanel01_sub(){
         Font f_0 = new Font("Times New Roman",Font.BOLD,20);
 
@@ -595,6 +707,7 @@ public class STALL {
 
         return panel01_sub;
     }
+    //upload success
     public JPanel getPanel04_sub(){
         Font f_0 = new Font("Times New Roman",Font.BOLD,20);
 
@@ -622,6 +735,139 @@ public class STALL {
         //frame.getContentPane().add(b_2);
 
         return panel04_sub;
+    }
+
+
+    public JPanel getPanel06(ArrayList<LFClass> LFClass, String coach_ID){
+        //Mellow
+        try {
+            for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        }catch(Exception e) {
+            System.out.println(e);
+        }
+/*
+        frame = new JFrame();
+        frame.setBounds(100, 100, 450, 400);
+        frame.setLocationRelativeTo(null);//middle
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.getContentPane().setLayout(null);
+        frame.setVisible(true);
+*/
+        Font f_0 = new Font("Times New Roman",Font.BOLD,20);
+
+        JPanel panel06 = new JPanel();
+        panel06.setLayout(null);
+
+        JLabel l_1 = new JLabel("My Videos");
+        l_1.setBounds(377, 35, 300, 21);
+        l_1.setFont(f_0);
+        panel06.add(l_1);
+        //frame.getContentPane().add(l_1);
+
+        JScrollPane scrollPane = new JScrollPane();
+        scrollPane.setBounds(62, 71, 730, 204);
+        panel06.add(scrollPane);
+        //frame.getContentPane().add(scrollPane);
+
+
+        int num = 0;
+        int check_num = 0;
+        for(int i = 0; i < LFClass.size(); i++){
+            LFClass v = LFClass.get(i);
+            if(v.raw.coach_ID == coach_ID){
+                check_num++;
+            }
+        }
+        Object[][] BC = new Object[check_num][6];
+
+        for(int i = 0; i < LFClass.size(); i++){
+            LFClass b = LFClass.get(i);
+            if(b.raw.coach_ID == coach_ID){
+                //BC[i][0] = b.c_video_URL;
+                BC[num][0] = b.raw.ID;
+                BC[num][1] = b.raw.name;
+                BC[num][2] = b.raw.coach_ID;
+                BC[num][3] = b.raw.category_ID;
+                BC[num][4] = b.raw.duration;
+                BC[num][5] = b.raw.resource_URL;
+                num++;
+            }
+
+        }
+        JTable tb_c = new JTable(
+                BC,
+                new String [] {
+                        "ID", "Name", "Coach", "Category", "Duration", "URL"
+                }
+        );
+        scrollPane.setViewportView(tb_c);
+        //JTextArea textArea = new JTextArea();
+        //textArea.setBackground(Color.LIGHT_GRAY);
+
+        /****************************************/
+        /*
+        //get class information from files
+        File file = new File("C:\\Users\\ASUS\\Desktop\\stevenyangitee-segroup-project-master\\segroup-project\\src\\main\\java\\com\\londonfitness\\GUI\\ST_CT.txt");
+        BufferedReader reader = null;
+        try {
+            reader = new BufferedReader(new FileReader(file));
+            String tempString = null;
+            int line = 1;
+            //once one line
+            while ((tempString = reader.readLine()) != null) {
+                //print
+                textArea.append(line + "  " + tempString + "\n");
+                line++;
+            }
+            reader.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (reader != null) {
+                try {
+                    reader.close();
+                } catch (IOException e1) {
+                }
+            }
+        }
+
+         */
+/******************************************/
+        //textArea.setText("14:00-16:00    Yoga    Mr.Wang"); //test line
+        //textArea.setEnabled(false);
+        //textArea.setDisabledTextColor(Color.BLACK);
+        //scrollPane.setViewportView(textArea);
+
+        JButton b_1 = new JButton("BACK");
+        b_1.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e)
+            {
+                //frame.dispose();
+                //frame.setVisible(false);
+                //ST000 a = new ST000(name);
+                frame.setBounds(100, 100, 450, 400);
+                frame.setLocationRelativeTo(null);//middle
+                frame.setVisible(false);
+            }
+        });
+        b_1.setBounds(352, 290, 123, 29);
+        panel06.add(b_1);
+        //frame.getContentPane().add(b_1);
+
+    /*
+        //background picture
+        JLabel bgp_1 = new JLabel();
+        bgp_1.setIcon(new ImageIcon("C:\\Users\\ASUS\\Desktop\\stevenyangitee-segroup-project-master\\segroup-project\\src\\main\\java\\com\\londonfitness\\GUI\\timg3.jpg"));
+        bgp_1.setBounds(0,0,450,450);
+        frame.getContentPane().add(bgp_1);
+
+     */
+        return panel06;
     }
 
 

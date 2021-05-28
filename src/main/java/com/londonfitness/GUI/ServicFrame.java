@@ -180,7 +180,7 @@ public class ServicFrame extends javax.swing.JFrame {
 
         jTabbedPane2.addTab("service", jTabbedPane_serviceeg);
 
-        jTabbedPane_serviceeg.addTab("trainer service", trainer_gui.getPanel00());
+        jTabbedPane_serviceeg.addTab("trainer service", trainer_gui.getPanel00(storage, "C001"));
         jTabbedPane_serviceeg.addTab("test panel", jScrollPane5);
         jTabbedPane_serviceeg.addTab("student operation", sp);
         jTabbedPane_serviceeg.addTab("history", hp);
