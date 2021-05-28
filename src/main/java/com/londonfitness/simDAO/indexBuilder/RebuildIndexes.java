@@ -24,6 +24,7 @@ public class RebuildIndexes {
         cbb.buildIndex();
         ///* only for developing, when done, delete
         DFT(storage.categories.get(0));
+
         //*/
     }
 
