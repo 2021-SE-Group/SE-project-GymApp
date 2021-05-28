@@ -14,21 +14,20 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class STALL {
+public class STALL extends JPanel{
     private Storage storage;
     private JTable Coach_Class;
-
 
     private JTextField tf_1;
     private JTextField tf_2;
     private JTextField tf_3;
     private JTextField tf_4;
     private JFrame frame;
+    private JFrame frame_menu;
     private JFrame frame_suc;
 
-    //menu
-    public JPanel getPanel00(Storage storage, String coach_ID){
-        //Mellow
+    public JPanel getPanel_in(Storage storage){
+        //Smooth
         try {
             for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -40,20 +39,61 @@ public class STALL {
             System.out.println(e);
         }
 
+        final JPanel panel_in = new JPanel();
 
         frame = new JFrame();
         frame.setBounds(100, 100, 450, 400);
         frame.setLocationRelativeTo(null);//middle
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        //frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.getContentPane().setLayout(null);
         frame.setVisible(false);
 
         frame_suc = new JFrame();
         frame_suc.setBounds(100, 100, 230, 200);
         frame_suc.setLocationRelativeTo(null);//middle
-        frame_suc.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        //frame_suc.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame_suc.getContentPane().setLayout(null);
         frame_suc.setVisible(false);
+
+        frame_menu = new JFrame();
+        frame_menu.setBounds(100, 100, 450, 400);
+        frame_menu.setLocationRelativeTo(null);//middle
+        //frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame_menu.getContentPane().setLayout(null);
+        frame_menu.setVisible(false);
+
+        Font f_0 = new Font("Times New Roman",Font.BOLD,20);
+        JLabel l_1 = new JLabel("Welcome to Trainer Service");
+        l_1.setBounds(72, 35, 300, 21);
+        l_1.setFont(f_0);
+        panel_in.add(l_1);
+
+        JLabel l_2 = new JLabel("Please enter your coach ID:");
+        l_2.setBounds(52, 85, 300, 21);
+        l_2.setFont(f_0);
+        panel_in.add(l_2);
+
+        tf_1 = new JTextField();
+        tf_1.setBounds(302, 85, 40, 30);
+        panel_in.add(tf_1);
+        tf_1.setColumns(10);
+
+        JButton b_1 = new JButton("LOG IN NOW!");
+        b_1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frame_menu.setContentPane(getPanel00(storage, tf_1.getText()));
+                frame_menu.setVisible(true);
+            }
+        });
+        b_1.setBounds(122, 205, 75, 29);
+        panel_in.add(b_1);
+
+        return panel_in;
+    }
+
+    //menu
+    public JPanel getPanel00(Storage storage, String coach_ID){
 
         final JPanel panel00 = new JPanel();
 
@@ -64,7 +104,7 @@ public class STALL {
         Font f_0 = new Font("Times New Roman",Font.BOLD,20);
 
         JLabel l_1 = new JLabel("Welcome to Trainer Service");
-        l_1.setBounds(72, 35, 300, 21);
+        l_1.setBounds(102, 35, 300, 21);
         l_1.setFont(f_0);
         panel00.add(l_1);
         //frame.getContentPane().add(l_1);
@@ -88,7 +128,7 @@ public class STALL {
                 frame.setVisible(true);
             }
         });
-        b_1.setBounds(122, 85, 123, 29);
+        b_1.setBounds(152, 85, 123, 29);
         panel00.add(b_1);
         //frame.getContentPane().add(b_1);
 
@@ -105,7 +145,7 @@ public class STALL {
                 frame.setVisible(true);
             }
         });
-        b_2.setBounds(122, 125, 123, 29);
+        b_2.setBounds(152, 125, 123, 29);
         panel00.add(b_2);
         //frame.getContentPane().add(b_2);
 
@@ -120,7 +160,7 @@ public class STALL {
                 frame.setVisible(true);
             }
         });
-        b_3.setBounds(122, 165, 123, 29);
+        b_3.setBounds(152, 165, 123, 29);
         panel00.add(b_3);
         //frame.getContentPane().add(b_3);
 
@@ -135,7 +175,7 @@ public class STALL {
                 frame.setVisible(true);
             }
         });
-        b_4.setBounds(122, 205, 123, 29);
+        b_4.setBounds(152, 205, 123, 29);
         panel00.add(b_4);
         //frame.getContentPane().add(b_4);
 
@@ -153,7 +193,7 @@ public class STALL {
                 frame.setVisible(true);
             }
         });
-        b_5.setBounds(122, 245, 123, 29);
+        b_5.setBounds(152, 245, 123, 29);
         panel00.add(b_5);
         //frame.getContentPane().add(b_5);
 
@@ -167,21 +207,20 @@ public class STALL {
         frame.getContentPane().add(bgp_1);
 */
 
+        JButton b_6 = new JButton("Back");
+        b_6.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frame_menu.setVisible(false);
+            }
+        });
+        b_6.setBounds(350,300,65,29);
+        panel00.add(b_6);
+
         return panel00;
     }
     //upload videos
     public JPanel getPanel01(ArrayList<LFClass> LFClass, String coach_ID){
-        //Mellow
-        try {
-            for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        }catch(Exception e) {
-            System.out.println(e);
-        }
 /*
         frame = new JFrame();
         frame.setBounds(100, 100, 450, 400);
@@ -318,6 +357,7 @@ public class STALL {
                 //frame.dispose();
                 //frame.setVisible(false);
                 //ST000 b = new ST000(name);
+                //frame.setContentPane(getPanel00(storage, coach_ID));
                 frame.setVisible(false);
             }
         });
@@ -335,17 +375,6 @@ public class STALL {
     }
     //Class check
     public JPanel getPanel02(ArrayList<Booking> BookClass, String coach_ID){
-        //Mellow
-        try {
-            for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        }catch(Exception e) {
-            System.out.println(e);
-        }
 /*
         frame = new JFrame();
         frame.setBounds(100, 100, 450, 400);
@@ -463,17 +492,6 @@ public class STALL {
     }
     //Free time add
     public JPanel getPanel04(ArrayList<Coach> coaches, String coach_ID){
-        //Mellow
-        try {
-            for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        }catch(Exception e) {
-            System.out.println(e);
-        }
 /*
         frame = new JFrame();
         frame.setBounds(100, 100, 450, 400);
@@ -568,17 +586,6 @@ public class STALL {
     }
     //Drop Class rate
     public JPanel getPanel05(ArrayList<Coach> coaches, String coach_ID){
-        //Mellow
-        try {
-            for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        }catch(Exception e) {
-            System.out.println(e);
-        }
 /*
         frame = new JFrame();
         frame.setBounds(100, 100, 450, 400);
@@ -739,17 +746,6 @@ public class STALL {
 
 
     public JPanel getPanel06(ArrayList<LFClass> LFClass, String coach_ID){
-        //Mellow
-        try {
-            for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        }catch(Exception e) {
-            System.out.println(e);
-        }
 /*
         frame = new JFrame();
         frame.setBounds(100, 100, 450, 400);
