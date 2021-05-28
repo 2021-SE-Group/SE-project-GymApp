@@ -13,7 +13,7 @@ public class CategorySelfIndexBuilder extends IndexBuilder<Category, Category> {
 
     @Override
     protected boolean checkIndexing(Category category, Category category2) {
-        return category2.parent_ID.equals(category.ID);
+        return category2.raw.parent_ID.equals(category.raw.ID);
     }
 
     @Override

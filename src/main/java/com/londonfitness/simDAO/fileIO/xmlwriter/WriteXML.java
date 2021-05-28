@@ -69,9 +69,9 @@ public class WriteXML {
         ) {
             @Override
             public void setRow(Category category) {
-                setCell("ID", category.ID);
-                setCell("name", category.name);
-                setCell("parent_ID", category.parent_ID);
+                setCell("ID", category.raw.ID);
+                setCell("name", category.raw.name);
+                setCell("parent_ID", category.raw.parent_ID);
             }
         }.write();
 
@@ -83,11 +83,11 @@ public class WriteXML {
         ) {
             @Override
             public void setRow(LFClass lfClass) {
-                setCell("ID", lfClass.ID);
-                setCell("name", lfClass.name);
-                setCell("duration", Long.toString(lfClass.duration));
-                setCell("resource_URL", lfClass.resource_URL);
-                setCell("category_ID", lfClass.category_ID);
+                setCell("ID", lfClass.raw.ID);
+                setCell("name", lfClass.raw.name);
+                setCell("duration", Long.toString(lfClass.raw.duration));
+                setCell("resource_URL", lfClass.raw.resource_URL);
+                setCell("category_ID", lfClass.raw.category_ID);
 
             }
         }.write();
@@ -99,10 +99,10 @@ public class WriteXML {
         ) {
             @Override
             public void setRow(Admin admin) {
-                setCell("ID", admin.ID);
-                setCell("username", admin.username);
-                setCell("name", admin.name);
-                if (admin.expired)
+                setCell("ID", admin.raw.ID);
+                setCell("username", admin.raw.username);
+                setCell("name", admin.raw.name);
+                if (admin.raw.expired)
                     setCell("expired", "T");
                 else
                     setCell("expired", "F");
@@ -116,10 +116,10 @@ public class WriteXML {
         ) {
             @Override
             public void setRow(Staff staff) {
-                setCell("ID", staff.ID);
-                setCell("username", staff.username);
-                setCell("name", staff.name);
-                if (staff.expired)
+                setCell("ID", staff.raw.ID);
+                setCell("username", staff.raw.username);
+                setCell("name", staff.raw.name);
+                if (staff.raw.expired)
                     setCell("expired", "T");
                 else
                     setCell("expired", "F");
@@ -133,14 +133,14 @@ public class WriteXML {
         ) {
             @Override
             public void setRow(Coach coach) {
-                setCell("ID", coach.ID);
-                setCell("username", coach.username);
-                setCell("name", coach.name);
-                if (coach.expired)
+                setCell("ID", coach.raw.ID);
+                setCell("username", coach.raw.username);
+                setCell("name", coach.raw.name);
+                if (coach.raw.expired)
                     setCell("expired", "T");
                 else
                     setCell("expired", "F");
-                setCell("c_profile_URL", coach.c_profile_URL);
+                setCell("c_profile_URL", coach.raw.c_profile_URL);
             }
         }.write();
 
@@ -151,9 +151,9 @@ public class WriteXML {
         ) {
             @Override
             public void setRow(CoachAbility coachAbility) {
-                setCell("coach_ID", coachAbility.coach_ID);
-                setCell("lfClass_ID", coachAbility.lfc_ID);
-                setCell("time", coachAbility.time);
+                setCell("coach_ID", coachAbility.raw.coach_ID);
+                setCell("lfClass_ID", coachAbility.raw.lfc_ID);
+                setCell("time", coachAbility.raw.time);
             }
         }.write();
 
@@ -164,14 +164,14 @@ public class WriteXML {
         ) {
             @Override
             public void setRow(Trainee trainee) {
-                setCell("ID", trainee.ID);
-                setCell("username", trainee.username);
-                setCell("name", trainee.name);
-                if (trainee.expired)
+                setCell("ID", trainee.raw.ID);
+                setCell("username", trainee.raw.username);
+                setCell("name", trainee.raw.name);
+                if (trainee.raw.expired)
                     setCell("expired", "T");
                 else
                     setCell("expired", "F");
-                setCell("t_profile_URL", trainee.t_profile_URL);
+                setCell("t_profile_URL", trainee.raw.t_profile_URL);
             }
         }.write();
 
@@ -190,13 +190,13 @@ public class WriteXML {
                 public int times;//class chances' time
                 public long repeat;
                 */
-                setCell("ID", booking.ID);
-                setCell("coach_ID", booking.coach_ID);
-                setCell("trainee_ID", booking.trainee_ID);
-                setCell("lfClass_ID", booking.lfClass_ID);
-                setCell("startDate", OurDateFormat.fileDate.format(booking.startDate));
-                setCell("times", Integer.toString(booking.times));
-                setCell("repeat", Long.toString(booking.repeat));
+                setCell("ID", booking.raw.ID);
+                setCell("coach_ID", booking.raw.coach_ID);
+                setCell("trainee_ID", booking.raw.trainee_ID);
+                setCell("lfClass_ID", booking.raw.lfClass_ID);
+                setCell("startDate", OurDateFormat.fileDate.format(booking.raw.startDate));
+                setCell("times", Integer.toString(booking.raw.times));
+                setCell("repeat", Long.toString(booking.raw.repeat));
             }
         }.write();
 
@@ -210,7 +210,7 @@ public class WriteXML {
                 // TODO
             }
         }.write();
-
+        /*
         new XMLTableTranslator<>(
                 doc, root,
                 "history_list", "record",
@@ -221,6 +221,7 @@ public class WriteXML {
                 // TODO
             }
         }.write();
+         */
     }
 
     @Test

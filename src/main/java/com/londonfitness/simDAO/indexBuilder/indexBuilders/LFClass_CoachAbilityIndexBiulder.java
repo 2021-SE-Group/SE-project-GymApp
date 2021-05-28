@@ -15,7 +15,7 @@ public class LFClass_CoachAbilityIndexBiulder extends IndexBuilder<LFClass, Coac
 
     @Override
     protected boolean checkIndexing(LFClass lfClass, CoachAbility coachAbility) {
-        return coachAbility.lfc_ID.equals(lfClass.ID);
+        return coachAbility.raw.lfc_ID.equals(lfClass.raw.ID);
     }
 
     @Override
