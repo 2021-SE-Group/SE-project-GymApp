@@ -1,5 +1,8 @@
 package com.londonfitness.GUI.ourComponent.form;
 
+import com.londonfitness.simDAO.rawTable.rawPersons.RawTrainee;
+import com.londonfitness.simDAO.table.persons.Trainee;
+
 import javax.swing.*;
 import java.util.ArrayList;
 
@@ -73,4 +76,6 @@ public class FormGUI extends JPanel {
         jf.add(new FormGUI(form));
         jf.setVisible(true);
     }
+
+
 }

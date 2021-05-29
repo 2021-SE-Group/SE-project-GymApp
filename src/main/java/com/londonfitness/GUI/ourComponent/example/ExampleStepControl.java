@@ -51,9 +51,12 @@ public abstract class ExampleStepControl extends StepControl {
         @Override
     public void setupListeners() {
         step1.getStepGUIGroup().getStepBar().getJbt_back()
-                .addActionListener(e -> {
-                    getStepStete().back();
-                    updateCurrentPane();
+                .addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        getStepStete().cancel();
+                        updateCurrentPane();
+                    }
                 });
 
         step1.getStepGUIGroup().getStepBar().getJbt_cancel()
@@ -64,6 +67,10 @@ public abstract class ExampleStepControl extends StepControl {
 
         step1.getStepGUIGroup().getStepBar().getJbt_next()
                 .addActionListener(e -> {
+                    step1.getStepGUIGroup().getPanel().retrieve();
+                    for(FormItem f : f1) {
+                        System.out.println(f.label + " : " + f.content);
+                    }
                     getStepStete().next();
                     updateCurrentPane();
                 });
