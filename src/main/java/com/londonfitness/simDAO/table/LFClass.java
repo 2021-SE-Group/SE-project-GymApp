@@ -1,11 +1,12 @@
 package com.londonfitness.simDAO.table;
 
 import com.londonfitness.simDAO.indexBuilder.Index;
+import com.londonfitness.simDAO.memStorage.Storage;
 import com.londonfitness.simDAO.rawTable.RawLFClass;
 
 import java.util.Iterator;
 
-public class LFClass extends Table<RawLFClass> {
+public class LFClass extends Table<RawLFClass> implements ExternKeys{
     // external key field
     public Category externKey_category;
 
@@ -15,5 +16,15 @@ public class LFClass extends Table<RawLFClass> {
 
     public LFClass(RawLFClass rawLFClass) {
         super(rawLFClass);
+    }
+
+    @Override
+    public void insert(Storage storage) {
+
+    }
+
+    @Override
+    public void update(Storage storage) {
+
     }
 }

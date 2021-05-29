@@ -1,12 +1,13 @@
 package com.londonfitness.simDAO.table;
 
 import com.londonfitness.OurDateFormat;
+import com.londonfitness.simDAO.memStorage.Storage;
 import com.londonfitness.simDAO.rawTable.RawExchange;
 import com.londonfitness.simDAO.table.persons.Coach;
 
 import java.util.Date;
 
-public class Exchange extends Table<RawExchange> {
+public class Exchange extends Table<RawExchange> implements ExternKeys{
     // external key field
     public Coach externKey_coach;
     public Booking externKey_booking;
@@ -14,9 +15,16 @@ public class Exchange extends Table<RawExchange> {
     public Exchange(RawExchange rawExchange) {
         super(rawExchange);
     }
-    //public Trainee externKey_trainee;
-    //public LFClass externKey_lfClass;
 
+    @Override
+    public void insert(Storage storage) {
+
+    }
+
+    @Override
+    public void update(Storage storage) {
+
+    }
 }
 
 

@@ -1,9 +1,8 @@
-package com.londonfitness.GUI.ourComponent;
+package com.londonfitness.GUI.ourComponent.tableGUI;
 
 import com.londonfitness.simDAO.memStorage.Storage;
 
 import javax.swing.*;
-import java.util.ArrayList;
 
 public abstract class OurTable<T> {
     public JTable jtb;

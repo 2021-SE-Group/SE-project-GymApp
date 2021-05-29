@@ -1,6 +1,6 @@
 package com.londonfitness.GUI;
 
-import com.londonfitness.GUI.ourComponent.example.BookingGUI2;
+import com.londonfitness.GUI.ourComponent.tableGUI.example.BookingGUI2;
 import com.londonfitness.simDAO.fileIO.XMLDocumentBuilder;
 import com.londonfitness.simDAO.fileIO.xmlwriter.WriteXML;
 import com.londonfitness.simDAO.memStorage.Storage;
