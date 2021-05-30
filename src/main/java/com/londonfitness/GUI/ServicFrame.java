@@ -1,6 +1,8 @@
 package com.londonfitness.GUI;
 
 import com.londonfitness.GUI.ourComponent.example.BookingGUI2;
+import com.londonfitness.GUI.ourComponent.step.StepControl;
+import com.londonfitness.GUI.ourComponent.step.StepPanel1;
 import com.londonfitness.simDAO.fileIO.XMLDocumentBuilder;
 import com.londonfitness.simDAO.fileIO.xmlwriter.WriteXML;
 import com.londonfitness.simDAO.memStorage.Storage;
@@ -43,8 +45,9 @@ public class ServicFrame extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable3;
-    /**
-     * Creates new form ServicFrame
+    private StepControl stepControl;
+
+     /* Creates new form ServicFrame
      */
     public ServicFrame(Storage storage) {
         this.storage = storage;
@@ -86,6 +89,8 @@ public class ServicFrame extends javax.swing.JFrame {
         jTabbedPane_serviceeg = new JTabbedPane();
         sp = new StudentPanel(storage);
         hp = new HistoryPanel(storage);
+        stepControl = new StepControl();
+
 
 
         //add stall
@@ -190,6 +195,7 @@ public class ServicFrame extends javax.swing.JFrame {
 
         jTabbedPane_serviceeg.addTab("student comment", ls);
         jTabbedPane_serviceeg.addTab("videos", vi);
+        jTabbedPane_serviceeg.addTab("steps", stepControl);
 
 
 
