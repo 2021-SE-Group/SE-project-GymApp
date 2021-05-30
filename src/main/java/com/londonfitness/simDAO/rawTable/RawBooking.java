@@ -21,6 +21,7 @@ public class RawBooking extends RawTable {
     public Date startDate;
     public int times; //class chances' time
     public long repeat; // after time duration of repeat ms, next class starts
+    public boolean quit;
     @Override
     public String toString() {
         return "Booking{" +
@@ -31,6 +32,7 @@ public class RawBooking extends RawTable {
                 ", startDate='" + OurDateFormat.fancyDate.format(startDate) + '\'' +
                 ", times=" + times +
                 ", repeat=" + repeat +
+                ", quit=" + quit +
                 '}';
     }
 }

@@ -318,6 +318,9 @@ public class ScanXML {
                     case "repeat":
                         booking.raw.repeat = Long.parseLong(n.getTextContent());
                         break;
+                    case "quit":
+                        booking.raw.quit = n.getTextContent().equals("t") || n.getTextContent().equals("T");
+                        break;
                 }
             }
 

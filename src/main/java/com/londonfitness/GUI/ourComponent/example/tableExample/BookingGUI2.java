@@ -21,7 +21,8 @@ public class BookingGUI2 extends OurTable<TraineeBookingJoinTableItem> {
         for(Trainee t: storage.trainees) {
             for(Iterator<Booking> it = t.index_booking.getTnIter(); it.hasNext();) {
                 Booking b = it.next();
-                a.add(new TraineeBookingJoinTableItem(t.raw.ID, t.raw.name, b.raw.ID, b.externKey_lfClass.raw.ID, b.externKey_lfClass.raw.name));
+                if(!b.raw.quit)
+                    a.add(new TraineeBookingJoinTableItem(t.raw.ID, t.raw.name, b.raw.ID, b.externKey_lfClass.raw.ID, b.externKey_lfClass.raw.name));
             }
         }
 
