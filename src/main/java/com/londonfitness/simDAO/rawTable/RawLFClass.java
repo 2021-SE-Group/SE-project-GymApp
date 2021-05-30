@@ -12,6 +12,7 @@ public class RawLFClass extends RawTable {
 
     public String ID;
     public String name;
+    public String coach_ID;
     public String category_ID;
     public Long duration;
     public String resource_URL;
@@ -20,6 +21,7 @@ public class RawLFClass extends RawTable {
         return "LFClass{" +
                 "ID='" + ID + '\'' +
                 ", name='" + name + '\'' +
+                ", coach_ID='" + coach_ID + '\'' +
                 ", duration='" + duration + '\'' +
                 ", resource_URL='" + resource_URL + '\'' +
                 ", category_ID='" + category_ID + '\'' +

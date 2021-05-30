@@ -1,4 +1,4 @@
-package com.londonfitness.GUI.ourComponent.example;
+package com.londonfitness.GUI.ourComponent.tableGUI.example;
 
 import com.londonfitness.OurDateFormat;
 import com.londonfitness.simDAO.memStorage.Storage;

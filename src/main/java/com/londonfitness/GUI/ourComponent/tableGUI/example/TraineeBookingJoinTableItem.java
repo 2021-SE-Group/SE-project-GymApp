@@ -1,8 +1,4 @@
-package com.londonfitness.GUI.ourComponent.example;
-
-import com.londonfitness.simDAO.indexBuilder.indexBuilders.Trainee_BookingIndexBuilder;
-import com.londonfitness.simDAO.memStorage.Storage;
-import com.londonfitness.simDAO.table.persons.Trainee;
+package com.londonfitness.GUI.ourComponent.tableGUI.example;
 
 public class TraineeBookingJoinTableItem {
     public TraineeBookingJoinTableItem(
