@@ -1,4 +1,4 @@
-package com.londonfitness.GUI.ourComponent.tableGUI.example;
+package com.londonfitness.GUI.ourComponent.example.tableExample;
 
 import com.londonfitness.GUI.ourComponent.tableGUI.OurTable;
 import com.londonfitness.GUI.ourComponent.tableGUI.OurTableModel;
