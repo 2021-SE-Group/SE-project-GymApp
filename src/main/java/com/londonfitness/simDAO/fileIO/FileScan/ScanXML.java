@@ -26,10 +26,12 @@ import java.io.File;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
+import java.math.BigDecimal;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.text.DecimalFormat;
 import java.text.ParseException;
 
 public class ScanXML {
@@ -140,6 +142,8 @@ public class ScanXML {
                     case "resource_URL":
                         lfClass.raw.resource_URL = n.getTextContent();
                         break;
+                    case "price":
+                        lfClass.raw.price = new BigDecimal(n.getTextContent());
                 }
             }
 
