@@ -35,6 +35,7 @@ public class ModelTimetable {
         transLate();
     }
     private void transLate(){
+
         for(Iterator<Booking>it = itBook;
             it.hasNext();)
         {
@@ -63,7 +64,9 @@ public class ModelTimetable {
     }
 
     public ModelTimetable(Trainee trainee){
-
+        les = new ArrayList<>();
+        this.itBook = trainee.index_booking.getTnIter();
+        transLate();
     }
 
     public static void main(String[] args){

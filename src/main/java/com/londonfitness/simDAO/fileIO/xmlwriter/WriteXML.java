@@ -197,6 +197,10 @@ public class WriteXML {
                 setCell("startDate", OurDateFormat.fileDate.format(booking.raw.startDate));
                 setCell("times", Integer.toString(booking.raw.times));
                 setCell("repeat", Long.toString(booking.raw.repeat));
+                if(booking.raw.quit)
+                    setCell("quit", "T");
+                else
+                    setCell("quit", "F");
             }
         }.write();
 

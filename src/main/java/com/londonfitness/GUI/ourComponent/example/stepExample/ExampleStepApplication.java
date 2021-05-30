@@ -1,4 +1,4 @@
-package com.londonfitness.GUI.ourComponent.example;
+package com.londonfitness.GUI.ourComponent.example.stepExample;
 
 import javax.swing.*;
 import java.awt.*;

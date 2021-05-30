@@ -173,9 +173,10 @@ public class STALL extends JPanel{
                 //frame.dispose();
                 //frame.setVisible(false);
                 //ST005 a = new ST005(name);
-                //frame.setContentPane(getPanel05(storage.coaches, coach_ID));
-                frame_suc.setContentPane(getPanel_maintain());
-                frame_suc.setVisible(true);
+                frame.setContentPane(getPanel05(storage.bookings, coach_ID));
+                frame.setVisible(true);
+                //frame_suc.setContentPane(getPanel_maintain());
+                //frame_suc.setVisible(true);
             }
         });
         b_4.setBounds(152, 205, 123, 29);
@@ -592,7 +593,7 @@ public class STALL extends JPanel{
 
     //maintaining
     //Drop Class rate
-    public JPanel getPanel05(ArrayList<Coach> coaches, String coach_ID){
+    public JPanel getPanel05(ArrayList<Booking> Bookings, String coach_ID){
 /*
         frame = new JFrame();
         frame.setBounds(100, 100, 450, 400);
@@ -655,13 +656,24 @@ public class STALL extends JPanel{
 
 
  */
-        double drc_n = 100;
-        for(int i = 0; i < coaches.size(); i++){
-            Coach mid = coaches.get(i);
-            if(mid.raw.ID == coach_ID){
-                //drc_n = mid.raw.DCR;
+        double drc_n = 0;
+        double f = 0;
+        double all = 0;
+
+        for(int i = 0; i < Bookings.size(); i++){
+            Booking mid = Bookings.get(i);
+            if(mid.raw.coach_ID == coach_ID){
+                all++;
+                if(mid.raw.quit){
+                    f++;
+                }
             }
 
+        }
+        if(all != 0){
+            drc_n = f/all;
+        }else {
+            drc_n = 0;
         }
 
         /************************/

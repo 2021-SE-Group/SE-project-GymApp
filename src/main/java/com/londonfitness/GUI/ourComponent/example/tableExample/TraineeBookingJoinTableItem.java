@@ -1,4 +1,4 @@
-package com.londonfitness.GUI.ourComponent.tableGUI.example;
+package com.londonfitness.GUI.ourComponent.example.tableExample;
 
 public class TraineeBookingJoinTableItem {
     public TraineeBookingJoinTableItem(

@@ -1,4 +1,4 @@
-package com.londonfitness.GUI.ourComponent.example;
+package com.londonfitness.GUI.ourComponent.example.stepExample;
 
 import com.londonfitness.GUI.ourComponent.form.FormGUI;
 import com.londonfitness.GUI.ourComponent.form.FormItem;
