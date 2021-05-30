@@ -48,7 +48,7 @@ public class STALL extends JPanel{
         frame.getContentPane().setLayout(null);
         frame.setVisible(false);
 
-        frame_suc = new JFrame("COACH SERVICE");
+        frame_suc = new JFrame("DOWN");
         frame_suc.setBounds(100, 100, 230, 200);
         frame_suc.setLocationRelativeTo(null);//middle
         //frame_suc.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -91,7 +91,6 @@ public class STALL extends JPanel{
 
         return panel_in;
     }
-
     //menu
     public JPanel getPanel00(Storage storage, String coach_ID){
 
@@ -149,6 +148,8 @@ public class STALL extends JPanel{
         panel00.add(b_2);
         //frame.getContentPane().add(b_2);
 
+
+        //maintaining
         JButton b_3 = new JButton("My Free time");
         b_3.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e)
@@ -156,8 +157,9 @@ public class STALL extends JPanel{
                 //frame.dispose();
                 //frame.setVisible(false);
                 //ST004 a = new ST004(name);
-                frame.setContentPane(getPanel04(storage.coaches, coach_ID));
-                frame.setVisible(true);
+                //frame.setContentPane(getPanel04(storage.coaches, coach_ID));
+                frame_suc.setContentPane(getPanel_maintain());
+                frame_suc.setVisible(true);
             }
         });
         b_3.setBounds(152, 165, 123, 29);
@@ -171,8 +173,9 @@ public class STALL extends JPanel{
                 //frame.dispose();
                 //frame.setVisible(false);
                 //ST005 a = new ST005(name);
-                frame.setContentPane(getPanel05(storage.coaches, coach_ID));
-                frame.setVisible(true);
+                //frame.setContentPane(getPanel05(storage.coaches, coach_ID));
+                frame_suc.setContentPane(getPanel_maintain());
+                frame_suc.setVisible(true);
             }
         });
         b_4.setBounds(152, 205, 123, 29);
@@ -490,6 +493,8 @@ public class STALL extends JPanel{
      */
         return panel02;
     }
+
+    //maintaining
     //Free time add
     public JPanel getPanel04(ArrayList<Coach> coaches, String coach_ID){
 /*
@@ -584,6 +589,8 @@ public class STALL extends JPanel{
 */
         return panel04;
     }
+
+    //maintaining
     //Drop Class rate
     public JPanel getPanel05(ArrayList<Coach> coaches, String coach_ID){
 /*
@@ -742,6 +749,36 @@ public class STALL extends JPanel{
         //frame.getContentPane().add(b_2);
 
         return panel04_sub;
+    }
+
+    //maintaining
+    public JPanel getPanel_maintain(){
+        Font f_0 = new Font("Times New Roman",Font.BOLD,13);
+
+        JPanel panel_maintain = new JPanel();
+        panel_maintain.setLayout(null);
+
+        JLabel l_1 = new JLabel("This function is under maintaining");
+        l_1.setBounds(18, 40, 300, 21);
+        l_1.setFont(f_0);
+        panel_maintain.add(l_1);
+        //frame.getContentPane().add(l_1);
+
+        JButton b_2 = new JButton("BACK");
+        b_2.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e)
+            {
+                //frame.dispose();
+                //frame.setVisible(false);
+                //ST004 a = new ST004(name);
+                frame_suc.setVisible(false);
+            }
+        });
+        b_2.setBounds(70, 80, 75, 29);
+        panel_maintain.add(b_2);
+        //frame.getContentPane().add(b_2);
+
+        return panel_maintain;
     }
 
 
