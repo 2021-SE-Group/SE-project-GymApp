@@ -41,21 +41,21 @@ public class STALL extends JPanel{
 
         final JPanel panel_in = new JPanel();
 
-        frame = new JFrame();
+        frame = new JFrame("COACH SERVICE");
         frame.setBounds(100, 100, 450, 400);
         frame.setLocationRelativeTo(null);//middle
         //frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.getContentPane().setLayout(null);
         frame.setVisible(false);
 
-        frame_suc = new JFrame();
+        frame_suc = new JFrame("COACH SERVICE");
         frame_suc.setBounds(100, 100, 230, 200);
         frame_suc.setLocationRelativeTo(null);//middle
         //frame_suc.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame_suc.getContentPane().setLayout(null);
         frame_suc.setVisible(false);
 
-        frame_menu = new JFrame();
+        frame_menu = new JFrame("COACH SERVICE");
         frame_menu.setBounds(100, 100, 450, 400);
         frame_menu.setLocationRelativeTo(null);//middle
         //frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
