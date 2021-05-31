@@ -1,23 +1,31 @@
 package com.londonfitness.studentService;
 
 import com.londonfitness.AppSkeleton;
-import com.londonfitness.GUI.ServicFrame;
+import com.londonfitness.GUI.JScrollPane_CoachTable;
 import com.londonfitness.GUI.ourComponent.tableGUI.OurTable;
 import com.londonfitness.GUI.ourComponent.tableGUI.OurTableModel;
 import com.londonfitness.simDAO.memStorage.Storage;
 import com.londonfitness.simDAO.table.Category;
 
 import javax.swing.*;
-import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 
 public class PanelCategory extends JPanel{
-    JButton selectCategory;
-    OurTable<Category> ourTable;
+    private JButton selectCategory;
+    private OurTable<Category> ourTable;
+    private JScrollPane jScrollPane;
 
     public PanelCategory(Storage storage){
         selectCategory = new JButton("category");
+        selectCategory.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
         ourTable = new OurTable<>(storage) {
             @Override
             public OurTableModel<Category> constructModel(Storage storage) {
@@ -64,9 +72,19 @@ public class PanelCategory extends JPanel{
                 };
             }
         };
-        this.add(this.ourTable.jtb);
+        jScrollPane = new JScrollPane(ourTable.jtb);
+        jScrollPane.createHorizontalScrollBar();
+        jScrollPane.createVerticalScrollBar();
+        this.add(this.jScrollPane);
         this.add(this.selectCategory);
-        setVisible(true);
+    }
+
+    public JButton getSelectCategory() {
+        return selectCategory;
+    }
+
+    public JTable getTable() {
+        return ourTable.jtb;
     }
 
     public static void main(String[] args) {
@@ -75,9 +93,14 @@ public class PanelCategory extends JPanel{
             @Override
             public JFrame bringUpGUI() {
                 JFrame jf = new JFrame("test");
+
+                jf.setSize(1000, 600);
+
                 java.awt.EventQueue.invokeLater(() -> {
                     jf.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-                    jf.add(new PanelCategory(this.getStorage()));
+                    jf.setLayout(null);
+                    PanelCategory pc = new PanelCategory(this.getStorage());
+                    jf.setContentPane(pc);
                     jf.setVisible(true);
                 });
                 return jf;
