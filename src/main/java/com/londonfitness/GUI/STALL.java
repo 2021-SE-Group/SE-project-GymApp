@@ -149,17 +149,17 @@ public class STALL extends JPanel{
         //frame.getContentPane().add(b_2);
 
 
-        //maintaining
-        JButton b_3 = new JButton("My Free time");
+        //maintaining  ---> change to 07
+        JButton b_3 = new JButton("My profile");
         b_3.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e)
             {
                 //frame.dispose();
                 //frame.setVisible(false);
                 //ST004 a = new ST004(name);
-                //frame.setContentPane(getPanel04(storage.coaches, coach_ID));
-                frame_suc.setContentPane(getPanel_maintain());
-                frame_suc.setVisible(true);
+                frame.setContentPane(getPanel07(storage.coaches, coach_ID));
+                //frame_suc.setContentPane(getPanel_maintain());
+                frame.setVisible(true);
             }
         });
         b_3.setBounds(152, 165, 123, 29);
@@ -339,7 +339,7 @@ public class STALL extends JPanel{
                 ad.raw.category_ID = tf_3.getText();
                 ad.raw.duration = Long.valueOf(tf_4.getText());
                 ad.raw.resource_URL = tf_1.getText();
-
+                //ad.raw.price = "Unsettled";
 
 
 
@@ -495,7 +495,7 @@ public class STALL extends JPanel{
         return panel02;
     }
 
-    //maintaining
+    //maintaining ---> delete
     //Free time add
     public JPanel getPanel04(ArrayList<Coach> coaches, String coach_ID){
 /*
@@ -591,7 +591,7 @@ public class STALL extends JPanel{
         return panel04;
     }
 
-    //maintaining
+    //maintaining --->complete
     //Drop Class rate
     public JPanel getPanel05(ArrayList<Booking> Bookings, String coach_ID){
 /*
@@ -840,6 +840,7 @@ public class STALL extends JPanel{
                 BC[num][3] = b.raw.category_ID;
                 BC[num][4] = b.raw.duration;
                 BC[num][5] = b.raw.resource_URL;
+                //BC[num][5] = b.raw.price;
                 num++;
             }
 
@@ -913,6 +914,49 @@ public class STALL extends JPanel{
 
      */
         return panel06;
+    }
+
+    public JPanel getPanel07(ArrayList<Coach> coaches, String coach_ID){
+        Font f_0 = new Font("Times New Roman",Font.BOLD,20);
+
+        JPanel panel07 = new JPanel();
+        panel07.setLayout(null);
+
+        JLabel l_1 = new JLabel("My Profile");
+        l_1.setBounds(162, 95, 300, 21);
+        l_1.setFont(f_0);
+        panel07.add(l_1);
+        //frame.getContentPane().add(l_1);
+
+        String a = new String();
+
+        for(int i = 0; i < coaches.size(); i++){
+            Coach mid = coaches.get(i);
+            if(mid.raw.ID == coach_ID){
+                a = mid.raw.c_profile_URL;
+                break;
+            }
+        }
+
+
+        JLabel l_2 = new JLabel(a);
+        l_2.setBounds(128, 131, 150, 35);
+        panel07.add(l_2);
+
+        JButton b_1 = new JButton("BACK");
+        b_1.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e)
+            {
+                //frame.dispose();
+                //frame.setVisible(false);
+                //ST000 a = new ST000(name);
+                frame.setVisible(false);
+            }
+        });
+        b_1.setBounds(152, 185, 123, 29);
+        panel07.add(b_1);
+
+        return panel07;
     }
 
 
