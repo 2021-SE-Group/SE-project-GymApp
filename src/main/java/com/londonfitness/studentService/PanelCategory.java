@@ -24,13 +24,12 @@ public class PanelCategory extends JPanel{
                 ArrayList<Category> a = storage.categories;
 
 
-                return new OurTableModel<Category>(storage.categories, 2) {
+                return new OurTableModel<>(storage.categories, 2) {
                     @Override
                     public String getColumnName(int columnIndex) {
-                        if(columnIndex == 0){
+                        if (columnIndex == 0) {
                             return "ID";
-                        }
-                        else {
+                        } else {
                             return "Category";
                         }
                     }
@@ -71,16 +70,17 @@ public class PanelCategory extends JPanel{
     }
 
     public static void main(String[] args) {
-        new AppSkeleton() {
+        new AppSkeleton(true, true, true, false, false) {
 
             @Override
-            public void bringUpGUI() {
+            public JFrame bringUpGUI() {
+                JFrame jf = new JFrame("test");
                 java.awt.EventQueue.invokeLater(() -> {
-                    JFrame jf = new JFrame("test");
-                    jf.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+                    jf.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
                     jf.add(new PanelCategory(this.getStorage()));
                     jf.setVisible(true);
                 });
+                return jf;
             }
         };
     }

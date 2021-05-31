@@ -1,30 +1,70 @@
 package com.londonfitness.simDAO.indexBuilder;
 
-import com.londonfitness.simDAO.indexBuilder.indexBuilders.*;
-import com.londonfitness.simDAO.memStorage.Storage;
-import com.londonfitness.simDAO.table.Category;
 
-import java.util.Iterator;
+import com.londonfitness.simDAO.memStorage.Storage;
+import com.londonfitness.simDAO.table.Booking;
+import com.londonfitness.simDAO.table.Category;
+import com.londonfitness.simDAO.table.CoachAbility;
+import com.londonfitness.simDAO.table.LFClass;
+import com.londonfitness.simDAO.table.persons.Coach;
+import com.londonfitness.simDAO.table.persons.Trainee;
 
 public class RebuildIndexes {
     public RebuildIndexes(Storage storage) {
-        CategorySelfIndexBuilder ccb = new CategorySelfIndexBuilder(storage.categories);
-        ccb.buildIndex();
+        new IndexBuilderN2M<>(
+                storage.categories,
+                storage.categories,
+                new IndexBuilder12N<>(Storage.categoryCategoryIndexBuilder121)
+        ).buildIndex();
 
-        Category_LFClassIndexBuilder clb = new Category_LFClassIndexBuilder(storage.categories, storage.lfClasses);
-        clb.buildIndex();
+        new IndexBuilderN2M<>(
+                storage.categories,
+                storage.lfClasses,
+                new IndexBuilder12N<>(Storage.categoryLFClassIndexBuilder121)
+        ).buildIndex();
 
-        LFClass_BookingIndexBuilder lbb = new LFClass_BookingIndexBuilder(storage.lfClasses, storage.bookings);
-        lbb.buildIndex();
+        new IndexBuilderN2M<>(
+                storage.coaches,
+                storage.bookings,
+                new IndexBuilder12N<>(Storage.coachBookingIndexBuilder121)
+        ).buildIndex();
 
-        Trainee_BookingIndexBuilder tbb = new Trainee_BookingIndexBuilder(storage.trainees, storage.bookings);
-        tbb.buildIndex();
+        new IndexBuilderN2M<>(
+                storage.coaches,
+                storage.coachAbilities,
+                new IndexBuilder12N<>(Storage.coachCoachAbilityIndexBuilder121)
+            ).buildIndex();
 
-        Coach_BookingIndexBuilder cbb = new Coach_BookingIndexBuilder(storage.coaches, storage.bookings);
-        cbb.buildIndex();
+        new IndexBuilderN2M<>(
+                storage.lfClasses,
+                storage.bookings,
+                new IndexBuilder12N<>(Storage.lfClassBookingIndexBuilder121)
+        ).buildIndex();
+
+        new IndexBuilderN2M<>(
+                storage.lfClasses,
+                storage.coachAbilities,
+                new IndexBuilder12N<>(Storage.lfClassCoachAbilityIndexBuilder121)
+        ).buildIndex();
+
+        new IndexBuilderN2M<>(
+                storage.trainees,
+                storage.bookings,
+                new IndexBuilder12N<>(Storage.traineeBookingIndexBuilder121)
+        ).buildIndex();
+
+        // copy template
+        /*
+        new IndexBuilderN2M<>(
+                storage,
+                storage,
+                Storage) {
+        }.buildIndex();
+         */
+
+
         /* only for developing, when done, delete
         DFT(storage.categories.get(0));
-
         //*/
     }
 

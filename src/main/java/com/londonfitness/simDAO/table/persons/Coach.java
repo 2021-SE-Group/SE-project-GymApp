@@ -1,6 +1,7 @@
 package com.londonfitness.simDAO.table.persons;
 
 import com.londonfitness.simDAO.indexBuilder.Index;
+import com.londonfitness.simDAO.memStorage.Storage;
 import com.londonfitness.simDAO.rawTable.rawPersons.RawCoach;
 import com.londonfitness.simDAO.table.Booking;
 import com.londonfitness.simDAO.table.CoachAbility;
@@ -15,5 +16,12 @@ public class Coach extends Table<RawCoach> {
 
     public Coach(RawCoach rawCoach) {
         super(rawCoach);
+        index_coachAbility = new Index<>();
+        index_booking = new Index<>();
+    }
+
+    @Override
+    public void insert(Storage storage) {
+        storage.coaches.add(this);
     }
 }

@@ -1,6 +1,7 @@
 package com.londonfitness.simDAO.table;
 
 import com.londonfitness.OurDateFormat;
+import com.londonfitness.simDAO.indexBuilder.IndexBuilderN21;
 import com.londonfitness.simDAO.memStorage.Storage;
 import com.londonfitness.simDAO.rawTable.RawExchange;
 import com.londonfitness.simDAO.table.persons.Coach;
@@ -15,14 +16,14 @@ public class Exchange extends Table<RawExchange> implements ExternKeys{
     public Exchange(RawExchange rawExchange) {
         super(rawExchange);
     }
+    /*
+    private static final IndexBuilderN21<Coach, Exchange> co
+            = new IndexBuilderN21<>()
 
+
+     */
     @Override
     public void insert(Storage storage) {
-
-    }
-
-    @Override
-    public void update(Storage storage) {
 
     }
 }

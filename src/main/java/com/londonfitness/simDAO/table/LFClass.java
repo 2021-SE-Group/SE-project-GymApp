@@ -1,6 +1,7 @@
 package com.londonfitness.simDAO.table;
 
 import com.londonfitness.simDAO.indexBuilder.Index;
+import com.londonfitness.simDAO.indexBuilder.IndexBuilderN21;
 import com.londonfitness.simDAO.memStorage.Storage;
 import com.londonfitness.simDAO.rawTable.RawLFClass;
 
@@ -16,15 +17,16 @@ public class LFClass extends Table<RawLFClass> implements ExternKeys{
 
     public LFClass(RawLFClass rawLFClass) {
         super(rawLFClass);
+        index_booking = new Index<>();
+        index_CoachAbility = new Index<>();
     }
+
+    private static final IndexBuilderN21<Category, LFClass> categoryLFClassIndexBuilderN21
+            = new IndexBuilderN21<>(Storage.categoryLFClassIndexBuilder121);
 
     @Override
     public void insert(Storage storage) {
-
-    }
-
-    @Override
-    public void update(Storage storage) {
-
+        storage.lfClasses.add(this);
+        categoryLFClassIndexBuilderN21.buildBackwardIndex(storage.categories, this);
     }
 }

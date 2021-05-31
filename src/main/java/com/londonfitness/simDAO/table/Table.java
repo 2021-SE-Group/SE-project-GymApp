@@ -1,6 +1,8 @@
 package com.londonfitness.simDAO.table;
 
-public abstract class Table <T> {
+import com.londonfitness.simDAO.memStorage.Storage;
+
+public abstract class Table <T> implements ExternKeys{
     public T raw;
     public Table (T t) {
         this.raw = t;

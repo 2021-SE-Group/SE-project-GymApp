@@ -10,10 +10,6 @@ public class StepGUI<JP extends JPanel> extends JPanel {
     private GroupLayout layout;
     private StepGUIGroup<JP> stepGUIGroup;
 
-    public StepGUIGroup<JP> getStepGUIGroup() {
-        return stepGUIGroup;
-    }
-
     public StepGUI(StepState stepState, JP jp) {
         layout = new GroupLayout(this);
         setLayout(layout);
@@ -21,6 +17,10 @@ public class StepGUI<JP extends JPanel> extends JPanel {
         stepGUIGroup = new StepGUIGroup<>(layout, stepState, jp);
         layout.setHorizontalGroup(stepGUIGroup.getHorizontal());
         layout.setVerticalGroup(stepGUIGroup.getVertical());
+    }
+
+    public StepGUIGroup<JP> getStepGUIGroup() {
+        return stepGUIGroup;
     }
 
     public static void main(String[] args) {
