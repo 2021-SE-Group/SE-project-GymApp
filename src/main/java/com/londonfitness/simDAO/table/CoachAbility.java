@@ -17,9 +17,4 @@ public class CoachAbility extends Table<RawCoachAbility> implements ExternKeys{
     public void insert(Storage storage) {
 
     }
-
-    @Override
-    public void update(Storage storage) {
-
-    }
 }

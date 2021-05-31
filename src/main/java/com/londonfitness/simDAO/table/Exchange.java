@@ -20,11 +20,6 @@ public class Exchange extends Table<RawExchange> implements ExternKeys{
     public void insert(Storage storage) {
 
     }
-
-    @Override
-    public void update(Storage storage) {
-
-    }
 }
 
 

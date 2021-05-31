@@ -1,5 +1,7 @@
 package com.londonfitness.simDAO.table;
 
+import com.londonfitness.simDAO.memStorage.Storage;
+
 public abstract class Table <T> {
     public T raw;
     public Table (T t) {

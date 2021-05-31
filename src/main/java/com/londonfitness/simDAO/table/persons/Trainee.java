@@ -11,5 +11,6 @@ public class Trainee extends Table<RawTrainee> {
 
     public Trainee(RawTrainee rawTrainee) {
         super(rawTrainee);
+        index_booking = new Index<>();
     }
 }

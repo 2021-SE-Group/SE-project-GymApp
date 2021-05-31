@@ -16,15 +16,12 @@ public class LFClass extends Table<RawLFClass> implements ExternKeys{
 
     public LFClass(RawLFClass rawLFClass) {
         super(rawLFClass);
+        index_booking = new Index<>();
+        index_CoachAbility = new Index<>();
     }
 
     @Override
     public void insert(Storage storage) {
-
-    }
-
-    @Override
-    public void update(Storage storage) {
 
     }
 }

@@ -15,5 +15,7 @@ public class Coach extends Table<RawCoach> {
 
     public Coach(RawCoach rawCoach) {
         super(rawCoach);
+        index_coachAbility = new Index<>();
+        index_booking = new Index<>();
     }
 }

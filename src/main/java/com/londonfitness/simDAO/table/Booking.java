@@ -1,7 +1,6 @@
 package com.londonfitness.simDAO.table;
 
 import com.londonfitness.simDAO.indexBuilder.Index;
-import com.londonfitness.OurDateFormat;
 import com.londonfitness.simDAO.memStorage.Storage;
 import com.londonfitness.simDAO.rawTable.RawBooking;
 import com.londonfitness.simDAO.table.persons.Coach;
@@ -20,15 +19,11 @@ public class Booking extends Table<RawBooking> implements ExternKeys{
 
     public Booking(RawBooking rawBooking) {
         super(rawBooking);
+        index_exchange = new Index<>();
     }
 
     @Override
     public void insert(Storage storage) {
-
-    }
-
-    @Override
-    public void update(Storage storage) {
 
     }
 }
