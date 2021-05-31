@@ -21,8 +21,6 @@ public class Category extends Table<RawCategory> implements ExternKeys{
 
     private static final IndexBuilderN21<Category, Category> categoryCategoryIndexBuilderN21
             = new IndexBuilderN21<>(Storage.categoryCategoryIndexBuilder121);
-    private static final IndexBuilderN21<Category, LFClass> categoryLFClassIndexBuilderN21
-            = new IndexBuilderN21<Category, LFClass>(Storage.categoryLFClassIndexBuilder121);
 
     @Override
     public void insert(Storage storage) {
