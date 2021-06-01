@@ -7,13 +7,8 @@ import com.londonfitness.simDAO.memStorage.Storage;
 import com.londonfitness.simDAO.table.persons.Coach;
 
 import javax.swing.*;
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.io.IOException;
-import java.nio.file.Paths;
 
-public class PanelCoach extends JPanel{
+public class PanelCoach extends JPanel {
     OurTable<Coach> ourTable;
     JScrollPane jsp;
 
@@ -70,10 +65,6 @@ public class PanelCoach extends JPanel{
         this.add(jsp);
     }
 
-    public JTable getTable() {
-        return ourTable.jtb;
-    }
-
     public static void main(String[] args) {
         new AppSkeleton(true, true, true, false, false) {
 
@@ -89,5 +80,9 @@ public class PanelCoach extends JPanel{
                 return jf;
             }
         };
+    }
+
+    public JTable getTable() {
+        return ourTable.jtb;
     }
 }

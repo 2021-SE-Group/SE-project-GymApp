@@ -7,14 +7,13 @@ import com.londonfitness.simDAO.memStorage.Storage;
 import com.londonfitness.simDAO.table.Category;
 
 import javax.swing.*;
-import java.util.ArrayList;
 
 
-public class PanelCategory extends JPanel{
+public class PanelCategory extends JPanel {
     OurTable<Category> ourTable;
     JScrollPane jsp;
 
-    public PanelCategory(Storage storage){
+    public PanelCategory(Storage storage) {
         ourTable = new OurTable<>(storage) {
             @Override
             public OurTableModel<Category> constructModel(Storage storage) {
@@ -63,10 +62,6 @@ public class PanelCategory extends JPanel{
         this.add(jsp);
     }
 
-    public JTable getTable() {
-        return ourTable.jtb;
-    }
-
     public static void main(String[] args) {
         new AppSkeleton(true, true, true, false, false) {
 
@@ -82,5 +77,9 @@ public class PanelCategory extends JPanel{
                 return jf;
             }
         };
+    }
+
+    public JTable getTable() {
+        return ourTable.jtb;
     }
 }

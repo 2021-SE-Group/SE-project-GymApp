@@ -9,7 +9,7 @@ public class IndexBuilderN2M<
         Tn extends Table> {
     private final ArrayList<T1> t1s;
     private final ArrayList<Tn> tns_all;
-    private IndexBuilder12N<T1, Tn> ib;
+    private final IndexBuilder12N<T1, Tn> ib;
 
     public IndexBuilderN2M(ArrayList<T1> t1s, ArrayList<Tn> tns_all, IndexBuilder12N<T1, Tn> ib) {
         this.t1s = t1s;
@@ -18,7 +18,7 @@ public class IndexBuilderN2M<
     }
 
     public void buildIndex() {
-        for(T1 t1: t1s) {
+        for (T1 t1 : t1s) {
             ib.buildIndex(t1, tns_all);
         }
     }

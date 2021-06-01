@@ -1,7 +1,6 @@
 package com.londonfitness.GUI;
 
 
-
 import com.londonfitness.simDAO.memStorage.Storage;
 
 import javax.swing.*;
@@ -9,11 +8,13 @@ import java.awt.*;
 
 public class videos extends JPanel {
     Storage storage;
+
     public videos(Storage storage) {
         this.storage = storage;
         this.initComponent();
         this.setVisible(true);
     }
+
     private void initComponent() {
         GroupLayout gl_panel = new GroupLayout(this);
         JLabel lblNewLabel = new JLabel("Available videos");
@@ -32,11 +33,11 @@ public class videos extends JPanel {
                 )
         );
         gl_panel.setVerticalGroup(gl_panel.createSequentialGroup().addComponent(lblNewLabel)
-                        .addComponent(lblNewLabel)
-                        .addComponent(txtpnIfYouHave)
-                        .addComponent(btnBookedVideos)
-                        .addComponent(txtpnIfYouAre)
-                        .addComponent(btnNewButton)
+                .addComponent(lblNewLabel)
+                .addComponent(txtpnIfYouHave)
+                .addComponent(btnBookedVideos)
+                .addComponent(txtpnIfYouAre)
+                .addComponent(btnNewButton)
         );
 
 

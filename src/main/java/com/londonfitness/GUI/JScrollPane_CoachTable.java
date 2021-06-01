@@ -7,7 +7,7 @@ import javax.swing.*;
 import java.util.ArrayList;
 
 public class JScrollPane_CoachTable extends JScrollPane {
-    private JTable CoachTable;
+    private final JTable CoachTable;
     private Storage storage;
 
     public JScrollPane_CoachTable(ArrayList<Coach> coaches) {
@@ -22,7 +22,7 @@ public class JScrollPane_CoachTable extends JScrollPane {
         CoachTable = new JTable();
         CoachTable.setModel(new javax.swing.table.DefaultTableModel(
                 CP,
-                new String [] {
+                new String[]{
                         "ID", "username", "name", "profile"
                 }
         ));

@@ -1,11 +1,9 @@
 package com.londonfitness.GUI;
 
-import com.londonfitness.GUI.ourComponent.example.tableExample.BookingTableModel;
 import com.londonfitness.simDAO.memStorage.Storage;
 import com.londonfitness.simDAO.rawTable.RawLFClass;
 import com.londonfitness.simDAO.table.Booking;
 import com.londonfitness.simDAO.table.LFClass;
-import com.londonfitness.simDAO.table.Record;
 import com.londonfitness.simDAO.table.persons.Coach;
 
 import javax.swing.*;
@@ -13,9 +11,8 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import java.util.Date;
 
-public class STALL extends JPanel{
+public class STALL extends JPanel {
     private Storage storage;
     private JTable Coach_Class;
 
@@ -27,7 +24,7 @@ public class STALL extends JPanel{
     private JFrame frame_menu;
     private JFrame frame_suc;
 
-    public JPanel getPanel_in(Storage storage){
+    public JPanel getPanel_in(Storage storage) {
         //Smooth
         try {
             for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
@@ -36,7 +33,7 @@ public class STALL extends JPanel{
                     break;
                 }
             }
-        }catch(Exception e) {
+        } catch (Exception e) {
             System.out.println(e);
         }
 
@@ -63,7 +60,7 @@ public class STALL extends JPanel{
         frame_menu.getContentPane().setLayout(null);
         frame_menu.setVisible(false);
 
-        Font f_0 = new Font("Times New Roman",Font.BOLD,20);
+        Font f_0 = new Font("Times New Roman", Font.BOLD, 20);
         JLabel l_1 = new JLabel("Welcome to Trainer Service");
         l_1.setBounds(72, 35, 300, 21);
         l_1.setFont(f_0);
@@ -92,8 +89,9 @@ public class STALL extends JPanel{
 
         return panel_in;
     }
+
     //menu
-    public JPanel getPanel00(Storage storage, String coach_ID){
+    public JPanel getPanel00(Storage storage, String coach_ID) {
 
         final JPanel panel00 = new JPanel();
 
@@ -101,7 +99,7 @@ public class STALL extends JPanel{
         panel00.setLayout(null);
 
 
-        Font f_0 = new Font("Times New Roman",Font.BOLD,20);
+        Font f_0 = new Font("Times New Roman", Font.BOLD, 20);
 
         JLabel l_1 = new JLabel("Welcome to Trainer Service");
         l_1.setBounds(102, 35, 300, 21);
@@ -119,8 +117,7 @@ public class STALL extends JPanel{
 
         JButton b_1 = new JButton("Upload Video");
         b_1.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e)
-            {
+            public void actionPerformed(ActionEvent e) {
                 //frame.dispose();
                 //ST001 a = new ST001(name);
                 //panel00.remove(panel00);
@@ -134,8 +131,7 @@ public class STALL extends JPanel{
 
         JButton b_2 = new JButton("My Class");
         b_2.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e)
-            {
+            public void actionPerformed(ActionEvent e) {
                 //frame.dispose();
                 //frame.setVisible(false);
                 //ST002 a = new ST002(name);
@@ -153,8 +149,7 @@ public class STALL extends JPanel{
         //maintaining  ---> change to 07
         JButton b_3 = new JButton("My profile");
         b_3.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e)
-            {
+            public void actionPerformed(ActionEvent e) {
                 //frame.dispose();
                 //frame.setVisible(false);
                 //ST004 a = new ST004(name);
@@ -169,8 +164,7 @@ public class STALL extends JPanel{
 
         JButton b_4 = new JButton("Drop Class Rate");
         b_4.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e)
-            {
+            public void actionPerformed(ActionEvent e) {
                 //frame.dispose();
                 //frame.setVisible(false);
                 //ST005 a = new ST005(name);
@@ -186,8 +180,7 @@ public class STALL extends JPanel{
 
         JButton b_5 = new JButton("Check Videos");
         b_5.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e)
-            {
+            public void actionPerformed(ActionEvent e) {
                 //frame.dispose();
                 //frame.setVisible(false);
                 //System.exit(0);
@@ -219,13 +212,14 @@ public class STALL extends JPanel{
                 frame_menu.setVisible(false);
             }
         });
-        b_6.setBounds(350,300,65,29);
+        b_6.setBounds(350, 300, 65, 29);
         panel00.add(b_6);
 
         return panel00;
     }
+
     //upload videos
-    public JPanel getPanel01(ArrayList<LFClass> LFClass, String coach_ID){
+    public JPanel getPanel01(ArrayList<LFClass> LFClass, String coach_ID) {
 /*
         frame = new JFrame();
         frame.setBounds(100, 100, 450, 400);
@@ -237,7 +231,7 @@ public class STALL extends JPanel{
         frame.setBounds(100, 100, 450, 400);
         frame.setLocationRelativeTo(null);//middle
 
-        Font f_0 = new Font("Times New Roman",Font.BOLD,20);
+        Font f_0 = new Font("Times New Roman", Font.BOLD, 20);
 
         JPanel panel01 = new JPanel();
         panel01.setLayout(null);
@@ -288,8 +282,7 @@ public class STALL extends JPanel{
 
         JButton b_1 = new JButton("ADD");
         b_1.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e)
-            {
+            public void actionPerformed(ActionEvent e) {
                 /******************************************/
                 /*
                 File file = new File("C:\\Users\\ASUS\\Desktop\\stevenyangitee-segroup-project-master\\segroup-project\\src\\main\\java\\com\\londonfitness\\GUI\\" +"\\ST_Video.txt");
@@ -337,14 +330,13 @@ public class STALL extends JPanel{
                 //ad.c_video_URL = tf_1.getText();
                 //ad.Date = new Date(System.currentTimeMillis());
                 //need change, vision 1.0
-                ad.raw.ID = String.valueOf(Integer.valueOf(LFClass.get(LFClass.size()-1).raw.ID) + 1);
+                ad.raw.ID = String.valueOf(Integer.valueOf(LFClass.get(LFClass.size() - 1).raw.ID) + 1);
                 ad.raw.coach_ID = coach_ID;
                 ad.raw.name = tf_2.getText();
                 ad.raw.category_ID = tf_3.getText();
                 ad.raw.duration = Long.valueOf(tf_4.getText());
                 ad.raw.resource_URL = tf_1.getText();
                 //ad.raw.price = "Unsettled";
-
 
 
                 LFClass.add(ad);
@@ -360,8 +352,7 @@ public class STALL extends JPanel{
 
         JButton b_2 = new JButton("BACK");
         b_2.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e)
-            {
+            public void actionPerformed(ActionEvent e) {
                 //frame.dispose();
                 //frame.setVisible(false);
                 //ST000 b = new ST000(name);
@@ -381,8 +372,9 @@ public class STALL extends JPanel{
  */
         return panel01;
     }
+
     //Class check
-    public JPanel getPanel02(Storage storage, String coach_ID){
+    public JPanel getPanel02(Storage storage, String coach_ID) {
 /*
         frame = new JFrame();
         frame.setBounds(100, 100, 450, 400);
@@ -391,7 +383,7 @@ public class STALL extends JPanel{
         frame.getContentPane().setLayout(null);
         frame.setVisible(true);
 */
-        Font f_0 = new Font("Times New Roman",Font.BOLD,20);
+        Font f_0 = new Font("Times New Roman", Font.BOLD, 20);
 
         JPanel panel02 = new JPanel();
         panel02.setLayout(null);
@@ -408,22 +400,20 @@ public class STALL extends JPanel{
         //frame.getContentPane().add(scrollPane);
 
 
-
-
         int num = 0;
         int check_num = 0;
-        for(int i = 0; i < storage.bookings.size(); i++){
+        for (int i = 0; i < storage.bookings.size(); i++) {
             Booking v = storage.bookings.get(i);
-            if(v.raw.coach_ID.equals(coach_ID)){
+            if (v.raw.coach_ID.equals(coach_ID)) {
                 check_num++;
             }
         }
 
 
         Object[][] BC = new Object[check_num][6];
-        for(int i = 0; i < storage.bookings.size(); i++){
+        for (int i = 0; i < storage.bookings.size(); i++) {
             Booking b = storage.bookings.get(i);
-            if(b.raw.coach_ID.equals(coach_ID)){
+            if (b.raw.coach_ID.equals(coach_ID)) {
                 BC[num][0] = b.raw.ID;
                 BC[num][1] = b.externKey_coach.raw.name;
                 BC[num][2] = b.externKey_trainee.raw.name;
@@ -466,8 +456,8 @@ public class STALL extends JPanel{
 
         JTable tb_c = new JTable(
                 BC,
-                new String [] {
-                "ID", "coach", "trainee", "lfClass", "startDate", "times"
+                new String[]{
+                        "ID", "coach", "trainee", "lfClass", "startDate", "times"
                 }
         );
         scrollPane.setViewportView(tb_c);
@@ -510,8 +500,7 @@ public class STALL extends JPanel{
 
         JButton b_1 = new JButton("BACK");
         b_1.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e)
-            {
+            public void actionPerformed(ActionEvent e) {
                 //frame.dispose();
                 //frame.setVisible(false);
                 //ST000 a = new ST000(name);
@@ -537,7 +526,7 @@ public class STALL extends JPanel{
 
     //maintaining ---> delete
     //Free time add
-    public JPanel getPanel04(ArrayList<Coach> coaches, String coach_ID){
+    public JPanel getPanel04(ArrayList<Coach> coaches, String coach_ID) {
 /*
         frame = new JFrame();
         frame.setBounds(100, 100, 450, 400);
@@ -546,7 +535,7 @@ public class STALL extends JPanel{
         frame.getContentPane().setLayout(null);
         frame.setVisible(true);
 */
-        Font f_0 = new Font("Times New Roman",Font.BOLD,20);
+        Font f_0 = new Font("Times New Roman", Font.BOLD, 20);
 
         JPanel panel04 = new JPanel();
         panel04.setLayout(null);
@@ -564,11 +553,9 @@ public class STALL extends JPanel{
         tf_2.setColumns(10);
 
 
-
         JButton b_1 = new JButton("ADD");
         b_1.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e)
-            {
+            public void actionPerformed(ActionEvent e) {
                 /*
                 File file = new File("C:\\Users\\ASUS\\Desktop\\stevenyangitee-segroup-project-master\\segroup-project\\src\\main\\java\\com\\londonfitness\\GUI\\ST_FT.txt");
                 FileWriter f=null;
@@ -595,7 +582,6 @@ public class STALL extends JPanel{
                 //ST004_sub01 a = new ST004_sub01(name);
 
 
-
                 frame_suc.setContentPane(getPanel04_sub());
                 frame_suc.setVisible(true);
                 frame.setVisible(false);
@@ -610,8 +596,7 @@ public class STALL extends JPanel{
 
         JButton b_2 = new JButton("BACK");
         b_2.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e)
-            {
+            public void actionPerformed(ActionEvent e) {
                 //frame.dispose();
                 //frame.setVisible(false);
                 //ST000 b = new ST000(name);
@@ -633,7 +618,7 @@ public class STALL extends JPanel{
 
     //maintaining --->complete
     //Drop Class rate
-    public JPanel getPanel05(ArrayList<Booking> Bookings, String coach_ID){
+    public JPanel getPanel05(ArrayList<Booking> Bookings, String coach_ID) {
 /*
         frame = new JFrame();
         frame.setBounds(100, 100, 450, 400);
@@ -644,7 +629,7 @@ public class STALL extends JPanel{
 */
         frame.setBounds(100, 100, 450, 400);
         frame.setLocationRelativeTo(null);//middle
-        Font f_0 = new Font("Times New Roman",Font.BOLD,20);
+        Font f_0 = new Font("Times New Roman", Font.BOLD, 20);
 
         JPanel panel05 = new JPanel();
         panel05.setLayout(null);
@@ -702,19 +687,19 @@ public class STALL extends JPanel{
         double f = 0;
         double all = 0;
 
-        for(int i = 0; i < Bookings.size(); i++){
+        for (int i = 0; i < Bookings.size(); i++) {
             Booking mid = Bookings.get(i);
-            if(mid.raw.coach_ID.equals(coach_ID)){
+            if (mid.raw.coach_ID.equals(coach_ID)) {
                 all++;
-                if(mid.raw.quit){
+                if (mid.raw.quit) {
                     f++;
                 }
             }
 
         }
-        if(all != 0){
-            drc_n = f/all;
-        }else {
+        if (all != 0) {
+            drc_n = f / all;
+        } else {
             drc_n = 0;
         }
 
@@ -726,8 +711,7 @@ public class STALL extends JPanel{
 
         JButton b_1 = new JButton("BACK");
         b_1.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e)
-            {
+            public void actionPerformed(ActionEvent e) {
                 //frame.dispose();
                 //frame.setVisible(false);
                 //ST000 a = new ST000(name);
@@ -746,9 +730,10 @@ public class STALL extends JPanel{
         */
         return panel05;
     }
+
     //upload success
-    public JPanel getPanel01_sub(){
-        Font f_0 = new Font("Times New Roman",Font.BOLD,20);
+    public JPanel getPanel01_sub() {
+        Font f_0 = new Font("Times New Roman", Font.BOLD, 20);
 
         JPanel panel01_sub = new JPanel();
         panel01_sub.setLayout(null);
@@ -761,8 +746,7 @@ public class STALL extends JPanel{
 
         JButton b_2 = new JButton("BACK");
         b_2.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e)
-            {
+            public void actionPerformed(ActionEvent e) {
                 //frame.dispose();
                 //frame.setVisible(false);
                 //ST001 a = new ST001(name);
@@ -775,9 +759,10 @@ public class STALL extends JPanel{
 
         return panel01_sub;
     }
+
     //upload success
-    public JPanel getPanel04_sub(){
-        Font f_0 = new Font("Times New Roman",Font.BOLD,20);
+    public JPanel getPanel04_sub() {
+        Font f_0 = new Font("Times New Roman", Font.BOLD, 20);
 
         JPanel panel04_sub = new JPanel();
         panel04_sub.setLayout(null);
@@ -790,8 +775,7 @@ public class STALL extends JPanel{
 
         JButton b_2 = new JButton("BACK");
         b_2.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e)
-            {
+            public void actionPerformed(ActionEvent e) {
                 //frame.dispose();
                 //frame.setVisible(false);
                 //ST004 a = new ST004(name);
@@ -806,8 +790,8 @@ public class STALL extends JPanel{
     }
 
     //maintaining
-    public JPanel getPanel_maintain(){
-        Font f_0 = new Font("Times New Roman",Font.BOLD,13);
+    public JPanel getPanel_maintain() {
+        Font f_0 = new Font("Times New Roman", Font.BOLD, 13);
 
         JPanel panel_maintain = new JPanel();
         panel_maintain.setLayout(null);
@@ -820,8 +804,7 @@ public class STALL extends JPanel{
 
         JButton b_2 = new JButton("BACK");
         b_2.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e)
-            {
+            public void actionPerformed(ActionEvent e) {
                 //frame.dispose();
                 //frame.setVisible(false);
                 //ST004 a = new ST004(name);
@@ -836,7 +819,7 @@ public class STALL extends JPanel{
     }
 
     //My videos
-    public JPanel getPanel06(Storage storage, String coach_ID){
+    public JPanel getPanel06(Storage storage, String coach_ID) {
 /*
         frame = new JFrame();
         frame.setBounds(100, 100, 450, 400);
@@ -845,7 +828,7 @@ public class STALL extends JPanel{
         frame.getContentPane().setLayout(null);
         frame.setVisible(true);
 */
-        Font f_0 = new Font("Times New Roman",Font.BOLD,20);
+        Font f_0 = new Font("Times New Roman", Font.BOLD, 20);
 
         JPanel panel06 = new JPanel();
         panel06.setLayout(null);
@@ -864,17 +847,17 @@ public class STALL extends JPanel{
 
         int num = 0;
         int check_num = 0;
-        for(int i = 0; i < storage.lfClasses.size(); i++){
+        for (int i = 0; i < storage.lfClasses.size(); i++) {
             LFClass v = storage.lfClasses.get(i);
-            if(v.raw.coach_ID.equals(coach_ID)){
+            if (v.raw.coach_ID.equals(coach_ID)) {
                 check_num++;
             }
         }
         Object[][] BC = new Object[check_num][6];
 
-        for(int i = 0; i < storage.lfClasses.size(); i++){
+        for (int i = 0; i < storage.lfClasses.size(); i++) {
             LFClass b = storage.lfClasses.get(i);
-            if(b.raw.coach_ID.equals(coach_ID)){
+            if (b.raw.coach_ID.equals(coach_ID)) {
                 //BC[i][0] = b.c_video_URL;
                 BC[num][0] = b.raw.ID;
                 BC[num][1] = b.raw.name;
@@ -889,7 +872,7 @@ public class STALL extends JPanel{
         }
         JTable tb_c = new JTable(
                 BC,
-                new String [] {
+                new String[]{
                         "ID", "Name", "Coach", "Category", "Duration", "URL"
                 }
         );
@@ -933,8 +916,7 @@ public class STALL extends JPanel{
 
         JButton b_1 = new JButton("BACK");
         b_1.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e)
-            {
+            public void actionPerformed(ActionEvent e) {
                 //frame.dispose();
                 //frame.setVisible(false);
                 //ST000 a = new ST000(name);
@@ -959,8 +941,8 @@ public class STALL extends JPanel{
     }
 
     //check profile
-    public JPanel getPanel07(ArrayList<Coach> coaches, String coach_ID){
-        Font f_0 = new Font("Times New Roman",Font.BOLD,20);
+    public JPanel getPanel07(ArrayList<Coach> coaches, String coach_ID) {
+        Font f_0 = new Font("Times New Roman", Font.BOLD, 20);
         frame.setBounds(100, 100, 450, 400);
         frame.setLocationRelativeTo(null);//middle
 
@@ -973,11 +955,11 @@ public class STALL extends JPanel{
         panel07.add(l_1);
         //frame.getContentPane().add(l_1);
 
-        String a = new String();
+        String a = "";
 
-        for(int i = 0; i < coaches.size(); i++){
+        for (int i = 0; i < coaches.size(); i++) {
             Coach mid = coaches.get(i);
-            if(mid.raw.ID.equals(coach_ID)){
+            if (mid.raw.ID.equals(coach_ID)) {
                 a = mid.raw.c_profile_URL;
                 break;
             }
@@ -990,8 +972,7 @@ public class STALL extends JPanel{
 
         JButton b_1 = new JButton("BACK");
         b_1.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e)
-            {
+            public void actionPerformed(ActionEvent e) {
                 //frame.dispose();
                 //frame.setVisible(false);
                 //ST000 a = new ST000(name);

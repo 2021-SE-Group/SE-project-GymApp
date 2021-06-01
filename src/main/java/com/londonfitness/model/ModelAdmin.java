@@ -2,18 +2,17 @@ package com.londonfitness.model;
 
 import com.londonfitness.simDAO.memStorage.Storage;
 import com.londonfitness.simDAO.rawTable.rawPersons.RawAdmin;
-import com.londonfitness.simDAO.rawTable.rawPersons.RawCoach;
 import com.londonfitness.simDAO.table.persons.Admin;
-import com.londonfitness.simDAO.table.persons.Coach;
 
 public class ModelAdmin {
     Admin admin;
     Storage storage;
+
     public ModelAdmin(Storage storage, Admin admin) {
         this.admin = admin;
     }
 
-    public Admin createAdmin(String id,String name,short type, String username,boolean expired) {
+    public Admin createAdmin(String id, String name, short type, String username, boolean expired) {
         RawAdmin rawAdmin = new RawAdmin();
         rawAdmin.ID = id;
         rawAdmin.name = name;
@@ -29,7 +28,7 @@ public class ModelAdmin {
 
     }
 
-    public void updateAdmin(String id,String name,short type, String username,boolean expired) {
+    public void updateAdmin(String id, String name, short type, String username, boolean expired) {
 
     }
 

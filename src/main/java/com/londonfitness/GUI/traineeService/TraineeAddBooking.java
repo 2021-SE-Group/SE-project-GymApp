@@ -1,5 +1,6 @@
 package com.londonfitness.GUI.traineeService;
 
+import com.londonfitness.AppSkeleton;
 import com.londonfitness.GUI.ourComponent.steps.StepBar;
 import com.londonfitness.GUI.ourComponent.steps.StepControl;
 import com.londonfitness.GUI.ourComponent.steps.StepGUI;
@@ -7,42 +8,41 @@ import com.londonfitness.GUI.ourComponent.utilFrames.WarningFrame;
 import com.londonfitness.OurDateFormat;
 import com.londonfitness.simDAO.memStorage.Storage;
 import com.londonfitness.simDAO.rawTable.RawBooking;
+import com.londonfitness.simDAO.table.Booking;
 import com.londonfitness.simDAO.table.Category;
 import com.londonfitness.simDAO.table.LFClass;
 import com.londonfitness.simDAO.table.persons.Coach;
 
 import javax.swing.*;
 
-public abstract class TraineeAddBooking extends StepControl {
-    private Storage storage;
+public class TraineeAddBooking extends StepControl {
+    private final Storage storage;
 
+    private final Booking newBooking;
+    private final RawBooking blancRawBooking;
+    private final BookingFrame bf;
+    private final StepGUI<PanelCategory> panelCategoryStepGUI;
+    private final StepGUI<PanelClass> panelClassStepGUI;
+    private final StepGUI<PanelCoach> panelCoachStepGUI;
+    private final StepGUI<PanelTraineeInfo> panelTraineeInfoStepGUI;
+    private final StepGUI<JPanel> conclusionStepGUI;
+    private final JTextArea jta_conclusion;
     private Category currentCategory;
     private LFClass currentLFClass;
     private Coach currentCoach;
-
-    private RawBooking blancRawBooking;
-
-    private StepGUI<PanelCategory> panelCategoryStepGUI;
-    private StepGUI<PanelClass> panelClassStepGUI;
-    private StepGUI<PanelCoach> panelCoachStepGUI;
-    private StepGUI<PanelTraineeInfo> panelTraineeInfoStepGUI;
-
-    private StepGUI<JPanel> conclusionStepGUI;
-
-    private JTextArea jta_conclusion;
 
     /**
      * you will need to new StepState by yourself
      *
      * @param storage
      */
-    public TraineeAddBooking(Storage storage, RawBooking blancRawBooking) {
+    public TraineeAddBooking(Storage storage) {
         super(5);
         this.storage = storage;
-        this.blancRawBooking = blancRawBooking;
+        this.blancRawBooking = new RawBooking();
+        this.newBooking = new Booking(blancRawBooking);
 
         jta_conclusion = new JTextArea();
-
         panelCategoryStepGUI = new StepGUI<>(getStepStete(), new PanelCategory(storage));
         panelClassStepGUI = new StepGUI<>(getStepStete(), new PanelClass(storage));
         panelCoachStepGUI = new StepGUI<>(getStepStete(), new PanelCoach(storage));
@@ -50,7 +50,27 @@ public abstract class TraineeAddBooking extends StepControl {
 
         conclusionStepGUI = new StepGUI<>(getStepStete(), new JPanel());
         conclusionStepGUI.getStepGUIGroup().getPanel().add(jta_conclusion);
+
+        bf = new BookingFrame(panelCategoryStepGUI, panelClassStepGUI, panelCoachStepGUI, panelTraineeInfoStepGUI, conclusionStepGUI);
+
         setupListeners();
+    }
+
+    public static void main(String[] args) {
+        new AppSkeleton(true, true, true, true, false) {
+            TraineeAddBooking control;
+
+            @Override
+            public JFrame bringUpGUI() {
+                control = new TraineeAddBooking(storage);
+                //control.bf.setVisible(true);
+                return control.bf;
+            }
+        };
+    }
+
+    public BookingFrame getBookingFrame() {
+        return bf;
     }
 
     @Override
@@ -69,7 +89,7 @@ public abstract class TraineeAddBooking extends StepControl {
 
         sca.getJbt_next().addActionListener(e -> {
             int temp = pca.getTable().getSelectedRow();
-            if(temp >= 0) {
+            if (temp >= 0) {
                 currentCategory = storage.categories.get(temp);
             } else {
                 currentCategory = null;
@@ -89,7 +109,7 @@ public abstract class TraineeAddBooking extends StepControl {
         });
         scl.getJbt_next().addActionListener(e -> {
             int temp = pcl.getTable().getSelectedRow();
-            if(temp >= 0) {
+            if (temp >= 0) {
                 currentLFClass = pcl.getClasses().get(temp);
                 getStepStete().next();
                 updateCurrentPane();
@@ -110,7 +130,7 @@ public abstract class TraineeAddBooking extends StepControl {
 
         sco.getJbt_next().addActionListener(e -> {
             int temp = pco.getTable().getSelectedRow();
-            if(temp >= 0) {
+            if (temp >= 0) {
                 currentCoach = storage.coaches.get(temp);
                 getStepStete().next();
                 updateCurrentPane();
@@ -150,7 +170,7 @@ public abstract class TraineeAddBooking extends StepControl {
                             + OurDateFormat.fancyDate.format(blancRawBooking.startDate) + ",\n  you will have this class every "
                             + blancRawBooking.repeat / 1000 / 60 / 60 / 24 + " days for "
                             + blancRawBooking.times + " times."
-                    );
+            );
 
             getStepStete().next();
             updateCurrentPane();
@@ -166,9 +186,9 @@ public abstract class TraineeAddBooking extends StepControl {
         });
 
         scc.getJbt_next().addActionListener(e -> {
+            newBooking.insert(storage);
             getStepStete().next();
             updateCurrentPane();
-
         });
         scc.getJbt_cancel().addActionListener(e -> {
             getStepStete().cancel();
@@ -178,27 +198,79 @@ public abstract class TraineeAddBooking extends StepControl {
             getStepStete().back();
             updateCurrentPane();
         });
+    }
 
+    @Override
+    public void updateCurrentPane() {
+        if (getStepStete().isCanceled()) {
+            bf.dispose();
+        } else if (getStepStete().isFinished()) {
+            bf.dispose();
+        } else {
+            switch (getStepStete().getLocation()) {
+                case 0:
+                    getPanelCategoryStepGUI().setVisible(true);
+                    getPanelClassStepGUI().setVisible(false);
+                    getPanelCoachStepGUI().setVisible(false);
+                    getPanelTraineeInfoStepGUI().setVisible(false);
+                    getConclusionStepGUI().setVisible(false);
+                    break;
+                case 1:
+                    getPanelCategoryStepGUI().setVisible(false);
+                    getPanelClassStepGUI().setVisible(true);
+                    getPanelCoachStepGUI().setVisible(false);
+                    getPanelTraineeInfoStepGUI().setVisible(false);
+                    getConclusionStepGUI().setVisible(false);
+                    break;
+                case 2:
+                    getPanelCategoryStepGUI().setVisible(false);
+                    getPanelClassStepGUI().setVisible(false);
+                    getPanelCoachStepGUI().setVisible(true);
+                    getPanelTraineeInfoStepGUI().setVisible(false);
+                    getConclusionStepGUI().setVisible(false);
+                    break;
+                case 3:
+                    getPanelCategoryStepGUI().setVisible(false);
+                    getPanelClassStepGUI().setVisible(false);
+                    getPanelCoachStepGUI().setVisible(false);
+                    getPanelTraineeInfoStepGUI().setVisible(true);
+                    getConclusionStepGUI().setVisible(false);
+                    break;
+                case 4:
+                    getPanelCategoryStepGUI().setVisible(false);
+                    getPanelClassStepGUI().setVisible(false);
+                    getPanelCoachStepGUI().setVisible(false);
+                    getPanelTraineeInfoStepGUI().setVisible(false);
+                    getConclusionStepGUI().setVisible(true);
+                    break;
+            }
+        }
     }
 
     public StepGUI<JPanel> getConclusionStepGUI() {
         return conclusionStepGUI;
     }
+
     public StepGUI<PanelCategory> getPanelCategoryStepGUI() {
         return panelCategoryStepGUI;
     }
+
     public StepGUI<PanelClass> getPanelClassStepGUI() {
         return panelClassStepGUI;
     }
+
     public StepGUI<PanelCoach> getPanelCoachStepGUI() {
         return panelCoachStepGUI;
     }
+
     public StepGUI<PanelTraineeInfo> getPanelTraineeInfoStepGUI() {
         return panelTraineeInfoStepGUI;
     }
+
     public LFClass getCurrentLFClass() {
         return currentLFClass;
     }
+
     public Coach getCurrentCoach() {
         return currentCoach;
     }

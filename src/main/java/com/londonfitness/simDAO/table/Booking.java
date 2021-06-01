@@ -7,7 +7,6 @@ import com.londonfitness.simDAO.memStorage.Storage;
 import com.londonfitness.simDAO.rawTable.RawBooking;
 import com.londonfitness.simDAO.table.persons.Coach;
 import com.londonfitness.simDAO.table.persons.Trainee;
-import org.junit.jupiter.api.Test;
 
 import javax.swing.*;
 import java.util.Date;

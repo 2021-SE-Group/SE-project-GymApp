@@ -9,7 +9,6 @@ import com.londonfitness.simDAO.table.persons.Admin;
 import com.londonfitness.simDAO.table.persons.Coach;
 import com.londonfitness.simDAO.table.persons.Staff;
 import com.londonfitness.simDAO.table.persons.Trainee;
-import org.junit.jupiter.api.Test;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
@@ -25,12 +24,34 @@ import java.nio.file.Paths;
 public class WriteXML {
     private final Path dataPath;
     private final Storage storage;
-    private DocumentBuilder db;
+    private final DocumentBuilder db;
 
     public WriteXML(DocumentBuilder db, Path dataPath, Storage storage) {
         this.db = db;
         this.dataPath = dataPath;
         this.storage = storage;
+    }
+
+    public static void main(String[] args) {
+        Storage storage = new Storage();
+        try {
+            XMLDocumentBuilder xmlDocumentBuilder = new XMLDocumentBuilder();
+            DocumentBuilder documentBuilder = xmlDocumentBuilder.documentBuilder;
+
+            new ScanXML(
+                    documentBuilder,
+                    storage,
+                    "resources\\",
+                    "resources\\data.xml"
+            ).scan();
+            new WriteXML(
+                    documentBuilder,
+                    Paths.get("testResources\\testData.xml"),
+                    storage
+            ).translate();
+        } catch (ParserConfigurationException e) {
+            e.printStackTrace();
+        }
     }
 
     public void translate() {
@@ -44,8 +65,8 @@ public class WriteXML {
         doc.appendChild(record_list);
 
 
-        TransformerFactory tff=TransformerFactory.newInstance();
-        Transformer tf= null;
+        TransformerFactory tff = TransformerFactory.newInstance();
+        Transformer tf = null;
         try {
             tf = tff.newTransformer();
         } catch (TransformerConfigurationException e) {
@@ -197,7 +218,7 @@ public class WriteXML {
                 setCell("startDate", OurDateFormat.fileDate.format(booking.raw.startDate));
                 setCell("times", Integer.toString(booking.raw.times));
                 setCell("repeat", Long.toString(booking.raw.repeat));
-                if(booking.raw.quit)
+                if (booking.raw.quit)
                     setCell("quit", "T");
                 else
                     setCell("quit", "F");
@@ -226,28 +247,5 @@ public class WriteXML {
             }
         }.write();
          */
-    }
-
-    @Test
-    public static void main(String[] args) {
-        Storage storage = new Storage();
-        try {
-            XMLDocumentBuilder xmlDocumentBuilder = new XMLDocumentBuilder();
-            DocumentBuilder documentBuilder = xmlDocumentBuilder.documentBuilder;
-
-            new ScanXML(
-                    documentBuilder,
-                    storage,
-                    "resources\\",
-                    "resources\\data.xml"
-            ).scan();
-            new WriteXML(
-                    documentBuilder,
-                    Paths.get("testResources\\testData.xml"),
-                    storage
-            ).translate();
-        } catch (ParserConfigurationException e) {
-            e.printStackTrace();
-        }
     }
 }

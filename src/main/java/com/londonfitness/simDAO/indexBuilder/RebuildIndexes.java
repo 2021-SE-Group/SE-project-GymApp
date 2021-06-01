@@ -2,12 +2,6 @@ package com.londonfitness.simDAO.indexBuilder;
 
 
 import com.londonfitness.simDAO.memStorage.Storage;
-import com.londonfitness.simDAO.table.Booking;
-import com.londonfitness.simDAO.table.Category;
-import com.londonfitness.simDAO.table.CoachAbility;
-import com.londonfitness.simDAO.table.LFClass;
-import com.londonfitness.simDAO.table.persons.Coach;
-import com.londonfitness.simDAO.table.persons.Trainee;
 
 public class RebuildIndexes {
     public RebuildIndexes(Storage storage) {
@@ -33,7 +27,7 @@ public class RebuildIndexes {
                 storage.coaches,
                 storage.coachAbilities,
                 new IndexBuilder12N<>(Storage.coachCoachAbilityIndexBuilder121)
-            ).buildIndex();
+        ).buildIndex();
 
         new IndexBuilderN2M<>(
                 storage.lfClasses,

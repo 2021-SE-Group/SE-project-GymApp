@@ -6,9 +6,9 @@ import org.w3c.dom.Element;
 
 import java.util.ArrayList;
 
-public abstract class XMLTableTranslator<T extends Table>{
+public abstract class XMLTableTranslator<T extends Table> {
     private final Document doc;
-    private final ArrayList <T> list;
+    private final ArrayList<T> list;
     private final Element root;
     private final String listName;
     private final String unitName;
@@ -17,8 +17,7 @@ public abstract class XMLTableTranslator<T extends Table>{
 
     public XMLTableTranslator(Document doc, Element root,
                               String listName, String unitName,
-                              ArrayList<T> list)
-    {
+                              ArrayList<T> list) {
         this.doc = doc;
         this.list = list;
         this.root = root;
@@ -26,9 +25,9 @@ public abstract class XMLTableTranslator<T extends Table>{
         this.unitName = unitName;
     }
 
-    public void write(){
+    public void write() {
         Element t_list = doc.createElement(listName);
-        for(T t: list){
+        for (T t : list) {
             t_unit = doc.createElement(unitName);
             setRow(t);
             t_list.appendChild(t_unit);

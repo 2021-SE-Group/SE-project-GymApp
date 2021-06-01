@@ -11,25 +11,25 @@ public class Index<T1, Tn> {
     public Index() {
         tns = new ArrayList<>();
     }
+
     public Index(T1 t1) {
         this();
         this.t1 = t1;
     }
 
-    public T1 getT1(){
+    public T1 getT1() {
         return t1;
-    }
-
-    public Iterator<Tn> getTnIter() {
-        return tns.iterator();
     }
 
     public void setT1(T1 t1) {
         this.t1 = t1;
     }
 
-    public void addTn(Tn tn)
-    {
+    public Iterator<Tn> getTnIter() {
+        return tns.iterator();
+    }
+
+    public void addTn(Tn tn) {
         this.tns.add(tn);
     }
 }

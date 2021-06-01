@@ -1,17 +1,14 @@
 package com.londonfitness.GUI.ourComponent.form;
 
-import com.londonfitness.simDAO.rawTable.rawPersons.RawTrainee;
-import com.londonfitness.simDAO.table.persons.Trainee;
-
 import javax.swing.*;
 import java.util.ArrayList;
 
 public class FormGUI extends JPanel {
-    private GroupLayout layout;
-    private ArrayList<FormItem> items;
+    private final GroupLayout layout;
+    private final ArrayList<FormItem> items;
 
-    private ArrayList<JLabel> labels;
-    private ArrayList<JTextField> textFields;
+    private final ArrayList<JLabel> labels;
+    private final ArrayList<JTextField> textFields;
     private GroupLayout.Group horizontal;
     private GroupLayout.Group vertical;
 
@@ -31,7 +28,7 @@ public class FormGUI extends JPanel {
 
         JLabel tempLabel;
         JTextField tempTextField;
-        for(FormItem item: items) {
+        for (FormItem item : items) {
             tempLabel = new JLabel(item.label);
             tempTextField = new JTextField(item.content);
 
@@ -43,8 +40,8 @@ public class FormGUI extends JPanel {
 
             vertical = vertical.addGroup(
                     layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                    .addComponent(tempLabel)
-                    .addComponent(tempTextField)
+                            .addComponent(tempLabel)
+                            .addComponent(tempTextField)
             );
         }
 
@@ -56,16 +53,6 @@ public class FormGUI extends JPanel {
         layout.setVerticalGroup(vertical);
 
         setVisible(true);
-    }
-
-    public ArrayList<FormItem> getItems() {
-        return items;
-    }
-
-    public void retrieve() {
-        for(int i = 0; i < items.size(); i++) {
-            items.get(i).content = textFields.get(i).getText();
-        }
     }
 
     public static void main(String[] args) {
@@ -81,6 +68,16 @@ public class FormGUI extends JPanel {
 
         jf.add(new FormGUI(form));
         jf.setVisible(true);
+    }
+
+    public ArrayList<FormItem> getItems() {
+        return items;
+    }
+
+    public void retrieve() {
+        for (int i = 0; i < items.size(); i++) {
+            items.get(i).content = textFields.get(i).getText();
+        }
     }
 
 

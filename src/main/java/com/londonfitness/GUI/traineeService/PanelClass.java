@@ -13,11 +13,11 @@ import java.util.Iterator;
 
 
 public class PanelClass extends JPanel {
-    private OurTable<LFClass> ourTable;
-    private JScrollPane jScrollPane;
+    private final OurTable<LFClass> ourTable;
+    private final JScrollPane jScrollPane;
 
     private Category category;
-    private Storage storage;
+    private final Storage storage;
 
     private ArrayList<LFClass> classes;
 
@@ -80,14 +80,17 @@ public class PanelClass extends JPanel {
                 }
                 return "";
             }
+
             @Override
             public Class<?> getColumnClass(int columnIndex) {
                 return String.class;
             }
+
             @Override
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return false;
             }
+
             @Override
             public Object getValueAtColumn(LFClass lfClass, int columnIndex) {
                 switch (columnIndex) {
@@ -105,8 +108,10 @@ public class PanelClass extends JPanel {
                         return "";
                 }
             }
+
             @Override
-            public void setValueAtColumn(Object aValue, LFClass lfClass, int columnIndex) { }
+            public void setValueAtColumn(Object aValue, LFClass lfClass, int columnIndex) {
+            }
         };
     }
 

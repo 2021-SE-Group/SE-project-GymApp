@@ -5,11 +5,13 @@ import com.londonfitness.simDAO.memStorage.Storage;
 import javax.swing.*;
 
 public class ManagementFrame extends JFrame {
-    private Storage storage;
+    private final Storage storage;
+
     public ManagementFrame(Storage storage) {
         this.storage = storage;
         initComponents();
     }
+
     public void initComponents() {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Gym Service");

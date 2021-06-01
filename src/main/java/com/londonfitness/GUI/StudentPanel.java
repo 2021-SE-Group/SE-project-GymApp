@@ -6,14 +6,31 @@ import javax.swing.*;
 import java.awt.*;
 
 public class StudentPanel extends JPanel {
-    Storage storage;
     private final JLabel lblUserInterface = new JLabel("USER INTERFACE");
+    Storage storage;
     JButton btnNewButton_1;
     JButton btnNewButton_2;
+
     public StudentPanel(Storage storage) {
         this.storage = storage;
         this.initComponent();
         this.setVisible(true);
+    }
+
+    public static void main(String[] args) {
+        EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                JFrame jf = new JFrame("test");
+                StudentPanel sp = new StudentPanel(new Storage());
+                sp.setVisible(true);
+                jf.add(sp);
+                try {
+                    jf.setVisible(true);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
     }
 
     private void initComponent() {
@@ -64,21 +81,5 @@ public class StudentPanel extends JPanel {
                                 .addContainerGap(70, Short.MAX_VALUE))
         );
         this.setLayout(gl_panel);
-    }
-
-    public static void main(String[] args) {
-        EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                JFrame jf = new JFrame("test");
-                StudentPanel sp = new StudentPanel(new Storage());
-                sp.setVisible(true);
-                jf.add(sp);
-                try {
-                    jf.setVisible(true);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        });
     }
 }

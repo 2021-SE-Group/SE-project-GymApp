@@ -1,7 +1,5 @@
 package com.londonfitness.GUI.ourComponent.tableGUI;
 
-import com.londonfitness.simDAO.memStorage.Storage;
-
 import javax.swing.event.EventListenerList;
 import javax.swing.event.TableModelListener;
 import javax.swing.table.TableModel;
@@ -9,8 +7,8 @@ import java.util.ArrayList;
 
 public abstract class OurTableModel<T> implements TableModel {
     protected EventListenerList listenerList = new EventListenerList();
-    private ArrayList<T> list;
-    private int columnCount;
+    private final ArrayList<T> list;
+    private final int columnCount;
 
     public OurTableModel(ArrayList<T> list, int columnC) {
         this.list = list;
@@ -46,7 +44,7 @@ public abstract class OurTableModel<T> implements TableModel {
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-        return getValueAtColumn(list.get(rowIndex), columnIndex) ;
+        return getValueAtColumn(list.get(rowIndex), columnIndex);
     }
 
     public abstract Object getValueAtColumn(T t, int columnIndex);

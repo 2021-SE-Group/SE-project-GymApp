@@ -1,6 +1,5 @@
 package com.londonfitness.simDAO.fileIO.FileScan;
 
-import com.londonfitness.simDAO.rawTable.RawTable;
 import com.londonfitness.simDAO.table.Table;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
@@ -17,9 +16,9 @@ public abstract class XMLTableLoader<T extends Table> {
     }
 
     public void load() {
-        for(int i = 0; i < list.getLength(); i++) {
+        for (int i = 0; i < list.getLength(); i++) {
             Node n = list.item(i);
-            if(n.getNodeType() != 3) {
+            if (n.getNodeType() != 3) {
                 T t = loadRow(n);
                 result.add(t);
             }
@@ -30,9 +29,9 @@ public abstract class XMLTableLoader<T extends Table> {
         T t = getNewInstanceOfType();
 
         NodeList nl = node.getChildNodes();
-        for(int i = 0; i < nl.getLength(); i++) {
+        for (int i = 0; i < nl.getLength(); i++) {
             Node n = nl.item(i);
-            if(n.getNodeType() != 3) {
+            if (n.getNodeType() != 3) {
                 scanCell(n, t);
             }
         }

@@ -18,70 +18,70 @@ public class BookingGUI2 extends OurTable<TraineeBookingJoinTableItem> {
     @Override
     public OurTableModel<TraineeBookingJoinTableItem> constructModel(Storage storage) {
         ArrayList<TraineeBookingJoinTableItem> a = new ArrayList<>();
-        for(Trainee t: storage.trainees) {
-            for(Iterator<Booking> it = t.index_booking.getTnIter(); it.hasNext();) {
+        for (Trainee t : storage.trainees) {
+            for (Iterator<Booking> it = t.index_booking.getTnIter(); it.hasNext(); ) {
                 Booking b = it.next();
-                if(!b.raw.quit)
+                if (!b.raw.quit)
                     a.add(new TraineeBookingJoinTableItem(t.raw.ID, t.raw.name, b.raw.ID, b.externKey_lfClass.raw.ID, b.externKey_lfClass.raw.name));
             }
         }
 
-         return new OurTableModel<>(a, 5) {
-             @Override
-             public Object getValueAtColumn(TraineeBookingJoinTableItem traineeBookingJoinTableItem, int columnIndex) {
-                 switch (columnIndex) {
-                     case 0:
-                         return traineeBookingJoinTableItem.Trainee_ID;
-                     case 1:
-                         return traineeBookingJoinTableItem.Trainee_name;
-                     case 2:
-                         return traineeBookingJoinTableItem.Booking_ID;
-                     case 3:
-                         return traineeBookingJoinTableItem.LFClass_ID;
-                     case 4:
-                         return traineeBookingJoinTableItem.LFClass_name;
-                     default:
-                         return null;
-                 }
-             }
+        return new OurTableModel<>(a, 5) {
+            @Override
+            public Object getValueAtColumn(TraineeBookingJoinTableItem traineeBookingJoinTableItem, int columnIndex) {
+                switch (columnIndex) {
+                    case 0:
+                        return traineeBookingJoinTableItem.Trainee_ID;
+                    case 1:
+                        return traineeBookingJoinTableItem.Trainee_name;
+                    case 2:
+                        return traineeBookingJoinTableItem.Booking_ID;
+                    case 3:
+                        return traineeBookingJoinTableItem.LFClass_ID;
+                    case 4:
+                        return traineeBookingJoinTableItem.LFClass_name;
+                    default:
+                        return null;
+                }
+            }
 
-             @Override
-             public void setValueAtColumn(Object aValue, TraineeBookingJoinTableItem traineeBookingJoinTableItem, int columnIndex) {
-                 switch (columnIndex) {
-                     case 0:
-                         traineeBookingJoinTableItem.Trainee_ID = (String) aValue;
-                     case 1:
-                         traineeBookingJoinTableItem.Trainee_name = (String) aValue;
-                     case 2:
-                         traineeBookingJoinTableItem.Booking_ID = (String) aValue;
-                     case 3:
-                         traineeBookingJoinTableItem.LFClass_ID = (String) aValue;
-                     case 4:
-                         traineeBookingJoinTableItem.LFClass_name = (String) aValue;
-                 }
-             }
+            @Override
+            public void setValueAtColumn(Object aValue, TraineeBookingJoinTableItem traineeBookingJoinTableItem, int columnIndex) {
+                switch (columnIndex) {
+                    case 0:
+                        traineeBookingJoinTableItem.Trainee_ID = (String) aValue;
+                    case 1:
+                        traineeBookingJoinTableItem.Trainee_name = (String) aValue;
+                    case 2:
+                        traineeBookingJoinTableItem.Booking_ID = (String) aValue;
+                    case 3:
+                        traineeBookingJoinTableItem.LFClass_ID = (String) aValue;
+                    case 4:
+                        traineeBookingJoinTableItem.LFClass_name = (String) aValue;
+                }
+            }
 
-             @Override
-             public String getColumnName(int columnIndex) {
-                 switch (columnIndex) {
-                     case 0:
-                         return "Trainee's ID";
-                     case 1:
-                         return "Trainee's name";
-                     default:
-                         return "lazy";
-                 }
-             }
+            @Override
+            public String getColumnName(int columnIndex) {
+                switch (columnIndex) {
+                    case 0:
+                        return "Trainee's ID";
+                    case 1:
+                        return "Trainee's name";
+                    default:
+                        return "lazy";
+                }
+            }
 
-             @Override
-             public Class<?> getColumnClass(int columnIndex) {
-                 return String.class;
-             }
+            @Override
+            public Class<?> getColumnClass(int columnIndex) {
+                return String.class;
+            }
 
-             @Override
-             public boolean isCellEditable(int rowIndex, int columnIndex) {
-                 return false;
-             }
-         };
+            @Override
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return false;
+            }
+        };
     }
 }

@@ -4,12 +4,15 @@ import com.londonfitness.OurDateFormat;
 import com.londonfitness.simDAO.memStorage.Storage;
 import com.londonfitness.simDAO.table.Booking;
 
-
 import javax.swing.table.AbstractTableModel;
 
-public class BookingTableModel extends AbstractTableModel{
-    private Storage storage;
-    public BookingTableModel(Storage storage){this.storage = storage;}
+public class BookingTableModel extends AbstractTableModel {
+    private final Storage storage;
+
+    public BookingTableModel(Storage storage) {
+        this.storage = storage;
+    }
+
     @Override
     public int getRowCount() {
         return storage.bookings.size();
@@ -24,13 +27,13 @@ public class BookingTableModel extends AbstractTableModel{
     public Object getValueAt(int rowIndex, int columnIndex) {
         Booking booking;
         booking = storage.bookings.get(rowIndex);
-        switch (columnIndex){
+        switch (columnIndex) {
             case 0:
                 return booking.raw.coach_ID;
             case 1:
                 return booking.externKey_coach.raw.name;
             case 2:
-                return  booking.raw.trainee_ID;
+                return booking.raw.trainee_ID;
             case 3:
                 return booking.externKey_trainee.raw.name;
             case 4:

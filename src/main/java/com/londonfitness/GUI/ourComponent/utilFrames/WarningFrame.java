@@ -4,10 +4,12 @@ import javax.swing.*;
 import java.awt.*;
 
 public class WarningFrame extends JFrame {
-    private JButton jbt;
+    private final JButton jbt;
+
     public WarningFrame(String warn, int width, int height) {
         super("warning");
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        setLocationRelativeTo(null);
 
         JPanel jp = new JPanel();
 
@@ -16,7 +18,7 @@ public class WarningFrame extends JFrame {
 
         JLabel jlb = new JLabel(warn);
         jbt = new JButton("confirm");
-        jbt.addActionListener((e)->dispose());
+        jbt.addActionListener((e) -> dispose());
 
         layout.setHorizontalGroup(
                 layout.createParallelGroup(GroupLayout.Alignment.CENTER)
@@ -25,7 +27,7 @@ public class WarningFrame extends JFrame {
         layout.setVerticalGroup(
                 layout.createSequentialGroup()
                         .addComponent(jlb)
-                        .addContainerGap(20,50)
+                        .addContainerGap(20, 50)
                         .addComponent(jbt));
         jp.setVisible(true);
 
@@ -39,12 +41,12 @@ public class WarningFrame extends JFrame {
         this(warn, 300, 150);
     }
 
-    public JButton getJbt() {
-        return jbt;
-    }
-
     public static void main(String[] args) {
         JFrame jf = new WarningFrame("give a warning.");
         jf.setVisible(true);
+    }
+
+    public JButton getJbt() {
+        return jbt;
     }
 }

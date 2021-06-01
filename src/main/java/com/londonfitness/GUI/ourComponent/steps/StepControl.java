@@ -1,13 +1,12 @@
 package com.londonfitness.GUI.ourComponent.steps;
 
-import javax.swing.*;
-
 public abstract class StepControl {
-    private StepState stepState;
+    private final StepState stepState;
 
     //private boolean hasSetStepState = false;
 
-    /** you will need to new StepState by yourself
+    /**
+     * you will need to new StepState by yourself
      */
     public StepControl(int maxStep) {
         stepState = new StepState(maxStep);
@@ -18,9 +17,10 @@ public abstract class StepControl {
         return stepState;
     }
 
-    /** remember to use it in your constructor
-     *
+    /**
+     * remember to use it in your constructor
      */
     public abstract void setupListeners();
+
     public abstract void updateCurrentPane();
 }

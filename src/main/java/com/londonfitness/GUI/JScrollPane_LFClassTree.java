@@ -12,9 +12,9 @@ import java.util.Enumeration;
 import java.util.Iterator;
 
 public class JScrollPane_LFClassTree extends JScrollPane {
-    private ArrayList<Category> categories;
-    private ArrayList<LFClass> lfClasses;
-    private JTree jt;
+    private final ArrayList<Category> categories;
+    private final ArrayList<LFClass> lfClasses;
+    private final JTree jt;
 
     public JScrollPane_LFClassTree(ArrayList<Category> categories, ArrayList<LFClass> lfClasses) {
         this.categories = categories;
@@ -41,7 +41,7 @@ public class JScrollPane_LFClassTree extends JScrollPane {
             tm.insertNodeInto(prev, dmt, dmt.getChildCount());
             DFTReplicateTree(tm, cate, prev);
         }
-        for(Iterator<LFClass> it = c.index_lfClass.getTnIter(); it.hasNext(); ) {
+        for (Iterator<LFClass> it = c.index_lfClass.getTnIter(); it.hasNext(); ) {
             LFClass lfc = it.next();
             tm.insertNodeInto(new DefaultMutableTreeNode(lfc.raw.name), dmt, dmt.getChildCount());
         }

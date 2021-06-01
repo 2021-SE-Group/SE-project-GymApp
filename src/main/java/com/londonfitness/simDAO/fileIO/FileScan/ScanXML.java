@@ -1,7 +1,6 @@
 package com.londonfitness.simDAO.fileIO.FileScan;
 
 import com.londonfitness.OurDateFormat;
-import com.londonfitness.simDAO.fileIO.XMLErrorHandler;
 import com.londonfitness.simDAO.memStorage.Storage;
 import com.londonfitness.simDAO.rawTable.*;
 import com.londonfitness.simDAO.rawTable.rawPersons.RawAdmin;
@@ -20,25 +19,19 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
 import java.io.File;
 import java.io.IOException;
-import java.io.OutputStreamWriter;
-import java.io.PrintWriter;
 import java.math.BigDecimal;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.text.DecimalFormat;
 import java.text.ParseException;
 
 public class ScanXML {
     private final Path resourceRoot;
     private final Path dataPath;
     private final Storage storage;
-    private DocumentBuilder db;
+    private final DocumentBuilder db;
     private Element elemRoot;
 
     public ScanXML(DocumentBuilder documentBuilder, Storage storage, String resourcePathName, String defaultFileName) {
@@ -416,7 +409,7 @@ public class ScanXML {
         for (Booking bok : storage.bookings) {
             System.out.println(bok.raw);
         }
-        for(Exchange exc : storage.exchanges) {
+        for (Exchange exc : storage.exchanges) {
             System.out.println(exc.raw);
         }
     }

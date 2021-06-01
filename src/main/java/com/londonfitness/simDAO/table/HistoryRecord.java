@@ -3,7 +3,7 @@ package com.londonfitness.simDAO.table;
 
 import com.londonfitness.simDAO.rawTable.RawTable;
 // TODO
-public class Record extends RawTable{
+public class HistoryRecord extends RawTable{
 
     @Override
     protected String getTableMeta(short type, String name) {

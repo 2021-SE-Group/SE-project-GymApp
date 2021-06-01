@@ -1,26 +1,18 @@
 package com.londonfitness.GUI.ourComponent.steps;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
-public class StepBar{
-    private StepState stepState;
-    private GroupLayout layout;
-
+public class StepBar {
     // Buttons
-    private JButton jbt_back;
-    private JButton jbt_cancel;
-    private JButton jbt_next;
+    private final JButton jbt_back;
+    private final JButton jbt_cancel;
+    private final JButton jbt_next;
 
     // layout group
-    private GroupLayout.Group horizontal;
-    private GroupLayout.Group vertical;
+    private final GroupLayout.Group horizontal;
+    private final GroupLayout.Group vertical;
 
     public StepBar(StepState stepState, GroupLayout layout) {
-        this.stepState = stepState;
-        this.layout = layout;
-
         jbt_back = new JButton("back");
         jbt_cancel = new JButton("cancel");
         jbt_next = new JButton("next");
@@ -46,9 +38,11 @@ public class StepBar{
     public JButton getJbt_back() {
         return jbt_back;
     }
+
     public JButton getJbt_cancel() {
         return jbt_cancel;
     }
+
     public JButton getJbt_next() {
         return jbt_next;
     }
@@ -56,6 +50,7 @@ public class StepBar{
     public GroupLayout.Group getHorizontal() {
         return horizontal;
     }
+
     public GroupLayout.Group getVertical() {
         return vertical;
     }

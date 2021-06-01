@@ -2,16 +2,17 @@ package com.londonfitness.GUI.ourComponent.steps;
 
 import javax.swing.*;
 
-/** Provide a specialized JPanel with a step bar
+/**
+ * Provide a specialized JPanel with a step bar
  *
  * @param <JP>
  */
 public class StepGUIGroup<JP extends JPanel> {
-    private JP jp;
+    private final JP jp;
 
-    private StepBar stepBar;
-    private GroupLayout.Group horizontal;
-    private GroupLayout.Group vertical;
+    private final StepBar stepBar;
+    private final GroupLayout.Group horizontal;
+    private final GroupLayout.Group vertical;
 
 
     public StepGUIGroup(GroupLayout layout, StepState stepState, JP jp) {
@@ -29,6 +30,7 @@ public class StepGUIGroup<JP extends JPanel> {
     public GroupLayout.Group getVertical() {
         return vertical;
     }
+
     public GroupLayout.Group getHorizontal() {
         return horizontal;
     }

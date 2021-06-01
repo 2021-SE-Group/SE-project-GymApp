@@ -6,8 +6,8 @@ import org.xml.sax.SAXParseException;
 
 import java.io.PrintWriter;
 
-public class XMLErrorHandler implements ErrorHandler{
-    private PrintWriter out;
+public class XMLErrorHandler implements ErrorHandler {
+    private final PrintWriter out;
 
     public XMLErrorHandler(PrintWriter out) {
         this.out = out;

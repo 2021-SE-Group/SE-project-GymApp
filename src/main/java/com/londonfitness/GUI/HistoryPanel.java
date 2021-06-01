@@ -7,8 +7,8 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 
 public class HistoryPanel extends JPanel {
-    Storage storage;
     private final JLabel lblUserInterface = new JLabel("History");
+    Storage storage;
     JButton btnNewButton_1;
     JButton btnNewButton_2;
 

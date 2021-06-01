@@ -171,6 +171,26 @@
             <repeat>604800000</repeat>
             <quit>F</quit>
         </booking>
+        <booking>
+            <ID>B004</ID>
+            <coach_ID>C001</coach_ID>
+            <trainee_ID>T001</trainee_ID>
+            <lfClass_ID>04</lfClass_ID>
+            <startDate>211201142000</startDate>
+            <times>8</times>
+            <repeat>604800000</repeat>
+            <quit>F</quit>
+        </booking>
+        <booking>
+            <ID>B005</ID>
+            <coach_ID>C001</coach_ID>
+            <trainee_ID>T001</trainee_ID>
+            <lfClass_ID>05</lfClass_ID>
+            <startDate>210629090000</startDate>
+            <times>20</times>
+            <repeat>604800000</repeat>
+            <quit>F</quit>
+        </booking>
     </booking_list>
     <exchange_list/>
 </record_list>

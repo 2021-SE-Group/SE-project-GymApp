@@ -7,11 +7,14 @@ import javax.swing.*;
 
 /**
  * Hello world!
- *
  */
 public class App extends AppSkeleton {
     public App() {
         super(true, true, true, true, true);
+    }
+
+    public static void main(String[] args) {
+        new App();
     }
 
     @Override
@@ -42,9 +45,5 @@ public class App extends AppSkeleton {
                 jf.setVisible(true)
         );
         return jf;
-    }
-
-    public static void main(String[] args) {
-        new App();
     }
 }

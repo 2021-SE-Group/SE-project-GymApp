@@ -14,9 +14,9 @@ public class ExampleStepApplication {
         ExampleStepControl example = new ExampleStepControl() {
             @Override
             public void updateCurrentPane() {
-                if(getStepStete().isCanceled()) {
+                if (getStepStete().isCanceled()) {
                     jf.dispose();
-                } else if(getStepStete().isFinished()){
+                } else if (getStepStete().isFinished()) {
                     jf.dispose();
                     // do something, up to you
                 } else {

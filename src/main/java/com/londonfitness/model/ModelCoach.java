@@ -14,7 +14,7 @@ public class ModelCoach {
         this.modelTimetable = new ModelTimetable(coach);
     }
 
-    public Coach createCoach(String id,String name,short type, String username,boolean expired, String c_profile_URL) {
+    public Coach createCoach(String id, String name, short type, String username, boolean expired, String c_profile_URL) {
         RawCoach rawCoach = new RawCoach();
         rawCoach.ID = id;
         rawCoach.name = name;
@@ -31,7 +31,7 @@ public class ModelCoach {
 
     }
 
-    public void updateCoach(String id,String name) {
+    public void updateCoach(String id, String name) {
 
     }
 

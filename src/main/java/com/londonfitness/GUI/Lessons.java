@@ -1,7 +1,6 @@
 package com.londonfitness.GUI;
 
 
-
 import com.londonfitness.simDAO.memStorage.Storage;
 
 import javax.swing.*;
@@ -20,6 +19,7 @@ public class Lessons extends JPanel {
         this.initComponent();
         this.setVisible(true);
     }
+
     private void initComponent() {
         GroupLayout gl_panel = new GroupLayout(this);
         lblUserInterface = new JLabel("USER INTERFACE");
@@ -39,7 +39,7 @@ public class Lessons extends JPanel {
                 .addComponent(btnNewButton_1));
 
         table.setModel(new DefaultTableModel(
-                new Object[][] {
+                new Object[][]{
                         {null, "", null},
                         {null, null, null},
                         {null, null, null},
@@ -53,7 +53,7 @@ public class Lessons extends JPanel {
                         {null, null, null},
                         {null, null, null},
                 },
-                new String[] {
+                new String[]{
                         "Name", "Date", "Comment"
                 }
         ));
@@ -64,5 +64,5 @@ public class Lessons extends JPanel {
         btnNewButton_1.setBackground(Color.RED);
         btnNewButton_1.setFont(new Font("Berlin Sans FB Demi", Font.BOLD | Font.ITALIC, 15));
         this.setLayout(gl_panel);
-        }
     }
+}

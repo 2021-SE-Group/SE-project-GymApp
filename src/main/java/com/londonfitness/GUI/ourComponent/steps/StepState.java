@@ -1,16 +1,11 @@
 package com.londonfitness.GUI.ourComponent.steps;
 
-/** -1 is exit, 0 is the first step, n - 1 is the last step, n is finish
- *
+/**
+ * -1 is exit, 0 is the first step, n - 1 is the last step, n is finish
  */
 public class StepState {
-    private int location;
     private final int max;
-
-    public enum ERRFlag {
-        fine, nextExceed, backExceed
-    }
-
+    private int location;
     private ERRFlag errFlag;
 
     public StepState(int max, int initial) {
@@ -24,7 +19,7 @@ public class StepState {
     }
 
     public void next() {
-        if(location < max) {
+        if (location < max) {
             location++;
         } else {
             errFlag = ERRFlag.nextExceed;
@@ -32,7 +27,7 @@ public class StepState {
     }
 
     public void back() {
-        if(location >= 0) {
+        if (location >= 0) {
             location--;
         } else {
             errFlag = ERRFlag.backExceed;
@@ -58,5 +53,9 @@ public class StepState {
 
     public int getLocation() {
         return location;
+    }
+
+    public enum ERRFlag {
+        fine, nextExceed, backExceed
     }
 }

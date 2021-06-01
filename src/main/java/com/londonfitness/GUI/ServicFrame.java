@@ -1,20 +1,23 @@
 package com.londonfitness.GUI;
 
 import com.londonfitness.GUI.ourComponent.example.tableExample.BookingGUI2;
+import com.londonfitness.GUI.traineeService.TraineeAddBooking;
 import com.londonfitness.simDAO.fileIO.XMLDocumentBuilder;
 import com.londonfitness.simDAO.fileIO.xmlwriter.WriteXML;
 import com.londonfitness.simDAO.memStorage.Storage;
 
-
 import javax.swing.*;
 import javax.xml.parsers.ParserConfigurationException;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.nio.file.Paths;
 
 /**
  *
  */
 public class ServicFrame extends javax.swing.JFrame {
-    private Storage storage;
+    private final Storage storage;
     private JTabbedPane jTabbedPane_serviceeg;
     private StudentPanel sp;
     private HistoryPanel hp;
@@ -43,12 +46,42 @@ public class ServicFrame extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable3;
+    private BookingGUI2 bookingGUI2;
+
     /**
      * Creates new form ServicFrame
      */
     public ServicFrame(Storage storage) {
         this.storage = storage;
+        setExtendedState(MAXIMIZED_BOTH);
         initComponents();
+    }
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        /* Set the Nimbus look and feel */
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException
+                | InstantiationException
+                | IllegalAccessException
+                | UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(ServicFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(() -> new ServicFrame(new Storage()).setVisible(true));
     }
 
     /**
@@ -63,7 +96,9 @@ public class ServicFrame extends javax.swing.JFrame {
 
         jScrollPane4 = new javax.swing.JScrollPane();
         //jTable3 = new javax.swing.JTable();
-        jTable3 = new BookingGUI2(storage).jtb;
+        bookingGUI2 = new BookingGUI2(storage);
+        jTable3 = bookingGUI2.jtb;
+
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jScrollPane5 = new javax.swing.JScrollPane();
@@ -105,16 +140,16 @@ public class ServicFrame extends javax.swing.JFrame {
         jScrollPane4.setViewportView(jTable3);
         jTabbedPane_view.addTab("Booking", jScrollPane4);
 
-
-        Object [][] ss = new Object[storage.bookings.size()][4];
-        for(int i = 0; i < storage.bookings.size(); i++) {
+        /*
+        Object[][] ss = new Object[storage.bookings.size()][4];
+        for (int i = 0; i < storage.bookings.size(); i++) {
             ss[i][0] = storage.bookings.get(i).raw.lfClass_ID;
             ss[i][1] = storage.bookings.get(i).raw.trainee_ID;
         }
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
                 ss,
-                new String [] {
+                new String[]{
                         "Title 1", "Title 2", "Title 3", "Title 4"
                 }
         ));
@@ -122,15 +157,24 @@ public class ServicFrame extends javax.swing.JFrame {
 
         jTabbedPane_view.addTab("schedule", jScrollPane1);
 
+         */
+
         jTabbedPane2.addTab("view", jTabbedPane_view);
 
-        jLabel1.setText("jLabel1");
+        jLabel1.setText("Book a class ");
 
-        jButton1.setText("jButton1");
+        jButton1.setText("book");
+        jButton1.addActionListener(e -> EventQueue.invokeLater(() -> {
+            TraineeAddBooking tab = new TraineeAddBooking(storage);
+            tab.getBookingFrame().setVisible(true);
+        }));
 
-        jLabel2.setText("jLabel2");
+        jLabel2.setText("refresh booking table");
 
-        jButton2.setText("jButton2");
+        jButton2.setText("refresh");
+        jButton2.addActionListener((event) -> {
+            bookingGUI2.refresh();
+        });
 
         jLabel3.setText("jLabel3");
 
@@ -181,16 +225,13 @@ public class ServicFrame extends javax.swing.JFrame {
 
         //jTabbedPane_serviceeg.addTab("trainer service", trainer_gui.getPanel00(storage, "C001"));
         jTabbedPane_serviceeg.addTab("Coach service", trainer_gui.getPanel_in(storage));
-        jTabbedPane_serviceeg.addTab("test panel", jScrollPane5);
+        jTabbedPane_serviceeg.addTab("student services", jScrollPane5);
         jTabbedPane_serviceeg.addTab("student operation", sp);
         jTabbedPane_serviceeg.addTab("history", hp);
 
 
-
-
         jTabbedPane_serviceeg.addTab("student comment", ls);
         jTabbedPane_serviceeg.addTab("videos", vi);
-
 
 
         jMenu_File.setText("File");
@@ -265,32 +306,5 @@ public class ServicFrame extends javax.swing.JFrame {
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
-    }
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        /* Set the Nimbus look and feel */
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException
-                | InstantiationException
-                | IllegalAccessException
-                | UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ServicFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new ServicFrame(new Storage()).setVisible(true));
     }
 }
