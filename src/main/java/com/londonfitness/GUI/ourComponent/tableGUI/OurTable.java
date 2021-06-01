@@ -11,7 +11,6 @@ public abstract class OurTable<T> {
     public OurTable(Storage storage) {
         tm = constructModel(storage);
         jtb = new JTable(tm);
-        jtb.setVisible(true);
     }
 
     public abstract OurTableModel<T> constructModel(Storage storage);
