@@ -1,5 +1,6 @@
 package com.londonfitness.GUI;
 
+import com.londonfitness.GUI.ourComponent.example.tableExample.BookingTableModel;
 import com.londonfitness.simDAO.memStorage.Storage;
 import com.londonfitness.simDAO.rawTable.RawLFClass;
 import com.londonfitness.simDAO.table.Booking;
@@ -140,7 +141,7 @@ public class STALL extends JPanel{
                 //ST002 a = new ST002(name);
                 frame.setBounds(100, 100, 850, 400);
                 frame.setLocationRelativeTo(null);//middle
-                frame.setContentPane(getPanel02(storage.bookings, coach_ID));
+                frame.setContentPane(getPanel02(storage, coach_ID));
                 frame.setVisible(true);
             }
         });
@@ -378,7 +379,7 @@ public class STALL extends JPanel{
         return panel01;
     }
     //Class check
-    public JPanel getPanel02(ArrayList<Booking> BookClass, String coach_ID){
+    public JPanel getPanel02(Storage storage, String coach_ID){
 /*
         frame = new JFrame();
         frame.setBounds(100, 100, 450, 400);
@@ -403,31 +404,67 @@ public class STALL extends JPanel{
         panel02.add(scrollPane);
         //frame.getContentPane().add(scrollPane);
 
+
+
+
         int num = 0;
         int check_num = 0;
-        for(int i = 0; i < BookClass.size(); i++){
-            Booking v = BookClass.get(i);
+        for(int i = 0; i < storage.bookings.size(); i++){
+            Booking v = storage.bookings.get(i);
             if(v.raw.coach_ID == coach_ID){
                 check_num++;
             }
         }
+
+
         Object[][] BC = new Object[check_num][6];
-        for(int i = 0; i < BookClass.size(); i++){
-            Booking b = BookClass.get(i);
+        for(int i = 0; i < storage.bookings.size(); i++){
+            Booking b = storage.bookings.get(i);
             if(b.raw.coach_ID == coach_ID){
                 BC[num][0] = b.raw.ID;
-                BC[num][1] = b.raw.coach_ID;
-                BC[num][2] = b.raw.trainee_ID;
-                BC[num][3] = b.raw.lfClass_ID;
+                BC[num][1] = b.externKey_coach.raw.name;
+                BC[num][2] = b.externKey_trainee.raw.name;
+                BC[num][3] = b.externKey_lfClass.raw.name;
                 BC[num][4] = b.raw.startDate;
                 BC[num][5] = b.raw.times;
                 num++;
             }
         }
+
+/*
+        Object[][] BC = new Object[storage.bookings.size()][6];
+        //BookingTableModel[][] BC = new BookingTableModel[storage.bookings.size()][6];
+        BookingTableModel a = new BookingTableModel(storage);
+        for(int i = 0; i < storage.bookings.size(); i++){
+
+                BC[i][0] = a.getValueAt(i,0);
+                BC[i][1] = a.getValueAt(i,0);
+                BC[i][2] = a.getValueAt(i,2);
+                BC[i][3] = a.getValueAt(i,4);
+                BC[i][4] = a.getValueAt(i,6);
+                BC[i][5] = a.getValueAt(i,6);
+
+        }
+*/
+/*
+        Object[][] BC = new Object[storage.bookings.size()][6];
+        for(int i = 0; i < storage.bookings.size(); i++){
+            Booking b = storage.bookings.get(i);
+
+                BC[i][0] = b.raw.ID;
+                BC[i][1] = b.raw.coach_ID;
+                BC[i][2] = b.raw.trainee_ID;
+                BC[i][3] = b.raw.lfClass_ID;
+                BC[i][4] = b.raw.startDate;
+                BC[i][5] = b.raw.times;
+
+        }
+*/
+
         JTable tb_c = new JTable(
                 BC,
                 new String [] {
-                "ID", "coach_ID", "trainee_ID", "lfClass_ID", "startDate", "times"
+                "ID", "coach", "trainee", "lfClass", "startDate", "times"
                 }
         );
         scrollPane.setViewportView(tb_c);
@@ -793,7 +830,7 @@ public class STALL extends JPanel{
         return panel_maintain;
     }
 
-
+    //My videos
     public JPanel getPanel06(ArrayList<LFClass> LFClass, String coach_ID){
 /*
         frame = new JFrame();
