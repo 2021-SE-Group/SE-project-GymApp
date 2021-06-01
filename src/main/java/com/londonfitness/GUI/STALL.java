@@ -194,7 +194,7 @@ public class STALL extends JPanel{
                 //mainFrame a = new mainFrame();
                 frame.setBounds(100, 100, 850, 400);
                 frame.setLocationRelativeTo(null);//middle
-                frame.setContentPane(getPanel06(storage.lfClasses, coach_ID));
+                frame.setContentPane(getPanel06(storage, coach_ID));
                 frame.setVisible(true);
             }
         });
@@ -411,7 +411,7 @@ public class STALL extends JPanel{
         int check_num = 0;
         for(int i = 0; i < storage.bookings.size(); i++){
             Booking v = storage.bookings.get(i);
-            if(v.raw.coach_ID == coach_ID){
+            if(v.raw.coach_ID.equals(coach_ID)){
                 check_num++;
             }
         }
@@ -420,7 +420,7 @@ public class STALL extends JPanel{
         Object[][] BC = new Object[check_num][6];
         for(int i = 0; i < storage.bookings.size(); i++){
             Booking b = storage.bookings.get(i);
-            if(b.raw.coach_ID == coach_ID){
+            if(b.raw.coach_ID.equals(coach_ID)){
                 BC[num][0] = b.raw.ID;
                 BC[num][1] = b.externKey_coach.raw.name;
                 BC[num][2] = b.externKey_trainee.raw.name;
@@ -699,7 +699,7 @@ public class STALL extends JPanel{
 
         for(int i = 0; i < Bookings.size(); i++){
             Booking mid = Bookings.get(i);
-            if(mid.raw.coach_ID == coach_ID){
+            if(mid.raw.coach_ID.equals(coach_ID)){
                 all++;
                 if(mid.raw.quit){
                     f++;
@@ -714,7 +714,7 @@ public class STALL extends JPanel{
         }
 
         /************************/
-        JLabel l_2 = new JLabel(drc_n + "%");
+        JLabel l_2 = new JLabel(String.format("%.2f", drc_n) + "%");
         l_2.setBounds(198, 131, 40, 35);
         panel05.add(l_2);
         //frame.getContentPane().add(l_2);
@@ -831,7 +831,7 @@ public class STALL extends JPanel{
     }
 
     //My videos
-    public JPanel getPanel06(ArrayList<LFClass> LFClass, String coach_ID){
+    public JPanel getPanel06(Storage storage, String coach_ID){
 /*
         frame = new JFrame();
         frame.setBounds(100, 100, 450, 400);
@@ -859,17 +859,17 @@ public class STALL extends JPanel{
 
         int num = 0;
         int check_num = 0;
-        for(int i = 0; i < LFClass.size(); i++){
-            LFClass v = LFClass.get(i);
-            if(v.raw.coach_ID == coach_ID){
+        for(int i = 0; i < storage.lfClasses.size(); i++){
+            LFClass v = storage.lfClasses.get(i);
+            if(v.raw.coach_ID.equals(coach_ID)){
                 check_num++;
             }
         }
         Object[][] BC = new Object[check_num][6];
 
-        for(int i = 0; i < LFClass.size(); i++){
-            LFClass b = LFClass.get(i);
-            if(b.raw.coach_ID == coach_ID){
+        for(int i = 0; i < storage.lfClasses.size(); i++){
+            LFClass b = storage.lfClasses.get(i);
+            if(b.raw.coach_ID.equals(coach_ID)){
                 //BC[i][0] = b.c_video_URL;
                 BC[num][0] = b.raw.ID;
                 BC[num][1] = b.raw.name;
@@ -953,6 +953,7 @@ public class STALL extends JPanel{
         return panel06;
     }
 
+    //check profile
     public JPanel getPanel07(ArrayList<Coach> coaches, String coach_ID){
         Font f_0 = new Font("Times New Roman",Font.BOLD,20);
 
@@ -969,7 +970,7 @@ public class STALL extends JPanel{
 
         for(int i = 0; i < coaches.size(); i++){
             Coach mid = coaches.get(i);
-            if(mid.raw.ID == coach_ID){
+            if(mid.raw.ID.equals(coach_ID)){
                 a = mid.raw.c_profile_URL;
                 break;
             }
