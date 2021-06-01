@@ -1,5 +1,6 @@
 package com.londonfitness.GUI;
 
+import com.londonfitness.GUI.ourComponent.example.tableExample.BookingTableModel;
 import com.londonfitness.simDAO.memStorage.Storage;
 import com.londonfitness.simDAO.rawTable.RawLFClass;
 import com.londonfitness.simDAO.table.Booking;
@@ -140,7 +141,7 @@ public class STALL extends JPanel{
                 //ST002 a = new ST002(name);
                 frame.setBounds(100, 100, 850, 400);
                 frame.setLocationRelativeTo(null);//middle
-                frame.setContentPane(getPanel02(storage.bookings, coach_ID));
+                frame.setContentPane(getPanel02(storage, coach_ID));
                 frame.setVisible(true);
             }
         });
@@ -149,17 +150,17 @@ public class STALL extends JPanel{
         //frame.getContentPane().add(b_2);
 
 
-        //maintaining
-        JButton b_3 = new JButton("My Free time");
+        //maintaining  ---> change to 07
+        JButton b_3 = new JButton("My profile");
         b_3.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e)
             {
                 //frame.dispose();
                 //frame.setVisible(false);
                 //ST004 a = new ST004(name);
-                //frame.setContentPane(getPanel04(storage.coaches, coach_ID));
-                frame_suc.setContentPane(getPanel_maintain());
-                frame_suc.setVisible(true);
+                frame.setContentPane(getPanel07(storage.coaches, coach_ID));
+                //frame_suc.setContentPane(getPanel_maintain());
+                frame.setVisible(true);
             }
         });
         b_3.setBounds(152, 165, 123, 29);
@@ -193,7 +194,7 @@ public class STALL extends JPanel{
                 //mainFrame a = new mainFrame();
                 frame.setBounds(100, 100, 850, 400);
                 frame.setLocationRelativeTo(null);//middle
-                frame.setContentPane(getPanel06(storage.lfClasses, coach_ID));
+                frame.setContentPane(getPanel06(storage, coach_ID));
                 frame.setVisible(true);
             }
         });
@@ -233,6 +234,9 @@ public class STALL extends JPanel{
         frame.getContentPane().setLayout(null);
         frame.setVisible(true);
 */
+        frame.setBounds(100, 100, 450, 400);
+        frame.setLocationRelativeTo(null);//middle
+
         Font f_0 = new Font("Times New Roman",Font.BOLD,20);
 
         JPanel panel01 = new JPanel();
@@ -339,7 +343,7 @@ public class STALL extends JPanel{
                 ad.raw.category_ID = tf_3.getText();
                 ad.raw.duration = Long.valueOf(tf_4.getText());
                 ad.raw.resource_URL = tf_1.getText();
-
+                //ad.raw.price = "Unsettled";
 
 
 
@@ -378,7 +382,7 @@ public class STALL extends JPanel{
         return panel01;
     }
     //Class check
-    public JPanel getPanel02(ArrayList<Booking> BookClass, String coach_ID){
+    public JPanel getPanel02(Storage storage, String coach_ID){
 /*
         frame = new JFrame();
         frame.setBounds(100, 100, 450, 400);
@@ -403,31 +407,67 @@ public class STALL extends JPanel{
         panel02.add(scrollPane);
         //frame.getContentPane().add(scrollPane);
 
+
+
+
         int num = 0;
         int check_num = 0;
-        for(int i = 0; i < BookClass.size(); i++){
-            Booking v = BookClass.get(i);
-            if(v.raw.coach_ID == coach_ID){
+        for(int i = 0; i < storage.bookings.size(); i++){
+            Booking v = storage.bookings.get(i);
+            if(v.raw.coach_ID.equals(coach_ID)){
                 check_num++;
             }
         }
+
+
         Object[][] BC = new Object[check_num][6];
-        for(int i = 0; i < BookClass.size(); i++){
-            Booking b = BookClass.get(i);
-            if(b.raw.coach_ID == coach_ID){
+        for(int i = 0; i < storage.bookings.size(); i++){
+            Booking b = storage.bookings.get(i);
+            if(b.raw.coach_ID.equals(coach_ID)){
                 BC[num][0] = b.raw.ID;
-                BC[num][1] = b.raw.coach_ID;
-                BC[num][2] = b.raw.trainee_ID;
-                BC[num][3] = b.raw.lfClass_ID;
+                BC[num][1] = b.externKey_coach.raw.name;
+                BC[num][2] = b.externKey_trainee.raw.name;
+                BC[num][3] = b.externKey_lfClass.raw.name;
                 BC[num][4] = b.raw.startDate;
                 BC[num][5] = b.raw.times;
                 num++;
             }
         }
+
+/*
+        Object[][] BC = new Object[storage.bookings.size()][6];
+        //BookingTableModel[][] BC = new BookingTableModel[storage.bookings.size()][6];
+        BookingTableModel a = new BookingTableModel(storage);
+        for(int i = 0; i < storage.bookings.size(); i++){
+
+                BC[i][0] = a.getValueAt(i,0);
+                BC[i][1] = a.getValueAt(i,0);
+                BC[i][2] = a.getValueAt(i,2);
+                BC[i][3] = a.getValueAt(i,4);
+                BC[i][4] = a.getValueAt(i,6);
+                BC[i][5] = a.getValueAt(i,6);
+
+        }
+*/
+/*
+        Object[][] BC = new Object[storage.bookings.size()][6];
+        for(int i = 0; i < storage.bookings.size(); i++){
+            Booking b = storage.bookings.get(i);
+
+                BC[i][0] = b.raw.ID;
+                BC[i][1] = b.raw.coach_ID;
+                BC[i][2] = b.raw.trainee_ID;
+                BC[i][3] = b.raw.lfClass_ID;
+                BC[i][4] = b.raw.startDate;
+                BC[i][5] = b.raw.times;
+
+        }
+*/
+
         JTable tb_c = new JTable(
                 BC,
                 new String [] {
-                "ID", "coach_ID", "trainee_ID", "lfClass_ID", "startDate", "times"
+                "ID", "coach", "trainee", "lfClass", "startDate", "times"
                 }
         );
         scrollPane.setViewportView(tb_c);
@@ -495,7 +535,7 @@ public class STALL extends JPanel{
         return panel02;
     }
 
-    //maintaining
+    //maintaining ---> delete
     //Free time add
     public JPanel getPanel04(ArrayList<Coach> coaches, String coach_ID){
 /*
@@ -591,7 +631,7 @@ public class STALL extends JPanel{
         return panel04;
     }
 
-    //maintaining
+    //maintaining --->complete
     //Drop Class rate
     public JPanel getPanel05(ArrayList<Booking> Bookings, String coach_ID){
 /*
@@ -602,6 +642,8 @@ public class STALL extends JPanel{
         frame.getContentPane().setLayout(null);
         frame.setVisible(true);
 */
+        frame.setBounds(100, 100, 450, 400);
+        frame.setLocationRelativeTo(null);//middle
         Font f_0 = new Font("Times New Roman",Font.BOLD,20);
 
         JPanel panel05 = new JPanel();
@@ -662,7 +704,7 @@ public class STALL extends JPanel{
 
         for(int i = 0; i < Bookings.size(); i++){
             Booking mid = Bookings.get(i);
-            if(mid.raw.coach_ID == coach_ID){
+            if(mid.raw.coach_ID.equals(coach_ID)){
                 all++;
                 if(mid.raw.quit){
                     f++;
@@ -677,7 +719,7 @@ public class STALL extends JPanel{
         }
 
         /************************/
-        JLabel l_2 = new JLabel(drc_n + "%");
+        JLabel l_2 = new JLabel(String.format("%.2f", drc_n) + "%");
         l_2.setBounds(198, 131, 40, 35);
         panel05.add(l_2);
         //frame.getContentPane().add(l_2);
@@ -793,8 +835,8 @@ public class STALL extends JPanel{
         return panel_maintain;
     }
 
-
-    public JPanel getPanel06(ArrayList<LFClass> LFClass, String coach_ID){
+    //My videos
+    public JPanel getPanel06(Storage storage, String coach_ID){
 /*
         frame = new JFrame();
         frame.setBounds(100, 100, 450, 400);
@@ -822,17 +864,17 @@ public class STALL extends JPanel{
 
         int num = 0;
         int check_num = 0;
-        for(int i = 0; i < LFClass.size(); i++){
-            LFClass v = LFClass.get(i);
-            if(v.raw.coach_ID == coach_ID){
+        for(int i = 0; i < storage.lfClasses.size(); i++){
+            LFClass v = storage.lfClasses.get(i);
+            if(v.raw.coach_ID.equals(coach_ID)){
                 check_num++;
             }
         }
         Object[][] BC = new Object[check_num][6];
 
-        for(int i = 0; i < LFClass.size(); i++){
-            LFClass b = LFClass.get(i);
-            if(b.raw.coach_ID == coach_ID){
+        for(int i = 0; i < storage.lfClasses.size(); i++){
+            LFClass b = storage.lfClasses.get(i);
+            if(b.raw.coach_ID.equals(coach_ID)){
                 //BC[i][0] = b.c_video_URL;
                 BC[num][0] = b.raw.ID;
                 BC[num][1] = b.raw.name;
@@ -840,6 +882,7 @@ public class STALL extends JPanel{
                 BC[num][3] = b.raw.category_ID;
                 BC[num][4] = b.raw.duration;
                 BC[num][5] = b.raw.resource_URL;
+                //BC[num][5] = b.raw.price;
                 num++;
             }
 
@@ -913,6 +956,52 @@ public class STALL extends JPanel{
 
      */
         return panel06;
+    }
+
+    //check profile
+    public JPanel getPanel07(ArrayList<Coach> coaches, String coach_ID){
+        Font f_0 = new Font("Times New Roman",Font.BOLD,20);
+        frame.setBounds(100, 100, 450, 400);
+        frame.setLocationRelativeTo(null);//middle
+
+        JPanel panel07 = new JPanel();
+        panel07.setLayout(null);
+
+        JLabel l_1 = new JLabel("My Profile");
+        l_1.setBounds(162, 95, 300, 21);
+        l_1.setFont(f_0);
+        panel07.add(l_1);
+        //frame.getContentPane().add(l_1);
+
+        String a = new String();
+
+        for(int i = 0; i < coaches.size(); i++){
+            Coach mid = coaches.get(i);
+            if(mid.raw.ID.equals(coach_ID)){
+                a = mid.raw.c_profile_URL;
+                break;
+            }
+        }
+
+
+        JLabel l_2 = new JLabel(a);
+        l_2.setBounds(128, 131, 150, 35);
+        panel07.add(l_2);
+
+        JButton b_1 = new JButton("BACK");
+        b_1.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e)
+            {
+                //frame.dispose();
+                //frame.setVisible(false);
+                //ST000 a = new ST000(name);
+                frame.setVisible(false);
+            }
+        });
+        b_1.setBounds(152, 185, 123, 29);
+        panel07.add(b_1);
+
+        return panel07;
     }
 
 

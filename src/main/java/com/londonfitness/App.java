@@ -11,7 +11,7 @@ import javax.swing.*;
  */
 public class App extends AppSkeleton {
     public App() {
-        super(true, true, true, true, false);
+        super(true, true, true, true, true);
     }
 
     @Override
