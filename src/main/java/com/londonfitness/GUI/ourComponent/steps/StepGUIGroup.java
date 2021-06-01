@@ -7,8 +7,6 @@ import javax.swing.*;
  * @param <JP>
  */
 public class StepGUIGroup<JP extends JPanel> {
-    private GroupLayout layout;
-    private StepState stepState;
     private JP jp;
 
     private StepBar stepBar;
@@ -17,11 +15,9 @@ public class StepGUIGroup<JP extends JPanel> {
 
 
     public StepGUIGroup(GroupLayout layout, StepState stepState, JP jp) {
-        this.layout = layout;
-        this.stepState = stepState;
         this.jp = jp;
 
-        stepBar = new StepBar(layout, stepState);
+        stepBar = new StepBar(stepState, layout);
         horizontal = layout.createParallelGroup(GroupLayout.Alignment.CENTER)
                 .addComponent(jp)
                 .addGroup(stepBar.getHorizontal());

@@ -88,7 +88,7 @@ public class WriteXML {
                 setCell("duration", Long.toString(lfClass.raw.duration));
                 setCell("resource_URL", lfClass.raw.resource_URL);
                 setCell("category_ID", lfClass.raw.category_ID);
-
+                setCell("price", lfClass.raw.price.toPlainString());
             }
         }.write();
 

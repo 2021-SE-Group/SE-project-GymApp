@@ -4,6 +4,7 @@ import com.londonfitness.GUI.ourComponent.form.FormGUI;
 import com.londonfitness.GUI.ourComponent.form.FormItem;
 
 import javax.swing.*;
+import java.awt.*;
 import java.util.ArrayList;
 
 public class StepGUI<JP extends JPanel> extends JPanel {
@@ -17,6 +18,8 @@ public class StepGUI<JP extends JPanel> extends JPanel {
         stepGUIGroup = new StepGUIGroup<>(layout, stepState, jp);
         layout.setHorizontalGroup(stepGUIGroup.getHorizontal());
         layout.setVerticalGroup(stepGUIGroup.getVertical());
+        layout.preferredLayoutSize(this);
+        setVisible(true);
     }
 
     public StepGUIGroup<JP> getStepGUIGroup() {
@@ -26,6 +29,7 @@ public class StepGUI<JP extends JPanel> extends JPanel {
     public static void main(String[] args) {
         JFrame jf = new JFrame("test");
         jf.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        jf.setExtendedState(Frame.MAXIMIZED_BOTH);
 
         jf.add(new StepGUI<>(new StepState(3), new JPanel()));
 

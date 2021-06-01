@@ -1,37 +1,23 @@
-package com.londonfitness.studentService;
+package com.londonfitness.GUI.traineeService;
 
 import com.londonfitness.AppSkeleton;
-import com.londonfitness.GUI.JScrollPane_CoachTable;
 import com.londonfitness.GUI.ourComponent.tableGUI.OurTable;
 import com.londonfitness.GUI.ourComponent.tableGUI.OurTableModel;
 import com.londonfitness.simDAO.memStorage.Storage;
 import com.londonfitness.simDAO.table.Category;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 
 public class PanelCategory extends JPanel{
-    private JButton selectCategory;
-    private OurTable<Category> ourTable;
-    private JScrollPane jScrollPane;
+    OurTable<Category> ourTable;
+    JScrollPane jsp;
 
     public PanelCategory(Storage storage){
-        selectCategory = new JButton("category");
-        selectCategory.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-            }
-        });
         ourTable = new OurTable<>(storage) {
             @Override
             public OurTableModel<Category> constructModel(Storage storage) {
-                ArrayList<Category> a = storage.categories;
-
-
                 return new OurTableModel<>(storage.categories, 2) {
                     @Override
                     public String getColumnName(int columnIndex) {
@@ -72,15 +58,9 @@ public class PanelCategory extends JPanel{
                 };
             }
         };
-        jScrollPane = new JScrollPane(ourTable.jtb);
-        jScrollPane.createHorizontalScrollBar();
-        jScrollPane.createVerticalScrollBar();
-        this.add(this.jScrollPane);
-        this.add(this.selectCategory);
-    }
-
-    public JButton getSelectCategory() {
-        return selectCategory;
+        jsp = new JScrollPane(ourTable.jtb);
+        jsp.createVerticalScrollBar();
+        this.add(jsp);
     }
 
     public JTable getTable() {
@@ -93,14 +73,10 @@ public class PanelCategory extends JPanel{
             @Override
             public JFrame bringUpGUI() {
                 JFrame jf = new JFrame("test");
-
-                jf.setSize(1000, 600);
-
                 java.awt.EventQueue.invokeLater(() -> {
+                    jf.setSize(1000, 600);
                     jf.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-                    jf.setLayout(null);
-                    PanelCategory pc = new PanelCategory(this.getStorage());
-                    jf.setContentPane(pc);
+                    jf.add(new PanelCategory(this.getStorage()));
                     jf.setVisible(true);
                 });
                 return jf;

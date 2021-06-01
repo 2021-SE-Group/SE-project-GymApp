@@ -1,5 +1,6 @@
 package com.londonfitness.model;
 
+import com.londonfitness.simDAO.rawTable.rawPersons.RawCoach;
 import com.londonfitness.simDAO.table.persons.Coach;
 
 public class ModelCoach {

@@ -23,24 +23,4 @@ public abstract class StepControl {
      */
     public abstract void setupListeners();
     public abstract void updateCurrentPane();
-
-    public static void main(String[] args) {
-        JFrame jf = new JFrame("test");
-        jf.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-
-        GroupLayout layout = new GroupLayout(jf.getContentPane());
-        jf.setLayout(layout);
-
-        StepControl testStepControl = new StepControl(3) {
-            @Override
-            public void setupListeners() {
-
-            }
-
-            @Override
-            public void updateCurrentPane() {
-
-            }
-        };
-    }
 }

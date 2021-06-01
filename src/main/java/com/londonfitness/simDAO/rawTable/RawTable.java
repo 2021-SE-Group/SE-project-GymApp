@@ -8,6 +8,8 @@ public abstract class RawTable {
     public static final short columnType_Long = 4;
 
     protected abstract String getTableMeta(short type, String name);
+
+    //public boolean deleted;
     /*
     public abstract void setCell_String(String colName, String content);
     public abstract String getCell_String(String colName);

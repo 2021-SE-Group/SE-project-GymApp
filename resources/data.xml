@@ -48,7 +48,7 @@
             <duration>7200000</duration>
             <resource_URL>lfClass_00/</resource_URL>
             <category_ID>01</category_ID>
-            <price>1500</price>
+            <price>1700</price>
         </lfClass>
         <lfClass>
             <ID>01</ID>
@@ -64,7 +64,7 @@
             <duration>7200000</duration>
             <resource_URL>lfClass_02/</resource_URL>
             <category_ID>03</category_ID>
-            <price>2000</price>
+            <price>1700</price>
         </lfClass>
         <lfClass>
             <ID>03</ID>
@@ -72,7 +72,7 @@
             <duration>7200000</duration>
             <resource_URL>lfClass_03</resource_URL>
             <category_ID>04</category_ID>
-            <price>2000</price>
+            <price>1700</price>
         </lfClass>
         <lfClass>
             <ID>04</ID>
@@ -80,7 +80,7 @@
             <duration>7200000</duration>
             <resource_URL>lfClass_04</resource_URL>
             <category_ID>05</category_ID>
-            <price>1988</price>
+            <price>1700</price>
         </lfClass>
         <lfClass>
             <ID>05</ID>
@@ -88,7 +88,7 @@
             <duration>7200000</duration>
             <resource_URL>lfClass_05</resource_URL>
             <category_ID>06</category_ID>
-            <price>2488</price>
+            <price>1700</price>
         </lfClass>
         <lfClass>
             <ID>06</ID>
@@ -96,7 +96,7 @@
             <duration>7200000</duration>
             <resource_URL>lfClass_06</resource_URL>
             <category_ID>07</category_ID>
-            <price>8848</price>
+            <price>1700</price>
         </lfClass>
     </lfClass_list>
     <admin_list>
@@ -142,7 +142,7 @@
     </trainee_list>
     <booking_list>
         <booking>
-            <ID>b001</ID>
+            <ID>B001</ID>
             <coach_ID>C001</coach_ID>
             <trainee_ID>T001</trainee_ID>
             <lfClass_ID>01</lfClass_ID>
@@ -152,7 +152,7 @@
             <quit>T</quit>
         </booking>
         <booking>
-            <ID>b002</ID>
+            <ID>B002</ID>
             <coach_ID>C001</coach_ID>
             <trainee_ID>T001</trainee_ID>
             <lfClass_ID>02</lfClass_ID>
@@ -162,7 +162,7 @@
             <quit>F</quit>
         </booking>
         <booking>
-            <ID>b003</ID>
+            <ID>B003</ID>
             <coach_ID>C001</coach_ID>
             <trainee_ID>T001</trainee_ID>
             <lfClass_ID>03</lfClass_ID>
@@ -173,5 +173,4 @@
         </booking>
     </booking_list>
     <exchange_list/>
-    <history_list/>
 </record_list>

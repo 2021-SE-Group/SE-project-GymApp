@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class StepBar {
+public class StepBar{
     private StepState stepState;
     private GroupLayout layout;
 
@@ -17,7 +17,7 @@ public class StepBar {
     private GroupLayout.Group horizontal;
     private GroupLayout.Group vertical;
 
-    public StepBar(GroupLayout layout, StepState stepState) {
+    public StepBar(StepState stepState, GroupLayout layout) {
         this.stepState = stepState;
         this.layout = layout;
 
@@ -39,7 +39,8 @@ public class StepBar {
                 .addComponent(jbt_cancel)
                 .addComponent(jbt_next);
 
-        // You can modify it to setup listeners here
+        layout.setVerticalGroup(vertical);
+        layout.setHorizontalGroup(horizontal);
     }
 
     public JButton getJbt_back() {

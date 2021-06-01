@@ -54,6 +54,12 @@ public class FormGUI extends JPanel {
 
         layout.setHorizontalGroup(horizontal);
         layout.setVerticalGroup(vertical);
+
+        setVisible(true);
+    }
+
+    public ArrayList<FormItem> getItems() {
+        return items;
     }
 
     public void retrieve() {
