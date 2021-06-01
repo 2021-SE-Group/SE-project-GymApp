@@ -234,6 +234,9 @@ public class STALL extends JPanel{
         frame.getContentPane().setLayout(null);
         frame.setVisible(true);
 */
+        frame.setBounds(100, 100, 450, 400);
+        frame.setLocationRelativeTo(null);//middle
+
         Font f_0 = new Font("Times New Roman",Font.BOLD,20);
 
         JPanel panel01 = new JPanel();
@@ -639,6 +642,8 @@ public class STALL extends JPanel{
         frame.getContentPane().setLayout(null);
         frame.setVisible(true);
 */
+        frame.setBounds(100, 100, 450, 400);
+        frame.setLocationRelativeTo(null);//middle
         Font f_0 = new Font("Times New Roman",Font.BOLD,20);
 
         JPanel panel05 = new JPanel();
@@ -956,6 +961,8 @@ public class STALL extends JPanel{
     //check profile
     public JPanel getPanel07(ArrayList<Coach> coaches, String coach_ID){
         Font f_0 = new Font("Times New Roman",Font.BOLD,20);
+        frame.setBounds(100, 100, 450, 400);
+        frame.setLocationRelativeTo(null);//middle
 
         JPanel panel07 = new JPanel();
         panel07.setLayout(null);
