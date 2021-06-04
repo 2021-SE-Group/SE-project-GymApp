@@ -52,7 +52,7 @@
         </lfClass>
         <lfClass>
             <ID>01</ID>
-            <name>some training</name>
+            <name>running</name>
             <duration>7200000</duration>
             <resource_URL>lfClass_01/</resource_URL>
             <category_ID>02</category_ID>
@@ -60,7 +60,7 @@
         </lfClass>
         <lfClass>
             <ID>02</ID>
-            <name>some training</name>
+            <name>basic strength training</name>
             <duration>7200000</duration>
             <resource_URL>lfClass_02/</resource_URL>
             <category_ID>03</category_ID>
@@ -68,7 +68,7 @@
         </lfClass>
         <lfClass>
             <ID>03</ID>
-            <name>some training</name>
+            <name>equipment training</name>
             <duration>7200000</duration>
             <resource_URL>lfClass_03</resource_URL>
             <category_ID>04</category_ID>
@@ -76,7 +76,7 @@
         </lfClass>
         <lfClass>
             <ID>04</ID>
-            <name>some training</name>
+            <name>strength training</name>
             <duration>7200000</duration>
             <resource_URL>lfClass_04</resource_URL>
             <category_ID>05</category_ID>
@@ -84,7 +84,7 @@
         </lfClass>
         <lfClass>
             <ID>05</ID>
-            <name>some training</name>
+            <name>core strength</name>
             <duration>7200000</duration>
             <resource_URL>lfClass_05</resource_URL>
             <category_ID>06</category_ID>
@@ -92,7 +92,7 @@
         </lfClass>
         <lfClass>
             <ID>06</ID>
-            <name>some training</name>
+            <name>advanced strength training</name>
             <duration>7200000</duration>
             <resource_URL>lfClass_06</resource_URL>
             <category_ID>07</category_ID>
@@ -123,6 +123,20 @@
             <expired>F</expired>
             <c_profile_URL>C001_profile.xml</c_profile_URL>
         </coach>
+        <coach>
+            <ID>C002</ID>
+            <username>dave</username>
+            <name>Dave</name>
+            <expired>F</expired>
+            <c_profile_URL>C002_profile.xml</c_profile_URL>
+        </coach>
+        <coach>
+            <ID>C003</ID>
+            <username>steve</username>
+            <name>steve</name>
+            <expired>F</expired>
+            <c_profile_URL>C003_profile.xml</c_profile_URL>
+        </coach>
     </coach_list>
     <coach_ability_class_list>
         <ability_class>
@@ -138,6 +152,13 @@
             <name>Tom</name>
             <expired>F</expired>
             <t_profile_URL>T001_profile.xml</t_profile_URL>
+        </trainee>
+        <trainee>
+            <ID>T002</ID>
+            <username>jack</username>
+            <name>Jack</name>
+            <expired>F</expired>
+            <t_profile_URL>T002_profile.xml</t_profile_URL>
         </trainee>
     </trainee_list>
     <booking_list>
@@ -189,6 +210,26 @@
             <startDate>210629090000</startDate>
             <times>20</times>
             <repeat>604800000</repeat>
+            <quit>F</quit>
+        </booking>
+        <booking>
+            <ID>B006</ID>
+            <coach_ID>C003</coach_ID>
+            <trainee_ID>T002</trainee_ID>
+            <lfClass_ID>03</lfClass_ID>
+            <startDate>210321120000</startDate>
+            <times>5</times>
+            <repeat>604800000</repeat>
+            <quit>F</quit>
+        </booking>
+        <booking>
+            <ID>B007</ID>
+            <coach_ID>C002</coach_ID>
+            <trainee_ID>T002</trainee_ID>
+            <lfClass_ID>02</lfClass_ID>
+            <startDate>211223120000</startDate>
+            <times>5</times>
+            <repeat>691200000</repeat>
             <quit>F</quit>
         </booking>
     </booking_list>

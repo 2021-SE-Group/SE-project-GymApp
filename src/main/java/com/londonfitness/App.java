@@ -4,7 +4,6 @@ import com.londonfitness.GUI.ServicFrame;
 
 import javax.swing.*;
 
-
 /**
  * Hello world!
  */
